@@ -5,9 +5,10 @@ import FeatureRequestCard from "../../components/FeatureRequestCard";
 export default function FeatureRequests() {
   return (
     <section className="feature-request-cards-container">
-      <FeatureRequestCard />
-      <FeatureRequestCard />
-      <FeatureRequestCard />
+      <FeatureRequestCard type={"new"} />
+      <FeatureRequestCard type={"trending"} />
+      <FeatureRequestCard type={"under-dev"} />
+      <FeatureRequestCard type={"implemented"} />
       <FeatureRequestCard />
     </section>
   );

@@ -5,6 +5,7 @@ const FlameFill = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="19.5234"
     height="27.4805"
+    viewBox="0 0 19.5234 27.4805"
   >
     <g>
       <rect height="27.4805" opacity="0" width="19.5234" x="0" y="0" />

@@ -5,6 +5,7 @@ const LightbulbMaxFill = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="27.7266"
     height="40.9102"
+    viewBox="0 0 27.7266 40.9102"
   >
     <g>
       <rect height="40.9102" opacity="0" width="27.7266" x="0" y="0" />

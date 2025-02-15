@@ -5,6 +5,7 @@ const CheckmarkSquare = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="21.5742"
     height="21.5977"
+    viewBox="0 0 21.5742 21.5977"
   >
     <g>
       <rect height="21.5977" opacity="0" width="21.5742" x="0" y="0" />

@@ -5,6 +5,7 @@ const WrenchAndScrewdriverFill = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="27.8449"
     height="28.1837"
+    viewBox="0 0 27.8449 28.1837"
   >
     <g>
       <rect height="28.1837" opacity="0" width="27.8449" x="0" y="0" />

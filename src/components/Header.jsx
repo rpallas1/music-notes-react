@@ -34,38 +34,36 @@ export default function Header() {
             <span className="sr-only">Menu Dropdown</span>|||
           </label>
           <ul>
-            <div>
-              <li>
-                <NavLink
-                  to="/"
-                  end
-                  className={() =>
-                    location.pathname === "/" ? "active" : null
-                  }
-                  onClick={closeMenu}
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="feature-requests"
-                  className={({ isActive }) => linkClasses(isActive)}
-                  onClick={closeMenu}
-                >
-                  Feature Requests
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="contact"
-                  className={({ isActive }) => linkClasses(isActive)}
-                  onClick={closeMenu}
-                >
-                  Contact
-                </NavLink>
-              </li>
-            </div>
+            {/* <div> */}
+            <li>
+              <NavLink
+                to="/"
+                end
+                className={() => (location.pathname === "/" ? "active" : null)}
+                onClick={closeMenu}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="feature-requests"
+                className={({ isActive }) => linkClasses(isActive)}
+                onClick={closeMenu}
+              >
+                Feature Requests
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="contact"
+                className={({ isActive }) => linkClasses(isActive)}
+                onClick={closeMenu}
+              >
+                Contact
+              </NavLink>
+            </li>
+            {/* </div> */}
             <li className="download-app disabled">
               <NavLink
                 to="#"
