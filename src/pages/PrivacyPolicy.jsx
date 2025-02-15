@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function PrivacyPolicy() {
-  return <h1>Privacy Policy</h1>;
+  return (
+    <div className="privacy-policy-page">
+      <h2>Privacy Policy</h2>
+    </div>
+  );
 }

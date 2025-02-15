@@ -5,6 +5,7 @@ const DesktopComputer = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="27.9375"
     height="24.4336"
+    viewBox="0 0 27.9375 24.4336"
   >
     <g>
       <rect height="24.4336" opacity="0" width="27.9375" x="0" y="0" />

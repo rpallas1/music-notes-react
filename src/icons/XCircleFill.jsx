@@ -1,12 +1,12 @@
 import React from "react";
-const XCircleFill = (props) => (
+const XCircleFill = () => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width={23.906}
     height={23.918}
-    {...props}
+    viewBox="0 0 23.906 23.918"
   >
     <g>
       <rect height={23} width={23} opacity={0} x={0} y={0} />

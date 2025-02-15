@@ -2,9 +2,10 @@ const MagnifyingGlass = () => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
-    xmlnsXink="http://www.w3.org/1999/xlink"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
     width="22.8984"
     height="23.1211"
+    viewBox="0 0 22.8984 23.1211"
   >
     <g>
       <rect height="23.1211" opacity="0" width="22.8984" x="0" y="0" />

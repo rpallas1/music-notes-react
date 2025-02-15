@@ -5,6 +5,7 @@ const MoonFill = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="23.1211"
     height="23.2617"
+    viewBox="0 0 23.1211 23.2617"
   >
     <g>
       <rect height="23.2617" opacity="0" width="23.1211" x="0" y="0" />

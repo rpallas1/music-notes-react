@@ -5,6 +5,7 @@ const SunMaxFill = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="25.3477"
     height="25.4414"
+    viewBox="0 0 25.3477 25.4414"
   >
     <g>
       <rect height="25.4414" opacity="0" width="25.3477" x="0" y="0" />

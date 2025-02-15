@@ -23,8 +23,9 @@ function App() {
           <Route path="feature-requests" element={<FeatureRequestsLayout />}>
             <Route index element={<FeatureRequests />} />
             <Route path=":id" element={<FullFeatureRequest />} />
-            <Route path="submit-request" element={<SubmitRequest />} />
           </Route>
+
+          <Route path="submit-request" element={<SubmitRequest />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>

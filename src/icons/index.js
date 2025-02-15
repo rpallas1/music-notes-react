@@ -16,3 +16,7 @@ export { default as FlameFill } from "./FlameFill";
 export { default as WrenchAndScrewdriverFill } from "./WrenchAndScrewdriverFill";
 export { default as LightbulbMaxFill } from "./LightbulbMaxFill";
 export { default as CheckmarkSquare } from "./CheckmarkSquare";
+export { default as Pencil } from "./Pencil";
+export { default as PlayPauseFill } from "./PlayPauseFill";
+export { default as PlayNext } from "./PlayNext";
+export { default as StarFill } from "./StarFill";

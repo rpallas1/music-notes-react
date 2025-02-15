@@ -5,6 +5,7 @@ const ChevronBackward = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="11.4609"
     height="20.3555"
+    viewBox="0 0 11.4609 20.3555"
   >
     <g>
       <rect height="20.3555" opacity="0" width="11.4609" x="0" y="0" />

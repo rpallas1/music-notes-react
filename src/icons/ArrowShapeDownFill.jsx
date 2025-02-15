@@ -5,6 +5,7 @@ const ArrowShapeDownFill = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="21.5039"
     height="25.3008"
+    viewBox="0 0 21.5039 25.2773"
   >
     <g>
       <rect height="25.3008" opacity="0" width="21.5039" x="0" y="0" />
