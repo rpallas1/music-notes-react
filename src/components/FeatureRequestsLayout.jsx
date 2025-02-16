@@ -122,7 +122,7 @@ export default function FeatureRequestLayout() {
               <form id="filter-options-form" onSubmit={applyFilters}>
                 <fieldset>
                   <legend>Tags</legend>
-                  <div className="tags">
+                  <div className="tags options">
                     <input
                       type="checkbox"
                       id="trending"
@@ -167,7 +167,7 @@ export default function FeatureRequestLayout() {
                 </fieldset>
                 <fieldset>
                   <legend>Date Created</legend>
-                  <div className="dates">
+                  <div className="dates options">
                     <input
                       type="checkbox"
                       id="pastWeek"

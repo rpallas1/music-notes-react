@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router";
 import Layout from "./components/Layout";
 import FeatureRequestsLayout from "./components/FeatureRequestsLayout";
 import FullFeatureRequest from "./pages/FeatureRequests/FullFeatureRequest";
@@ -12,8 +17,19 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
 function App() {
+  function ScorllToTop() {
+    const { pathname } = useLocation();
+
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+  }
+
   return (
     <Router>
+      <ScorllToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Features />} />

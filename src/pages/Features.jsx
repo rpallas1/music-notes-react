@@ -1,4 +1,11 @@
 import React from "react";
+import {
+  PlayPauseFill,
+  PlayNext,
+  StarFill,
+  PinFill,
+  FolderFill,
+} from "../icons";
 
 export default function Features() {
   return (
@@ -48,21 +55,26 @@ export default function Features() {
         </section>
         <section className="feature-container">
           <h3>Familar Functionality</h3>
-          <ul>
+          <ul className="familiar-functions-list">
             <li>
               <p>Favorite</p>
+              <StarFill />
             </li>
             <li>
               <p>Pin</p>
+              <PinFill />
             </li>
             <li>
               <p>Add to Queue</p>
+              <PlayNext />
             </li>
             <li>
               <p>Playback Controls</p>
+              <PlayPauseFill />
             </li>
             <li>
               <p>Folders</p>
+              <FolderFill />
             </li>
           </ul>
         </section>

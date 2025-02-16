@@ -1,11 +1,11 @@
-const InfoCircle = (props) => (
+const InfoCircle = () => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width={23.9062}
     height={23.918}
-    {...props}
+    viewBox="0 0 23.9062 23.918"
   >
     <g>
       <rect height={23.91} opacity={0} width={23.9062} x={0} y={0} />

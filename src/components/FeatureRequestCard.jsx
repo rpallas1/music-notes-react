@@ -9,7 +9,10 @@ export default function FeatureRequestCard({ type }) {
       <div>
         <div>
           <h3>Improve Sorting</h3>
-          <p>Be able to sort notes by artist and folders by title.</p>
+          <p>
+            Be asfa asdf asdf asdfasdf asdf asdf asfdable to sort notes by
+            artist and folders by title.
+          </p>
           <Link
             to="1"
             className="view-request"

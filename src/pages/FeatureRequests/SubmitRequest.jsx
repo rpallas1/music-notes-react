@@ -3,10 +3,12 @@ import { useLocation } from "react-router";
 import BackLink from "../../components/BackLink";
 import CancelLink from "../../components/CancelLink";
 import CloseModalLink from "../../components/CloseModalLink";
+import { InfoCircle, XCircleFill } from "../../icons";
 
 export default function SubmitRequest() {
   const [titleLength, setTitleLength] = React.useState(0);
   const [summaryLength, setSummaryLength] = React.useState(0);
+  const [isInfoModalOpen, setIsInfoModalOpen] = React.useState(false);
   const maxTitleLength = 45;
   const maxSummaryLength = 120;
   const location = useLocation();
@@ -19,17 +21,69 @@ export default function SubmitRequest() {
     setSummaryLength(e.target.value.length);
   }
 
+  function toggleInfoModal() {
+    setIsInfoModalOpen((prev) => !prev);
+  }
+
   return (
     <div className="submit-request-page">
-      <h2>Submit a Feature Request</h2>
-      <p>
-        Share whatever ideas, improvements, or features you think Music Notes
-        should have.
-      </p>
-      <div>
-        <BackLink prevLocation={location.state?.prevLocation} />
-        <CloseModalLink prevLocation={location.state?.prevLocation} />
-        <CancelLink prevLocation={location.state?.prevLocation} />
+      <div className="submit-request-content-container">
+        <h2>
+          Submit a Feature Request
+          <span className="info-btn-container">
+            <button
+              className={`info-btn ${isInfoModalOpen ? "dimmed" : ""}`}
+              aria-label="More information"
+              onClick={toggleInfoModal}
+            >
+              {<InfoCircle />}
+            </button>
+          </span>
+        </h2>
+        <p>
+          Share whatever ideas, improvements, or features you think Music Notes
+          should have.
+        </p>
+        <div className="form-nav">
+          <BackLink prevLocation={location.state?.prevLocation} />
+          <CloseModalLink prevLocation={location.state?.prevLocation} />
+          <CancelLink prevLocation={location.state?.prevLocation} />
+        </div>
+        <dl className={`info ${isInfoModalOpen ? "" : "hidden"}`}>
+          <div>
+            <dt>Title</dt>
+            <dd>Enter a concise, one line summmary of your idea.</dd>
+          </div>
+          <div>
+            <dt>Summary</dt>
+            <dd>
+              Optionally add a summary that will show up under the title for
+              other to quickly see and to understand your idea.
+            </dd>
+          </div>
+          <div>
+            <dt>Description</dt>
+            <dd>
+              Use this section to go as in depth as you would like to provide
+              details about your idea and how or why it should by implemented.
+            </dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd>
+              Optionally enter your email to be notified as the status or your
+              submission is updated or if you need to be contacted for more
+              details about your idea.
+            </dd>
+          </div>
+          <button
+            className="close-modal"
+            aria-label="Close info modal"
+            onClick={toggleInfoModal}
+          >
+            <XCircleFill />
+          </button>
+        </dl>
       </div>
       <form action="POST" id="submit-request-form" className="form">
         <div>

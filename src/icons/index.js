@@ -20,3 +20,7 @@ export { default as Pencil } from "./Pencil";
 export { default as PlayPauseFill } from "./PlayPauseFill";
 export { default as PlayNext } from "./PlayNext";
 export { default as StarFill } from "./StarFill";
+export { default as Line3Horizontal } from "./Line3Horizontal";
+export { default as XMark } from "./XMark";
+export { default as FolderFill } from "./FolderFill";
+export { default as PinFill } from "./PinFill";
