@@ -1846,7 +1846,8 @@ footer a {
     overflow: visible;
   }
 
-  nav input:checked ~ ul {
+  nav input:checked ~ ul,
+  nav ul:focus-within {
     height: fit-content;
   }
 
