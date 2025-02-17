@@ -18,7 +18,7 @@ export default function FullFeatureRequest() {
         <VoteControls />
         <Tag type={"new"} compact={false} />
       </div>
-      <p>
+      <p className="description">
         Currently, organizing notes and folders within the app can be
         challenging, especially for users with a large collection of content. To
         enhance usability, we propose adding improved sorting options that allow

@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <div className="contact-page">
       <h2>Contact Us</h2>
-      <p>
+      <p className="form-description">
         Have questions, comments, or concerns? Feel free to reach out and
         we&apos;ll try to respond in 1-2 business days.
       </p>

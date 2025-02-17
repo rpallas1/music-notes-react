@@ -29,7 +29,7 @@ export default function SubmitRequest() {
     <div className="submit-request-page">
       <div className="submit-request-content-container">
         <h2>
-          Submit a Feature Request
+          Submit a Feature Request&nbsp;
           <span className="info-btn-container">
             <button
               className={`info-btn ${isInfoModalOpen ? "dimmed" : ""}`}
@@ -40,7 +40,7 @@ export default function SubmitRequest() {
             </button>
           </span>
         </h2>
-        <p>
+        <p className="form-description">
           Share whatever ideas, improvements, or features you think Music Notes
           should have.
         </p>

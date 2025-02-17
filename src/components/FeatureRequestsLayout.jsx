@@ -98,7 +98,7 @@ export default function FeatureRequestLayout() {
   return (
     <div className="feature-requests-page">
       <h2>Feature Requests</h2>
-      <p>
+      <p className="page-description">
         See a feature you like? Give it an upvote! Don&apos;t see a feature that
         Music Notes should have? Submit a Feature Request!
       </p>

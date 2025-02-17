@@ -28,12 +28,6 @@ export default function Header() {
       </a>
 
       <header>
-        <Link className="site-logo" to="/" onClick={closeMenu}>
-          <div className="logo-container">
-            <Pencil />
-          </div>
-          <h1>Music Notes</h1>
-        </Link>
         <nav>
           <h2 className="sr-only">Main Navigation</h2>
           <input type="checkbox" id="nav-btn" onChange={toggleMenu} />
@@ -42,6 +36,14 @@ export default function Header() {
             {isMenuOpen ? <XMark /> : <Line3Horizontal />}
           </label>
           <ul>
+            <li>
+              <Link className="site-logo" to="/" onClick={closeMenu}>
+                <div className="logo-container">
+                  <Pencil />
+                </div>
+                <h1>Music Notes</h1>
+              </Link>
+            </li>
             <li>
               <NavLink
                 to="/"

@@ -11,7 +11,7 @@ export default function Features() {
   return (
     <div className="features-page">
       <h2>Features</h2>
-      <p>
+      <p className="page-description">
         Explore and learn more about how Music Notes can act as a place to
         organize your thoughts on anything music related.
       </p>

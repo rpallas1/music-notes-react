@@ -142,16 +142,27 @@
 }
 
 /* ----- GLOBAL STYLES ----- */
+
 body {
   background-color: var(--gray-1000-dark);
   color: var(--gray-10-dark);
   font-family: "SFProText", sans-serif;
   margin: 0 auto;
+  height: 100vh;
+  padding: 0 1rem;
 }
 
 body.light {
   background-color: var(--gray-1000-light);
   color: var(--gray-10-light);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
 }
 
 h1,
@@ -338,6 +349,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 25px;
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
 }
 
 .form input,
@@ -478,9 +492,6 @@ header {
   --nav-margin: 1rem;
 
   background-color: var(--gray-900-dark);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   border-radius: var(--border-radius);
   position: fixed;
   width: calc(100% - ((2 * var(--nav-margin)) + (2 * var(--nav-padding))));
@@ -562,7 +573,7 @@ nav label svg * {
 nav ul {
   display: flex;
   flex-direction: column;
-  height: 0;
+  height: 48px;
   overflow: hidden;
   transition: height 0.25s ease-in-out;
 }
@@ -572,14 +583,18 @@ nav label:hover {
 }
 
 nav input:checked ~ ul {
-  height: 248px;
+  height: 296px;
 }
 
-nav li:not(.download-app) {
+nav li {
   margin-bottom: 18px;
 }
 
 nav li:first-of-type {
+  margin: 0;
+}
+
+nav li:nth-of-type(2) {
   margin-top: 2rem;
 }
 
@@ -619,6 +634,7 @@ nav .disabled {
   width: 100%;
   max-width: 350px;
   margin-top: auto;
+  margin-bottom: 0;
 }
 
 .light .download-app {
@@ -634,8 +650,6 @@ nav .disabled {
   display: block;
   font-family: "SFProDisplay", sans-serif;
   font-weight: var(--font-weight-display-bold);
-  width: 100%;
-  height: 100%;
   padding: 8px;
 }
 
@@ -649,8 +663,9 @@ nav .disabled {
 
 /* ----- MAIN STYLES ----- */
 main {
+  margin: 0 auto;
   margin-top: 6rem;
-  padding: 1rem 1rem 0 1rem;
+  width: 100%;
 }
 
 main h2 {
@@ -660,12 +675,17 @@ main h2 {
   margin-bottom: 1.5rem;
 }
 
-main > div > p {
+main > div {
+  margin: 0 auto;
+}
+
+.page-description {
   font-size: var(--font-size-body);
   letter-spacing: var(--letter-spacing-body);
   line-height: var(--line-height-body);
   font-weight: var(--font-weight-text-semibold);
   margin-bottom: 2.5rem;
+  max-width: 36ch;
 }
 
 /* ----- FEATURES STYLES ----- */
@@ -1324,6 +1344,11 @@ main > div > p {
   gap: 8px;
 }
 
+.description {
+  max-width: 55ch;
+  margin: 0 auto;
+}
+
 .full-feature-request-page > div:last-of-type {
   grid-row: 1 / 2;
   grid-column: 1 / -1;
@@ -1433,12 +1458,13 @@ main > div > p {
   fill: var(--primary-light);
 }
 
-.submit-request-page p {
+.form-description {
   font-size: var(--font-size-callout);
   letter-spacing: var(--letter-spacing-callout);
   line-height: var(--line-height-callout);
   font-weight: var(--font-weight-text-regular);
   margin-bottom: 24px;
+  max-width: 40ch;
 }
 
 .submit-request-page .info {
@@ -1525,6 +1551,7 @@ main > div > p {
 footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   align-items: end;
   row-gap: 0.75rem;
   padding: 0 1rem 1rem 1rem;
@@ -1532,7 +1559,7 @@ footer {
 }
 
 footer small {
-  grid-column: 1 / -1;
+  grid-column: 1 / 2;
   font-size: var(--font-size-subheadline);
   letter-spacing: var(--letter-spacing-subheadline);
   line-height: var(--line-height-subheadline);
@@ -1548,7 +1575,7 @@ footer a {
 
 .color-scheme-options {
   grid-column: 2 / -1;
-  grid-row: 1 / 2;
+  grid-row: 1 / -1;
   width: fit-content;
   justify-self: end;
   display: flex;
@@ -1649,14 +1676,104 @@ footer a {
 
 /* ---------- Medium Screen Styles ---------- */
 @media screen and (min-width: 834px) {
-  header input {
-    /* display: block; */
+  /* ----- HEADER STYLES ----- */
+  nav label {
+    display: none;
+  }
+
+  nav ul {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content;
+    overflow: visible;
+  }
+
+  nav input:checked ~ ul {
+    height: fit-content;
+  }
+
+  nav ul li {
+    margin-bottom: 0;
+  }
+
+  nav li:nth-of-type(2) {
+    margin-top: 0;
+  }
+
+  .download-app {
+    max-width: 160px;
+    margin: 0;
+    align-self: initial;
+    height: fit-content;
+  }
+
+  /* ----- MAIN STYLES ----- */
+  main {
+    /* width: 100%; */
+    max-width: 834px;
+  }
+
+  /* ----- FEATURES PAGE STYLES ----- */
+  .features-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .features-container .feature-container:first-of-type,
+  .features-container .feature-container:last-of-type {
+    grid-column: 1 / -1;
+  }
+
+  .feature-container p {
+    max-width: 30ch;
+  }
+
+  /* ----- FEATURE REQUESTS PAGE STYLES ----- */
+  .feature-requests-page {
+    align-items: flex-start;
+  }
+
+  .options-container {
+    display: grid;
+    grid-template-columns: 380px 1fr auto auto;
+    max-width: 100%;
+  }
+
+  .search-bar-container {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .sort-options-container {
+    justify-self: end;
+    margin-right: 24px;
+  }
+
+  .feature-request-cards-container {
+    flex-flow: row wrap;
+    max-width: 100%;
+  }
+
+  .feature-request-card {
+    width: calc(50% - 36px);
+    max-width: 400px;
+  }
+
+  .submit-request-link {
+    align-self: center;
+  }
+
+  /* ----- FULL FEATURE REQUEST PAGE STYLES ----- */
+  .description {
+    max-width: 65ch;
   }
 }
 
 /* ---------- Large Screen Styles ---------- */
 @media screen and (min-width: 1440px) {
-  body {
-    /* background-color: var(--gray-900-dark); */
+  /* ----- MAIN STYLES ----- */
+  main {
+    /* max-width: 1000px; */
   }
 }
