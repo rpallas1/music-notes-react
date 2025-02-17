@@ -17,6 +17,7 @@ export default function PrivacyPolicy() {
         accordance with this Privacy Policy. This Privacy Policy has been
         created with the help of the{" "}
         <a
+          className="text-link"
           href="https://www.freeprivacypolicy.com/free-privacy-policy-generator/"
           target="_blank"
         >
@@ -396,7 +397,7 @@ export default function PrivacyPolicy() {
         <li>
           <p>
             By email:{" "}
-            <a href="mailto:info@pallascreations.com">
+            <a className="text-link" href="mailto:info@pallascreations.com">
               info@pallascreations.com
             </a>
           </p>

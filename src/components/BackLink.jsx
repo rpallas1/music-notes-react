@@ -4,7 +4,7 @@ import { ChevronBackward } from "../icons";
 
 export default function BackLink({ prevLocation }) {
   return (
-    <Link to={prevLocation || ".."} className="back-link mobile-only">
+    <Link to={prevLocation || ".."} className="back-link mobile-only text-link">
       <ChevronBackward />
       Back
     </Link>

@@ -4,6 +4,7 @@ import classnames from "classnames";
 import { Pencil, Line3Horizontal, XMark } from "../icons";
 
 export default function Header() {
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   function toggleMenu() {
@@ -14,11 +15,16 @@ export default function Header() {
     return classnames(isActive ? "active" : null);
   }
 
-  const location = useLocation();
-  // Close navigation menu when a link is clicked
   function closeMenu() {
     document.getElementById("nav-btn").checked = false;
     setIsMenuOpen(false);
+  }
+
+  function handleKeyPress(e, id) {
+    if (e.key === " ") {
+      e.preventDefault();
+      document.getElementById(id).click();
+    }
   }
 
   return (
@@ -31,7 +37,11 @@ export default function Header() {
         <nav>
           <h2 className="sr-only">Main Navigation</h2>
           <input type="checkbox" id="nav-btn" onChange={toggleMenu} />
-          <label htmlFor="nav-btn">
+          <label
+            htmlFor="nav-btn"
+            tabIndex="0"
+            onKeyDown={(e) => handleKeyPress(e, "nav-btn")}
+          >
             <span className="sr-only">Menu Dropdown</span>
             {isMenuOpen ? <XMark /> : <Line3Horizontal />}
           </label>
@@ -77,6 +87,7 @@ export default function Header() {
                 to="#"
                 end
                 className={({ isActive }) => linkClasses(isActive)}
+                tabIndex="-1"
               >
                 Download
               </NavLink>

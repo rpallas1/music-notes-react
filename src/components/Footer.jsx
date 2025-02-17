@@ -24,6 +24,13 @@ export default function Footer() {
     body.classList.add(theme);
   }
 
+  function handleKeyDown(e, id) {
+    if (e.key === " ") {
+      e.preventDefault();
+      document.getElementById(id).click();
+    }
+  }
+
   function getColorScheme(preference) {
     if (!preference || preference === "device") {
       return isDarkTheme ? "dark" : "light";
@@ -34,7 +41,9 @@ export default function Footer() {
 
   return (
     <footer>
-      <Link to="privacy-policy">Privacy Policy</Link>
+      <Link to="privacy-policy" className="text-link">
+        Privacy Policy
+      </Link>
       <small>&copy; 2025 Pallas Creations</small>
       <fieldset className="color-scheme-options">
         <legend className="sr-only">Color Scheme Options</legend>
@@ -46,7 +55,11 @@ export default function Footer() {
           checked={storedPreference === "device"}
           onChange={handleColorSchemeChange}
         />
-        <label htmlFor="device-color-scheme">
+        <label
+          htmlFor="device-color-scheme"
+          tabIndex="0"
+          onKeyDown={(e) => handleKeyDown(e, "device-color-scheme")}
+        >
           <span className="sr-only">Device Color Scheme</span>
           <DesktopComputer />
         </label>
@@ -58,7 +71,11 @@ export default function Footer() {
           checked={storedPreference === "dark"}
           onChange={handleColorSchemeChange}
         />
-        <label htmlFor="dark-color-scheme">
+        <label
+          htmlFor="dark-color-scheme"
+          tabIndex="0"
+          onKeyDown={(e) => handleKeyDown(e, "dark-color-scheme")}
+        >
           <span className="sr-only">Dark Color Scheme</span>
           <MoonFill />
         </label>
@@ -70,7 +87,11 @@ export default function Footer() {
           checked={storedPreference === "light"}
           onChange={handleColorSchemeChange}
         />
-        <label htmlFor="light-color-scheme">
+        <label
+          htmlFor="light-color-scheme"
+          tabIndex="0"
+          onKeyDown={(e) => handleKeyDown(e, "light-color-scheme")}
+        >
           <span className="sr-only">Light Color Scheme</span>
           <SunMaxFill />
         </label>

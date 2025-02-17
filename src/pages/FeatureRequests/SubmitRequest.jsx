@@ -28,28 +28,38 @@ export default function SubmitRequest() {
   return (
     <div className="submit-request-page">
       <div className="submit-request-content-container">
+        <div className="form-nav">
+          <BackLink prevLocation={location.state?.prevLocation} />
+          <CloseModalLink prevLocation={location.state?.prevLocation} />
+          <CancelLink prevLocation={location.state?.prevLocation} />
+        </div>
         <h2>
-          Submit a Feature Request&nbsp;
-          <span className="info-btn-container">
-            <button
-              className={`info-btn ${isInfoModalOpen ? "dimmed" : ""}`}
-              aria-label="More information"
-              onClick={toggleInfoModal}
-            >
-              {<InfoCircle />}
-            </button>
+          Submit a Feature{" "}
+          <span className="no-wrap">
+            Request
+            <span className="info-btn-container">
+              <button
+                className={`info-btn ${isInfoModalOpen ? "dimmed" : ""}`}
+                aria-label="More information"
+                onClick={toggleInfoModal}
+              >
+                {<InfoCircle />}
+              </button>
+            </span>
           </span>
         </h2>
         <p className="form-description">
           Share whatever ideas, improvements, or features you think Music Notes
           should have.
         </p>
-        <div className="form-nav">
-          <BackLink prevLocation={location.state?.prevLocation} />
-          <CloseModalLink prevLocation={location.state?.prevLocation} />
-          <CancelLink prevLocation={location.state?.prevLocation} />
-        </div>
         <dl className={`info ${isInfoModalOpen ? "" : "hidden"}`}>
+          <button
+            className="close-modal close-btn"
+            aria-label="Close info modal"
+            onClick={toggleInfoModal}
+          >
+            <XCircleFill />
+          </button>
           <div>
             <dt>Title</dt>
             <dd>Enter a concise, one line summmary of your idea.</dd>
@@ -76,13 +86,6 @@ export default function SubmitRequest() {
               details about your idea.
             </dd>
           </div>
-          <button
-            className="close-modal"
-            aria-label="Close info modal"
-            onClick={toggleInfoModal}
-          >
-            <XCircleFill />
-          </button>
         </dl>
       </div>
       <form action="POST" id="submit-request-form" className="form">

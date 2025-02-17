@@ -15,7 +15,7 @@ export default function FeatureRequestCard({ type }) {
           </p>
           <Link
             to="1"
-            className="view-request"
+            className="view-request text-link"
             state={{ requestId: "1", prevLocation: location.pathname }}
           >
             Read More
