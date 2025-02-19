@@ -15,7 +15,8 @@ export default function Header() {
     return classnames(isActive ? "active" : null);
   }
 
-  function closeMenu() {
+  function closeMenu(e) {
+    e.target.blur();
     document.getElementById("nav-btn").checked = false;
     setIsMenuOpen(false);
   }
