@@ -87,7 +87,7 @@ export default function FeatureRequestLayout() {
   }
 
   return (
-    <div className="feature-requests-page">
+    <section className="feature-requests-page">
       <h2>Feature Requests</h2>
       <p className="page-description">
         See a feature you like? Give it an upvote! Don&apos;t see a feature that
@@ -286,6 +286,6 @@ export default function FeatureRequestLayout() {
       >
         Submit a Feature Request
       </Link>
-    </div>
+    </section>
   );
 }

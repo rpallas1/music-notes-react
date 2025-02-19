@@ -9,7 +9,7 @@ import {
 
 export default function Features() {
   return (
-    <div className="features-page">
+    <section className="features-page">
       <h2>Features</h2>
       <p className="page-description">
         Explore and learn more about how Music Notes can act as a place to
@@ -79,6 +79,6 @@ export default function Features() {
           </ul>
         </section>
       </div>
-    </div>
+    </section>
   );
 }

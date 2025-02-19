@@ -2,7 +2,7 @@ import React from "react";
 
 export default function PrivacyPolicy() {
   return (
-    <div className="privacy-policy-page">
+    <section className="privacy-policy-page">
       <h2>Privacy Policy</h2>
       <p>Last updated: June 11, 2024</p>
       <p>
@@ -403,6 +403,6 @@ export default function PrivacyPolicy() {
           </p>
         </li>
       </ul>
-    </div>
+    </section>
   );
 }

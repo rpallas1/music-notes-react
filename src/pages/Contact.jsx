@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Contact() {
   return (
-    <div className="contact-page">
+    <section className="contact-page">
       <h2>Contact Us</h2>
       <p className="form-description">
         Have questions, comments, or concerns? Feel free to reach out and
@@ -32,6 +32,6 @@ export default function Contact() {
         </div>
         <input type="submit" value="Submit" className="link-btn" />
       </form>
-    </div>
+    </section>
   );
 }

@@ -8,9 +8,11 @@ import { InfoCircle, XCircleFill } from "../../icons";
 export default function SubmitRequest() {
   const [titleLength, setTitleLength] = React.useState(0);
   const [summaryLength, setSummaryLength] = React.useState(0);
+  const [descriptionLength, setDescriptionLength] = React.useState(0);
   const [isInfoModalOpen, setIsInfoModalOpen] = React.useState(false);
   const maxTitleLength = 45;
   const maxSummaryLength = 120;
+  const maxDescriptionLength = 2000;
   const location = useLocation();
 
   function updateTitleLengt(e) {
@@ -21,18 +23,22 @@ export default function SubmitRequest() {
     setSummaryLength(e.target.value.length);
   }
 
+  function updateDescriptionLength(e) {
+    setDescriptionLength(e.target.value.length);
+  }
+
   function toggleInfoModal() {
     setIsInfoModalOpen((prev) => !prev);
   }
 
   return (
-    <div className="submit-request-page">
+    <section className="submit-request-page">
+      <div className="form-nav">
+        <BackLink prevLocation={location.state?.prevLocation} />
+        <CloseModalLink prevLocation={location.state?.prevLocation} />
+        <CancelLink prevLocation={location.state?.prevLocation} />
+      </div>
       <div className="submit-request-content-container">
-        <div className="form-nav">
-          <BackLink prevLocation={location.state?.prevLocation} />
-          <CloseModalLink prevLocation={location.state?.prevLocation} />
-          <CancelLink prevLocation={location.state?.prevLocation} />
-        </div>
         <h2>
           Submit a Feature{" "}
           <span className="no-wrap">
@@ -90,16 +96,18 @@ export default function SubmitRequest() {
       </div>
       <form action="POST" id="submit-request-form" className="form">
         <div>
-          <label htmlFor="title" className="required">
-            Title<span>*</span>
-          </label>
-          <input
-            type="text"
-            id="title"
-            maxLength={45}
-            onChange={updateTitleLengt}
-          />
-          <p className="char-limit">{`${titleLength}/${maxTitleLength}`}</p>
+          <div>
+            <label htmlFor="title" className="required">
+              Title<span>*</span>
+            </label>
+            <input
+              type="text"
+              id="title"
+              maxLength={maxTitleLength}
+              onChange={updateTitleLengt}
+            />
+            <p className="char-limit">{`${titleLength}/${maxTitleLength}`}</p>
+          </div>
           <p className="error-message hidden">Please enter a title</p>
         </div>
         <div>
@@ -107,17 +115,25 @@ export default function SubmitRequest() {
           <textarea
             name="summary"
             id="summary"
-            maxLength={120}
+            maxLength={maxSummaryLength}
             onChange={updateSummaryLength}
           ></textarea>
           <p className="char-limit">{`${summaryLength}/${maxSummaryLength}`}</p>
         </div>
         <div>
-          <label htmlFor="message" className="required">
-            Message<span>*</span>
-          </label>
-          <textarea id="message" className="error-input"></textarea>
-          <p className="error-message">Please enter a message</p>
+          <div>
+            <label htmlFor="message" className="required">
+              Description<span>*</span>
+            </label>
+            <textarea
+              id="message"
+              // className="error-input"
+              maxLength={maxDescriptionLength}
+              onChange={updateDescriptionLength}
+            ></textarea>
+            <p className="char-limit">{`${descriptionLength}/${maxDescriptionLength}`}</p>
+          </div>
+          <p className="error-message hidden">Please enter a message</p>
         </div>
         <div>
           <label htmlFor="email">Email</label>
@@ -126,6 +142,6 @@ export default function SubmitRequest() {
         </div>
         <input type="submit" value="Submit" className="link-btn" />
       </form>
-    </div>
+    </section>
   );
 }
