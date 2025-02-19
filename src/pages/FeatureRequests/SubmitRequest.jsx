@@ -4,16 +4,21 @@ import BackLink from "../../components/BackLink";
 import CancelLink from "../../components/CancelLink";
 import CloseModalLink from "../../components/CloseModalLink";
 import { InfoCircle, XCircleFill } from "../../icons";
+import useOverlay from "../../hooks/useOverlay";
 
 export default function SubmitRequest() {
   const [titleLength, setTitleLength] = React.useState(0);
   const [summaryLength, setSummaryLength] = React.useState(0);
   const [descriptionLength, setDescriptionLength] = React.useState(0);
-  const [isInfoModalOpen, setIsInfoModalOpen] = React.useState(false);
   const maxTitleLength = 45;
   const maxSummaryLength = 120;
   const maxDescriptionLength = 2000;
   const location = useLocation();
+  const {
+    ref,
+    isOpen: showInfo,
+    handleToggle: toggleInfoVisibility,
+  } = useOverlay();
 
   function updateTitleLengt(e) {
     setTitleLength(e.target.value.length);
@@ -25,10 +30,6 @@ export default function SubmitRequest() {
 
   function updateDescriptionLength(e) {
     setDescriptionLength(e.target.value.length);
-  }
-
-  function toggleInfoModal() {
-    setIsInfoModalOpen((prev) => !prev);
   }
 
   return (
@@ -45,9 +46,9 @@ export default function SubmitRequest() {
             Request
             <span className="info-btn-container">
               <button
-                className={`info-btn ${isInfoModalOpen ? "dimmed" : ""}`}
+                className={`info-btn ${showInfo ? "dimmed" : ""}`}
                 aria-label="More information"
-                onClick={toggleInfoModal}
+                onClick={toggleInfoVisibility}
               >
                 {<InfoCircle />}
               </button>
@@ -58,11 +59,11 @@ export default function SubmitRequest() {
           Share whatever ideas, improvements, or features you think Music Notes
           should have.
         </p>
-        <dl className={`info ${isInfoModalOpen ? "" : "hidden"}`}>
+        <dl className={`info ${showInfo ? "" : "hidden"}`} ref={ref}>
           <button
             className="close-modal close-btn"
             aria-label="Close info modal"
-            onClick={toggleInfoModal}
+            onClick={toggleInfoVisibility}
           >
             <XCircleFill />
           </button>

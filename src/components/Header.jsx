@@ -30,10 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <a id="skip-link" href="#main-content">
-        Skip to Main Content
-      </a>
-
+      {isMenuOpen && <div className="overlay" onClick={closeMenu}></div>}
       <header>
         <nav>
           <h2 className="sr-only">Main Navigation</h2>

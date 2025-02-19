@@ -135,6 +135,15 @@
   border-width: 0;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
 .hidden,
 .not-mobile {
   display: none;
@@ -752,11 +761,9 @@ nav .disabled {
 
 /* ----- MAIN STYLES ----- */
 main {
-  /* margin: 0 auto; */
   margin-top: 6rem;
   scroll-margin-top: 6rem;
-  /* width: calc(100% - 2rem); */
-  /* width: 100%; */
+  width: 100%;
 }
 
 main h2 {
@@ -768,6 +775,7 @@ main h2 {
 
 main > section {
   margin-top: 1rem;
+  width: 100%;
 }
 
 .page-description {
@@ -918,10 +926,6 @@ main > section {
 .light .options-btn:focus {
   border-color: var(--gray-0-light);
 }
-
-/* .sort-options-container label { */
-/*   display: none; */
-/* } */
 
 #sort-options {
   appearance: none;
