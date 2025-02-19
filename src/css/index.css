@@ -34,20 +34,20 @@
   --red-light: #ff453a;
   --orange-dark: #ff9500;
   --orange-light: #ff9f0a;
-  --orange-transparent-dark: rgba(255, 149, 0, 0.3);
+  --orange-transparent-dark: rgba(255, 149, 0, 0.1);
   --orange-transparent-light: var(--orange-transparent-dark);
   --green-dark: #28cd41;
   --green-light: #32d74b;
-  --green-transparent-dark: rgba(40, 205, 65, 0.3);
-  --green-transparent-light: rgba(50, 215, 75, 0.3);
+  --green-transparent-dark: rgba(40, 205, 65, 0.1);
+  --green-transparent-light: rgba(50, 215, 75, 0.1);
   --mint-dark: #00c7be;
   --mint-light: #66d4cf;
-  --mint-transparent-dark: rgba(0, 199, 190, 0.3);
-  --mint-transparent-light: rgba(147, 237, 233, 0.6);
+  --mint-transparent-dark: rgba(0, 199, 190, 0.1);
+  --mint-transparent-light: rgba(147, 237, 233, 0.3);
   --purple-dark: #af52de;
   --purple-light: #bf5af2;
-  --purple-transparent-dark: rgba(175, 85, 222, 0.3);
-  --purple-transparent-light: rgba(191, 90, 242, 0.3);
+  --purple-transparent-dark: rgba(175, 85, 222, 0.1);
+  --purple-transparent-light: rgba(191, 90, 242, 0.1);
 
   /* Font sizes */
   --font-size-large-title: 34px;
@@ -97,7 +97,6 @@
   --stroke-width: 2px;
   --border-radius: 10px;
   --min-screen-width: 250px;
-  --max-screen-width: 1440px;
 
   /* ----- TOKENS ----- */
   --white: var(--gray-0-dark);
@@ -490,10 +489,26 @@ button {
   line-height: var(--line-height-body);
   font-weight: var(--font-weight-text-semibold);
   color: var(--gray-0-dark);
+
+  background-color: var(--gray-800-dark);
 }
 
 .light .form label {
   color: var(--gray-0-light);
+}
+
+.form .textarea-label {
+  --textarea-label-padding: 9px;
+
+  top: var(--stroke-width);
+  left: var(--stroke-width);
+  padding: var(--textarea-label-padding);
+  padding-bottom: 2px;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  width: calc(
+    100% - (2 * var(--textarea-label-padding)) - (2 * var(--stroke-width))
+  );
 }
 
 .char-limit {
@@ -1292,6 +1307,8 @@ main > section {
 }
 
 .tag {
+  border-width: 1px;
+  border-style: solid;
   border-radius: var(--border-radius);
   display: flex;
   justify-content: center;
@@ -1306,34 +1323,42 @@ main > section {
 
 .tag.new {
   background-color: var(--purple-transparent-dark);
+  border-color: var(--purple-dark);
+}
+
+.light .tag.new {
+  background-color: var(--purple-transparent-light);
+  border-color: var(--purple-light);
 }
 
 .tag.trending {
   background-color: var(--orange-transparent-dark);
-}
-
-.tag.trending {
-  background-color: var(--orange-transparent-dark);
+  border-color: var(--orange-dark);
 }
 
 .light .tag.trending {
   background-color: var(--orange-transparent-light);
+  border-color: var(--orange-light);
 }
 
 .tag.under-dev {
   background-color: var(--mint-transparent-dark);
+  border-color: var(--mint-dark);
 }
 
 .light .tag.under-dev {
   background-color: var(--mint-transparent-light);
+  border-color: var(--mint-light);
 }
 
 .tag.implemented {
   background-color: var(--tag-implemented-transparent-dark);
+  border-color: var(--tag-implemented-dark);
 }
 
 .light .tag.implemented {
   background-color: var(--tag-implemented-transparent-light);
+  border-color: var(--tag-implemented-light);
 }
 
 .tag svg {
@@ -1393,9 +1418,7 @@ main > section {
   display: flex;
   gap: 10px;
   align-items: center;
-  /* background-color: var(--gray-500-dark); */
-  /* background-color: var(--gray-700-dark); */
-  border: var(--stroke-width) solid var(--gray-600-dark);
+  border: var(--stroke-width) solid var(--gray-500-dark);
   border-radius: var(--border-radius);
   padding: 6px;
 }
@@ -1648,7 +1671,6 @@ main > section {
 
 .info-btn:focus-visible {
   outline: 2px solid var(--gray-10-dark);
-  border-radius: var(--border-radius);
 }
 
 .info-btn svg {
@@ -1762,7 +1784,7 @@ footer {
   row-gap: 0.75rem;
   padding-bottom: 1rem;
   margin-top: 84px;
-  width: calc(100% - 2rem);
+  width: 100%;
 }
 
 footer small {
@@ -2037,7 +2059,7 @@ footer a {
 }
 
 /* ---------- Large Screen Styles ---------- */
-@media screen and (min-width: var(--max-screen-width)) {
+@media screen and (min-width: 1440px) {
   .page-description {
     max-width: 50ch;
   }

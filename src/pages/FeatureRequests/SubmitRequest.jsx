@@ -59,6 +59,9 @@ export default function SubmitRequest() {
           Share whatever ideas, improvements, or features you think Music Notes
           should have.
         </p>
+        {showInfo && (
+          <div className="overlay" onClick={toggleInfoVisibility}></div>
+        )}
         <dl className={`info ${showInfo ? "" : "hidden"}`} ref={ref}>
           <button
             className="close-modal close-btn"
@@ -112,7 +115,9 @@ export default function SubmitRequest() {
           <p className="error-message hidden">Please enter a title</p>
         </div>
         <div>
-          <label htmlFor="summary">Summary</label>
+          <label htmlFor="summary" className="textarea-label">
+            Summary
+          </label>
           <textarea
             name="summary"
             id="summary"
@@ -123,7 +128,7 @@ export default function SubmitRequest() {
         </div>
         <div>
           <div>
-            <label htmlFor="message" className="required">
+            <label htmlFor="message" className="required textarea-label">
               Description<span>*</span>
             </label>
             <textarea
@@ -132,7 +137,7 @@ export default function SubmitRequest() {
               maxLength={maxDescriptionLength}
               onChange={updateDescriptionLength}
             ></textarea>
-            <p className="char-limit">{`${descriptionLength}/${maxDescriptionLength}`}</p>
+            {/* <p className="char-limit">{`${descriptionLength}/${maxDescriptionLength}`}</p> */}
           </div>
           <p className="error-message hidden">Please enter a message</p>
         </div>

@@ -24,11 +24,11 @@ export default function Contact() {
           <p className="error-message hidden">Please enter a valid email</p>
         </div>
         <div>
-          <label htmlFor="message" className="required">
+          <label htmlFor="message" className="required textarea-label">
             Message<span>*</span>
           </label>
-          <textarea id="message" className="error-input"></textarea>
-          <p className="error-message">Please enter a message</p>
+          <textarea id="message" className=""></textarea>
+          <p className="error-message hidden">Please enter a message</p>
         </div>
         <input type="submit" value="Submit" className="link-btn" />
       </form>
