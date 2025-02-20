@@ -41,7 +41,17 @@ export default function Header() {
             onKeyDown={(e) => handleKeyPress(e, "nav-btn")}
           >
             <span className="sr-only">Menu Dropdown</span>
-            {isMenuOpen ? <XMark /> : <Line3Horizontal />}
+            <div className="hamburger-container">
+              <div
+                className={`hamburger top ${isMenuOpen ? "expanded" : ""}`}
+              ></div>
+              <div
+                className={`hamburger middle ${isMenuOpen ? "expanded" : ""}`}
+              ></div>
+              <div
+                className={`hamburger bottom ${isMenuOpen ? "expanded" : ""}`}
+              ></div>
+            </div>
           </label>
           <ul>
             <li>

@@ -8,9 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build-host": "yarn build && cd dist && python3 -m http.server 8000",
-    "host": "cd dist && python3 -m http.server 8000",
-    "sync": "./deploy.sh"
+    "sync": "./sync.sh"
   },
   "dependencies": {
     "classnames": "^2.5.1",
