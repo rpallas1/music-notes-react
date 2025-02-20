@@ -148,6 +148,10 @@
   display: none;
 }
 
+.light {
+  /* TODO: Move light versions of colors here */
+}
+
 /* ----- GLOBAL STYLES ----- */
 body {
   background-color: var(--gray-1000-dark);
@@ -489,8 +493,6 @@ button {
   line-height: var(--line-height-body);
   font-weight: var(--font-weight-text-semibold);
   color: var(--gray-0-dark);
-
-  background-color: var(--gray-800-dark);
 }
 
 .light .form label {
@@ -509,6 +511,11 @@ button {
   width: calc(
     100% - (2 * var(--textarea-label-padding)) - (2 * var(--stroke-width))
   );
+  background-color: var(--gray-800-dark);
+}
+
+.light .textarea-label {
+  background-color: var(--gray-800-light);
 }
 
 .char-limit {
