@@ -23,6 +23,7 @@ export default function FeatureRequestLayout() {
 
   function handleCheckboxChange(e) {
     const value = e.target.value;
+
     setFilterOptions((prev) => {
       return prev.includes(value)
         ? prev.filter((option) => option !== value)
@@ -89,208 +90,218 @@ export default function FeatureRequestLayout() {
 
   return (
     <section className="feature-requests-page">
-      <h2>Feature Requests</h2>
-      <p className="page-description">
-        See a feature you like? Give it an upvote! Don&apos;t see a feature that
-        Music Notes should have? Submit a Feature Request!
-      </p>
-      <div className="options-container">
-        <div className="sort-options-container">
-          <label className="sr-only" htmlFor="sort-options">
-            Sort By
-          </label>
-          <select name="sort-options" id="sort-options" className="options-btn">
-            <option value="date-created">Date Created</option>
-            <option value="upvotes">Upvotes</option>
-          </select>
-        </div>
-        <div className="filter-options-container">
-          <button
-            className={`filter-options-btn options-btn ${showFilters ? "dimmed" : ""} ${!areFilterApplied ? "inactive" : ""}`}
-            onClick={toggleFilterVisibility}
-          >
-            Filters <Line3HorizontalDecrease />
-          </button>
-          {showFilters && (
-            <>
-              <div className="overlay" onClick={toggleFilterVisibility}></div>
-              <div
-                className="filter-options"
-                ref={ref}
-                aria-hidden={!showFilters}
-                aria-labelledby="filterOptionsTitle"
-              >
-                <h3 id="filterOptionsTitle" className="sr-only">
-                  Filter Options
-                </h3>
-                <form id="filter-options-form" onSubmit={applyFilters}>
-                  <fieldset>
-                    <legend>Tags</legend>
-                    <div className="tags options">
-                      <input
-                        type="checkbox"
-                        id="trending"
-                        name="tag-option"
-                        value="trending"
-                        tabIndex="-1"
-                        className="sr-only"
-                        onChange={handleCheckboxChange}
-                        checked={filterOptions.includes("trending")}
-                      />
-                      <label
-                        htmlFor="trending"
-                        tabIndex="0"
-                        onKeyDown={(e) => handleKeyDown(e, "trending")}
-                      >
-                        Trending
-                      </label>
-                      <input
-                        type="checkbox"
-                        id="new"
-                        name="tag-option"
-                        value="new"
-                        tabIndex="-1"
-                        className="sr-only"
-                        onChange={handleCheckboxChange}
-                        checked={filterOptions.includes("new")}
-                      />
-                      <label
-                        htmlFor="new"
-                        tabIndex="0"
-                        onKeyDown={(e) => handleKeyDown(e, "new")}
-                      >
-                        New
-                      </label>
-                      <input
-                        type="checkbox"
-                        id="implemeted"
-                        name="tag-option"
-                        value="implemented"
-                        tabIndex="-1"
-                        className="sr-only"
-                        onChange={handleCheckboxChange}
-                        checked={filterOptions.includes("implemented")}
-                      />
-                      <label
-                        htmlFor="implemeted"
-                        tabIndex="0"
-                        onKeyDown={(e) => handleKeyDown(e, "implemented")}
-                      >
-                        Implemented
-                      </label>
-                      <input
-                        type="checkbox"
-                        id="underDev"
-                        name="tag-option"
-                        value="underDev"
-                        tabIndex="-1"
-                        className="sr-only"
-                        onChange={handleCheckboxChange}
-                        checked={filterOptions.includes("underDev")}
-                      />
-                      <label
-                        htmlFor="underDev"
-                        tabIndex="0"
-                        onKeyDown={(e) => handleKeyDown(e, "underDev")}
-                      >
-                        Under Development
-                      </label>
-                    </div>
-                  </fieldset>
-                  <fieldset>
-                    <legend>Date Created</legend>
-                    <div className="dates options">
-                      <input
-                        type="checkbox"
-                        id="pastWeek"
-                        name="date-option"
-                        value="pastWeek"
-                        tabIndex="-1"
-                        className="sr-only"
-                        onChange={handleCheckboxChange}
-                        checked={filterOptions.includes("pastWeek")}
-                      />
-                      <label
-                        htmlFor="pastWeek"
-                        tabIndex="0"
-                        onKeyDown={(e) => handleKeyDown(e, "pastWeek")}
-                      >
-                        Past Week
-                      </label>
-                      <input
-                        type="checkbox"
-                        id="pastMonth"
-                        name="date-option"
-                        value="pastMonth"
-                        tabIndex="-1"
-                        className="sr-only"
-                        onChange={handleCheckboxChange}
-                        checked={filterOptions.includes("pastMonth")}
-                      />
-                      <label
-                        htmlFor="pastMonth"
-                        tabIndex="0"
-                        onKeyDown={(e) => handleKeyDown(e, "pastMonth")}
-                      >
-                        Past Month
-                      </label>
-                      <input
-                        type="checkbox"
-                        id="pastYear"
-                        name="date-option"
-                        value="pastYear"
-                        tabIndex="-1"
-                        className="sr-only"
-                        onChange={handleCheckboxChange}
-                        checked={filterOptions.includes("pastYear")}
-                      />
-                      <label
-                        htmlFor="pastYear"
-                        tabIndex="0"
-                        onKeyDown={(e) => handleKeyDown(e, "pastYear")}
-                      >
-                        Past Year
-                      </label>
-                    </div>
-                  </fieldset>
-                  <div>
-                    <input type="submit" value="Apply" className="text-link" />
-                    <button onClick={clearFilters} className="text-link">
-                      Reset
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </>
-          )}
-        </div>
-        <div className="search-bar-container">
-          <div className="search-bar">
-            <MagnifyingGlass />
-            <label htmlFor="search" className="hidden">
-              Search
+      <div>
+        <h2>Feature Requests</h2>
+        <p className="page-description">
+          See a feature you like? Give it an upvote! Don&apos;t see a feature
+          that Music Notes should have? Submit a Feature Request!
+        </p>
+        <div className="options-container">
+          <div className="sort-options-container">
+            <label className="sr-only" htmlFor="sort-options">
+              Sort By
             </label>
-            <input
-              type="text"
-              id="search"
-              placeholder="Search"
-              onChange={handleSearchBarChange}
-              onFocus={focusSearchBar}
-              onBlur={handleOnBlur}
-            />
-            {isSearchBarActive && (
-              <button onClick={clearSearchBar} className="close-btn">
-                <XCircleFill />
-              </button>
+            <select
+              name="sort-options"
+              id="sort-options"
+              className="options-btn"
+            >
+              <option value="date-created">Date Created</option>
+              <option value="upvotes">Upvotes</option>
+            </select>
+          </div>
+          <div className="filter-options-container">
+            <button
+              className={`filter-options-btn options-btn ${showFilters ? "dimmed" : ""} ${!areFilterApplied ? "inactive" : ""}`}
+              onClick={toggleFilterVisibility}
+            >
+              Filters <Line3HorizontalDecrease />
+            </button>
+            {showFilters && (
+              <>
+                <div className="overlay" onClick={toggleFilterVisibility}></div>
+                <div
+                  className="filter-options"
+                  ref={ref}
+                  aria-hidden={!showFilters}
+                  aria-labelledby="filterOptionsTitle"
+                >
+                  <h3 id="filterOptionsTitle" className="sr-only">
+                    Filter Options
+                  </h3>
+                  <form id="filter-options-form" onSubmit={applyFilters}>
+                    <fieldset>
+                      <legend>Tags</legend>
+                      <div className="tags options">
+                        <input
+                          type="checkbox"
+                          id="trending"
+                          name="tag-option"
+                          value="trending"
+                          tabIndex="-1"
+                          className="sr-only"
+                          onChange={handleCheckboxChange}
+                          checked={filterOptions.includes("trending")}
+                        />
+                        <label
+                          htmlFor="trending"
+                          tabIndex="0"
+                          onKeyDown={(e) => handleKeyDown(e, "trending")}
+                        >
+                          Trending
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="new"
+                          name="tag-option"
+                          value="new"
+                          tabIndex="-1"
+                          className="sr-only"
+                          onChange={handleCheckboxChange}
+                          checked={filterOptions.includes("new")}
+                        />
+                        <label
+                          htmlFor="new"
+                          tabIndex="0"
+                          onKeyDown={(e) => handleKeyDown(e, "new")}
+                        >
+                          New
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="implemeted"
+                          name="tag-option"
+                          value="implemented"
+                          tabIndex="-1"
+                          className="sr-only"
+                          onChange={handleCheckboxChange}
+                          checked={filterOptions.includes("implemented")}
+                        />
+                        <label
+                          htmlFor="implemeted"
+                          tabIndex="0"
+                          onKeyDown={(e) => handleKeyDown(e, "implemented")}
+                        >
+                          Implemented
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="underDev"
+                          name="tag-option"
+                          value="underDev"
+                          tabIndex="-1"
+                          className="sr-only"
+                          onChange={handleCheckboxChange}
+                          checked={filterOptions.includes("underDev")}
+                        />
+                        <label
+                          htmlFor="underDev"
+                          tabIndex="0"
+                          onKeyDown={(e) => handleKeyDown(e, "underDev")}
+                        >
+                          Under Development
+                        </label>
+                      </div>
+                    </fieldset>
+                    <fieldset>
+                      <legend>Date Created</legend>
+                      <div className="dates options">
+                        <input
+                          type="checkbox"
+                          id="pastWeek"
+                          name="date-option"
+                          value="pastWeek"
+                          tabIndex="-1"
+                          className="sr-only"
+                          onChange={handleCheckboxChange}
+                          checked={filterOptions.includes("pastWeek")}
+                        />
+                        <label
+                          htmlFor="pastWeek"
+                          tabIndex="0"
+                          onKeyDown={(e) => handleKeyDown(e, "pastWeek")}
+                        >
+                          Past Week
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="pastMonth"
+                          name="date-option"
+                          value="pastMonth"
+                          tabIndex="-1"
+                          className="sr-only"
+                          onChange={handleCheckboxChange}
+                          checked={filterOptions.includes("pastMonth")}
+                        />
+                        <label
+                          htmlFor="pastMonth"
+                          tabIndex="0"
+                          onKeyDown={(e) => handleKeyDown(e, "pastMonth")}
+                        >
+                          Past Month
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="pastYear"
+                          name="date-option"
+                          value="pastYear"
+                          tabIndex="-1"
+                          className="sr-only"
+                          onChange={handleCheckboxChange}
+                          checked={filterOptions.includes("pastYear")}
+                        />
+                        <label
+                          htmlFor="pastYear"
+                          tabIndex="0"
+                          onKeyDown={(e) => handleKeyDown(e, "pastYear")}
+                        >
+                          Past Year
+                        </label>
+                      </div>
+                    </fieldset>
+                    <div>
+                      <input
+                        type="submit"
+                        value="Apply"
+                        className="text-link"
+                      />
+                      <button onClick={clearFilters} className="text-link">
+                        Reset
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </>
             )}
           </div>
-          {isSearchBarFocused && (
-            <button onClick={handleSearchCancel}>Cancel</button>
-          )}
+          <div className="search-bar-container">
+            <div className="search-bar">
+              <MagnifyingGlass />
+              <label htmlFor="search" className="hidden">
+                Search
+              </label>
+              <input
+                type="text"
+                id="search"
+                placeholder="Search"
+                onChange={handleSearchBarChange}
+                onFocus={focusSearchBar}
+                onBlur={handleOnBlur}
+              />
+              {isSearchBarActive && (
+                <button onClick={clearSearchBar} className="close-btn">
+                  <XCircleFill />
+                </button>
+              )}
+            </div>
+            {isSearchBarFocused && (
+              <button onClick={handleSearchCancel}>Cancel</button>
+            )}
+          </div>
         </div>
       </div>
-
       <Outlet />
+
       <Link
         to="/submit-request"
         className="link-btn submit-request-link"

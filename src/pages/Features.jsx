@@ -27,7 +27,7 @@ export default function Features() {
           </p>
         </section>
         <section className="feature-container">
-          <h3>Remeber the Good Times</h3>
+          <h3>Remember the Good Times</h3>
           <p>
             Add timestamps to easily return to your favorite parts of a song or
             to mark a moment you don&apos;t want to forget.
