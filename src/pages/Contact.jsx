@@ -27,7 +27,7 @@ export default function Contact() {
           <label htmlFor="message" className="required textarea-label">
             Message<span>*</span>
           </label>
-          <textarea id="message" className=""></textarea>
+          <textarea id="message" className="custom-scroll-bar"></textarea>
           <p className="error-message hidden">Please enter a message</p>
         </div>
         <input type="submit" value="Submit" className="link-btn" />

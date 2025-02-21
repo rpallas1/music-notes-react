@@ -123,6 +123,7 @@ export default function SubmitRequest() {
             id="summary"
             maxLength={maxSummaryLength}
             onChange={updateSummaryLength}
+            className="custom-scroll-bar"
           ></textarea>
           <p className="char-limit">{`${summaryLength}/${maxSummaryLength}`}</p>
         </div>
@@ -134,6 +135,7 @@ export default function SubmitRequest() {
             <textarea
               id="message"
               // className="error-input"
+              className="custom-scroll-bar"
               maxLength={maxDescriptionLength}
               onChange={updateDescriptionLength}
             ></textarea>
