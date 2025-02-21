@@ -8,8 +8,8 @@ import {
 } from "react-router";
 import Layout from "./components/Layout";
 import FeatureRequestsLayout from "./components/FeatureRequestsLayout";
-import FullFeatureRequest from "./pages/FeatureRequests/FullFeatureRequest";
 import FeatureRequests from "./pages/FeatureRequests/FeatureRequests";
+import FullFeatureRequest from "./pages/FeatureRequests/FullFeatureRequests";
 import SubmitRequest from "./pages/FeatureRequests/SubmitRequest";
 import Features from "./pages/Features";
 import Contact from "./pages/Contact";
@@ -38,9 +38,9 @@ function App() {
 
           <Route path="feature-requests" element={<FeatureRequestsLayout />}>
             <Route index element={<FeatureRequests />} />
+            <Route path=":id" element={<FullFeatureRequest />} />
           </Route>
 
-          <Route path="feature-requests/:id" element={<FullFeatureRequest />} />
           <Route path="submit-request" element={<SubmitRequest />} />
 
           <Route path="*" element={<NotFound />} />
