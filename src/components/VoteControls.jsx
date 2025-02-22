@@ -6,10 +6,10 @@ import {
   ArrowShapeDownFill,
 } from "../icons";
 
-export default function VoteControls({ vote = 0, onVote = () => {} }) {
+export default function VoteControls({ count = 0, onVote = () => {} }) {
   const [isUpvoted, setIsUpvoted] = React.useState(false);
   const [isDownvoted, setIsDownvoted] = React.useState(false);
-  const [voteCount, setVoteCount] = React.useState(vote);
+  const [voteCount, setVoteCount] = React.useState(count);
 
   function toggleUpVote() {
     setIsUpvoted((prev) => !prev);

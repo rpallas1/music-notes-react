@@ -8,7 +8,7 @@ import {
   XCircleFill,
 } from "../../icons";
 import useOverlay from "../../hooks/useOverlay";
-import FeatureRequestCard from "../../components/FeatureRequestCard";
+import FeatureRequestCards from "../../components/FeatureRequestCards";
 
 export default function FeatureRequestLayout() {
   const location = useLocation();
@@ -100,6 +100,7 @@ export default function FeatureRequestLayout() {
         <div className="options-container">
           <div className="sort-filter-container">
             <div className="sort-options-container">
+              {/* TODO: Move sort options to own component */}
               <label className="sr-only" htmlFor="sort-options">
                 Sort By
               </label>
@@ -113,6 +114,7 @@ export default function FeatureRequestLayout() {
               </select>
             </div>
             <div className="filter-options-container">
+              {/* TODO: Move filter options to own component */}
               <button
                 className={`filter-options-btn options-btn ${showFilters ? "dimmed" : ""} ${!areFilterApplied ? "inactive" : ""}`}
                 onClick={toggleFilterVisibility}
@@ -282,6 +284,7 @@ export default function FeatureRequestLayout() {
           </div>
           <div className="search-bar-container">
             <div className="search-bar">
+              {/* TODO: Move search bar to own component */}
               <MagnifyingGlass />
               <label htmlFor="search" className="hidden">
                 Search
@@ -306,14 +309,9 @@ export default function FeatureRequestLayout() {
           </div>
         </div>
       </div>
-      {/* <Outlet /> */}
-      <section className="feature-request-cards-container">
-        <FeatureRequestCard type={"new"} />
-        <FeatureRequestCard type={"trending"} />
-        <FeatureRequestCard type={"under-dev"} />
-        <FeatureRequestCard type={"implemented"} />
-        <FeatureRequestCard />
-      </section>
+
+      {/* TODO: Get all requests or use search params to filter all items and only show matching results */}
+      <FeatureRequestCards />
 
       <Link
         to="/submit-request"

@@ -1105,6 +1105,7 @@ main > section {
   border: var(--stroke-width) solid var(--gray-600);
   padding: 0.625rem;
   min-height: 230px;
+  width: 100%;
   max-width: calc(400px - (2 * 0.625rem) - 2rem);
 }
 

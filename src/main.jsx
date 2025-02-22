@@ -16,6 +16,8 @@ import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
+import "./mock-server";
+
 function App() {
   function ScorllToTop() {
     const { pathname } = useLocation();

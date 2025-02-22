@@ -6,31 +6,39 @@ import {
   CheckmarkSquare,
 } from "../icons";
 
-export default function Tag({ type, compact }) {
-  let icon = null;
+export default function Tag({ tag, compact }) {
+  if (!tag) {
+    return;
+  }
 
-  switch (type) {
+  let icon = null;
+  let tagName = null;
+
+  switch (tag) {
     case "new":
       icon = <LightbulbMaxFill />;
+      tagName = "New";
       break;
     case "trending":
       icon = <FlameFill />;
+      tagName = "Trending";
       break;
     case "under-dev":
       icon = <WrenchAndScrewdriverFill />;
+      tagName = "Under Development";
       break;
     case "implemented":
       icon = <CheckmarkSquare />;
+      tagName = "Implemented";
       break;
     default:
-      console.error(`Recieved an invalid tag type: ${type}`);
       break;
   }
 
   return (
-    <div className={`tag ${type} ${compact ? "compact" : ""}`}>
+    <div className={`tag ${tag} ${compact ? "compact" : ""}`}>
       {icon}
-      <p>New</p>
+      <p>{tagName}</p>
     </div>
   );
 }
