@@ -14,7 +14,7 @@ createServer({
         "Implement an advanced search functionality that allows users to quickly and easily find specific notes. This could include options to search by keywords, timestamps, song titles, artists, albums, and folders.",
       tag: "under-dev",
       voteCount: 10,
-      dateCreated: "January 4, 2025",
+      dateCreated: new Date("January 4, 2025").getTime(),
     });
 
     server.create("featureRequest", {
@@ -25,7 +25,7 @@ createServer({
         "Integrate the app with Spotify to allow users to create notes from their Spotify account. This will enable users to take notes on songs, artists, albums, and playlists directly from Spotify, expanding the app's usability.",
       tag: "new",
       voteCount: 35,
-      dateCreated: "February 15, 2025",
+      dateCreated: new Date("February 15, 2025").getTime(),
     });
 
     server.create("featureRequest", {
@@ -37,7 +37,7 @@ createServer({
         "Allow users to take notes on any item available on Apple Music, not just the ones in their personal library. This would enable users to jot down thoughts and insights on any song, album, or artist they come across on Apple Music.",
       tag: "trending",
       voteCount: 7,
-      dateCreated: "December 2, 2024",
+      dateCreated: new Date("December 2, 2024").getTime(),
     });
 
     server.create("featureRequest", {
@@ -47,7 +47,7 @@ createServer({
       description:
         "It would be great to have a feature where multiple users can work on the same set of notes simultaneously. This would be particularly useful for group projects or study sessions where everyone can contribute their thoughts and insights.",
       voteCount: 22,
-      dateCreated: "February 20, 2025",
+      dateCreated: new Date("February 20, 2025").getTime(),
     });
 
     server.create("featureRequest", {
@@ -59,7 +59,7 @@ createServer({
         "Users should be able to select from a variety of themes and color schemes to customize the look and feel of the app. This would enhance the user experience by allowing for a more personalized interface that suits individual preferences.",
       tag: "implemented",
       voteCount: 15,
-      dateCreated: "February 18, 2025",
+      dateCreated: new Date("February 18, 2025").getTime(),
     });
 
     server.create("featureRequest", {
@@ -71,7 +71,7 @@ createServer({
         "Adding a voice-to-text feature would make it easier for users to quickly jot down their thoughts without needing to type. This would be especially useful for users who are on the go or prefer speaking over typing.",
       tag: "new",
       voteCount: 40,
-      dateCreated: "February 22, 2025",
+      dateCreated: new Date("February 22, 2025").getTime(),
     });
   },
 
@@ -89,11 +89,18 @@ createServer({
       return schema.featureRequests.find(id);
     });
 
-    this.put("/feature-requests/:id", (schema, request) => {
+    this.put("/feature-requests/:id/upvote", (schema, request) => {
       const id = request.params.id;
-      const attrs = JSON.parse(request.requestBody);
+      let featureRequest = schema.featureRequests.find(id);
 
-      return schema.featureRequests.find(id).update(attrs);
+      return featureRequest.update({ voteCount: featureRequest.voteCount + 1 });
+    });
+
+    this.put("/feature-requests/:id/downvote", (schema, request) => {
+      const id = request.params.id;
+      let featureRequest = schema.featureRequests.find(id);
+
+      return featureRequest.update({ voteCount: featureRequest.voteCount - 1 });
     });
   },
 });
