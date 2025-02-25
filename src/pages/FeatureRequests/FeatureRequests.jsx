@@ -28,7 +28,10 @@ export default function FeatureRequestLayout() {
       <Link
         to="/submit-request"
         className="link-btn submit-request-link"
-        state={{ prevLocation: location.pathname }}
+        state={{
+          prevLocation: location.pathname,
+          prevSearchParams: location.search,
+        }}
       >
         Submit a Feature Request
       </Link>

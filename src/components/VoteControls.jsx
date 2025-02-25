@@ -1,5 +1,6 @@
 import React from "react";
 import { useOutletContext } from "react-router";
+import formatNumber from "../utils/formatNumber";
 import {
   ArrowShapeDown,
   ArrowShapeUp,
@@ -9,27 +10,56 @@ import {
 
 export default function VoteControls({ count = 0, id }) {
   const { fetchFeatureRequests } = useOutletContext();
-  const [isUpvoted, setIsUpvoted] = React.useState(false);
-  const [isDownvoted, setIsDownvoted] = React.useState(false);
-  const [voteCount, setVoteCount] = React.useState(count);
-  let endpoint = `/api/feature-requests/${id}/`;
+  const [isUpvoted, setIsUpvoted] = React.useState(
+    localStorage.getItem(`upvoted-${id}`) === "true" || false,
+  );
+  const [isDownvoted, setIsDownvoted] = React.useState(
+    localStorage.getItem(`downvoted-${id}`) === "true" || false,
+  );
+  const [voteCount, setVoteCount] = React.useState(
+    localStorage.getItem(`voteCount-${id}`) || count,
+  );
+  const namespace = `/api/feature-requests/${id}/`;
+  let endpoint = namespace;
 
   function toggleUpVote() {
-    setIsUpvoted((prev) => !prev);
-    setIsDownvoted(false);
-
-    endpoint += "upvote";
+    endpoint += isUpvoted ? "downvote" : "upvote";
 
     updateVoteCount();
+
+    if (isDownvoted) {
+      endpoint = namespace + "upvote";
+      updateVoteCount();
+    }
+
+    setIsUpvoted((prev) => {
+      localStorage.setItem(`upvoted-${id}`, !prev);
+
+      return !prev;
+    });
+
+    setIsDownvoted(false);
+    localStorage.removeItem(`downvoted-${id}`);
   }
 
   function toggleDownVote() {
-    setIsDownvoted((prev) => !prev);
-    setIsUpvoted(false);
-
-    endpoint += "downvote";
+    endpoint += isDownvoted ? "upvote" : "downvote";
 
     updateVoteCount();
+
+    if (isUpvoted) {
+      endpoint = namespace + "downvote";
+      updateVoteCount();
+    }
+
+    setIsDownvoted((prev) => {
+      localStorage.setItem(`downvoted-${id}`, !prev);
+
+      return !prev;
+    });
+
+    setIsUpvoted(false);
+    localStorage.removeItem(`upvoted-${id}`);
   }
 
   function updateVoteCount() {
@@ -40,7 +70,10 @@ export default function VoteControls({ count = 0, id }) {
       },
     })
       .then((res) => res.json())
-      .then((data) => setVoteCount(data.featureRequest.voteCount))
+      .then((data) => {
+        setVoteCount(data.featureRequest.voteCount);
+        localStorage.setItem(`voteCount-${id}`, data.featureRequest.voteCount);
+      })
       .catch((err) => {
         console.error(err);
       });
@@ -57,7 +90,7 @@ export default function VoteControls({ count = 0, id }) {
       >
         {isUpvoted ? <ArrowShapeUpFill /> : <ArrowShapeUp />}
       </button>
-      <p>{voteCount}</p>
+      <p>{formatNumber(voteCount)}</p>
       <button
         className="vote-button downvote"
         aria-label="Downvote"

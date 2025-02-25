@@ -13,7 +13,7 @@ createServer({
       description:
         "Implement an advanced search functionality that allows users to quickly and easily find specific notes. This could include options to search by keywords, timestamps, song titles, artists, albums, and folders.",
       tag: "under-dev",
-      voteCount: 10,
+      voteCount: -9810,
       dateCreated: new Date("January 4, 2025").getTime(),
     });
 
@@ -36,7 +36,7 @@ createServer({
       description:
         "Allow users to take notes on any item available on Apple Music, not just the ones in their personal library. This would enable users to jot down thoughts and insights on any song, album, or artist they come across on Apple Music.",
       tag: "trending",
-      voteCount: 7,
+      voteCount: 893,
       dateCreated: new Date("December 2, 2024").getTime(),
     });
 
@@ -46,7 +46,7 @@ createServer({
       summary: "Allow multiple users to collaborate on notes in real-time.",
       description:
         "It would be great to have a feature where multiple users can work on the same set of notes simultaneously. This would be particularly useful for group projects or study sessions where everyone can contribute their thoughts and insights.",
-      voteCount: 22,
+      voteCount: 12343,
       dateCreated: new Date("February 20, 2025").getTime(),
     });
 
@@ -58,7 +58,7 @@ createServer({
       description:
         "Users should be able to select from a variety of themes and color schemes to customize the look and feel of the app. This would enhance the user experience by allowing for a more personalized interface that suits individual preferences.",
       tag: "implemented",
-      voteCount: 15,
+      voteCount: 135601241,
       dateCreated: new Date("February 18, 2025").getTime(),
     });
 
@@ -70,7 +70,7 @@ createServer({
       description:
         "Adding a voice-to-text feature would make it easier for users to quickly jot down their thoughts without needing to type. This would be especially useful for users who are on the go or prefer speaking over typing.",
       tag: "new",
-      voteCount: 40,
+      voteCount: 4063,
       dateCreated: new Date("February 22, 2025").getTime(),
     });
   },

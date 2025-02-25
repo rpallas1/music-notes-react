@@ -1,18 +1,19 @@
 import React from "react";
 import { useLocation } from "react-router";
+import { useForm, FormProvider } from "react-hook-form";
 import BackLink from "../../components/BackLink";
 import CancelLink from "../../components/CancelLink";
 import CloseModalLink from "../../components/CloseModalLink";
 import { InfoCircle, XCircleFill } from "../../icons";
 import useOverlay from "../../hooks/useOverlay";
+import {
+  textValidations,
+  textAreaValidations,
+  emailValidations,
+} from "../../utils/formValidations";
+import Input from "../../components/Input";
 
 export default function SubmitRequest() {
-  const [titleLength, setTitleLength] = React.useState(0);
-  const [summaryLength, setSummaryLength] = React.useState(0);
-  const [descriptionLength, setDescriptionLength] = React.useState(0);
-  const maxTitleLength = 45;
-  const maxSummaryLength = 120;
-  const maxDescriptionLength = 2000;
   const location = useLocation();
   const {
     ref,
@@ -20,24 +21,41 @@ export default function SubmitRequest() {
     handleToggle: toggleInfoVisibility,
   } = useOverlay();
 
-  function updateTitleLengt(e) {
-    setTitleLength(e.target.value.length);
-  }
+  const methods = useForm();
+  const [formData, setFormData] = React.useState(null);
 
-  function updateSummaryLength(e) {
-    setSummaryLength(e.target.value.length);
-  }
+  const onSubmit = methods.handleSubmit((data) => {
+    methods.reset();
+    setFormData(data);
+  });
 
-  function updateDescriptionLength(e) {
-    setDescriptionLength(e.target.value.length);
-  }
+  const titleValidation = textValidations("title", "Title", 45, true);
+  const summaryValidation = textAreaValidations(
+    "summary",
+    "Summary",
+    120,
+    false,
+  );
+  const descriptionValidation = textAreaValidations(
+    "description",
+    "Description",
+    2000,
+    true,
+  );
+  const emailValidation = emailValidations(false);
 
   return (
     <section className="submit-request-page">
       <div className="form-nav">
-        <BackLink prevLocation={location.state?.prevLocation} />
+        <BackLink
+          prevLocation={location.state?.prevLocation}
+          prevSearchParams={location.state?.prevSearchParams}
+        />
         <CloseModalLink prevLocation={location.state?.prevLocation} />
-        <CancelLink prevLocation={location.state?.prevLocation} />
+        <CancelLink
+          prevLocation={location.state?.prevLocation}
+          prevSearchParams={location.state?.prevSearchParams}
+        />
       </div>
       <div className="submit-request-content-container">
         <h2>
@@ -98,58 +116,37 @@ export default function SubmitRequest() {
           </div>
         </dl>
       </div>
-      <form action="POST" id="submit-request-form" className="form">
-        <div>
-          <div>
-            <label htmlFor="title" className="required">
-              Title<span>*</span>
-            </label>
-            <input
-              type="text"
-              id="title"
-              maxLength={maxTitleLength}
-              onChange={updateTitleLengt}
-            />
-            <p className="char-limit">{`${titleLength}/${maxTitleLength}`}</p>
-          </div>
-          <p className="error-message hidden">Please enter a title</p>
+      <FormProvider {...methods}>
+        <form
+          action="POST"
+          id="submit-request-form"
+          className="form"
+          onSubmit={(e) => e.preventDefault()}
+          noValidate
+        >
+          <Input {...titleValidation} trackLength={true} />
+          <Input {...summaryValidation} trackLength={true} />
+          <Input {...descriptionValidation} />
+          <Input {...emailValidation} />
+          <input
+            type="submit"
+            value="Submit"
+            className="link-btn"
+            onClick={onSubmit}
+          />
+        </form>
+      </FormProvider>
+      {/* TODO: Show preview of what their request would look like before they submit it */}
+      {formData && (
+        <div className="success-message">
+          <h3>Success!</h3>
+          <p>Your feature request has been submitted.</p>
+          <p>Title: {formData.Title}</p>
+          <p>Summary: {formData.Summary}</p>
+          <p>Description: {formData.Description}</p>
+          <p>Email: {formData.Email}</p>
         </div>
-        <div>
-          <label htmlFor="summary" className="textarea-label">
-            Summary
-          </label>
-          <textarea
-            name="summary"
-            id="summary"
-            maxLength={maxSummaryLength}
-            onChange={updateSummaryLength}
-            className="custom-scroll-bar"
-          ></textarea>
-          <p className="char-limit">{`${summaryLength}/${maxSummaryLength}`}</p>
-        </div>
-        <div>
-          <div>
-            <label htmlFor="message" className="required textarea-label">
-              Description<span>*</span>
-            </label>
-            <textarea
-              id="message"
-              // className="error-input"
-              className="custom-scroll-bar"
-              maxLength={maxDescriptionLength}
-              onChange={updateDescriptionLength}
-            ></textarea>
-            {/* <p className="char-limit">{`${descriptionLength}/${maxDescriptionLength}`}</p> */}
-          </div>
-          <p className="error-message hidden">Please enter a message</p>
-        </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" />
-          <p className="error-message hidden">Please enter a valid email</p>
-        </div>
-        <input type="submit" value="Submit" className="link-btn" />
-      </form>
+      )}
     </section>
   );
 }

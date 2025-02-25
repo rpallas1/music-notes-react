@@ -1,8 +1,11 @@
 import { Link } from "react-router";
 
-export default function CancelLink({ prevLocation }) {
+export default function CancelLink({ prevLocation, prevSearchParams }) {
   return (
-    <Link to={prevLocation || ".."} className="mobile-only text-link">
+    <Link
+      to={{ pathname: prevLocation || "..", search: prevSearchParams }}
+      className="mobile-only text-link"
+    >
       Cancel
     </Link>
   );
