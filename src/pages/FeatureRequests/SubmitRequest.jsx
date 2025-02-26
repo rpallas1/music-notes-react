@@ -4,6 +4,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import BackLink from "../../components/BackLink";
 import CancelLink from "../../components/CancelLink";
 import CloseModalLink from "../../components/CloseModalLink";
+import FormSuccess from "../../components/FormSuccess";
 import { InfoCircle, XCircleFill } from "../../icons";
 import useOverlay from "../../hooks/useOverlay";
 import {
@@ -21,12 +22,19 @@ export default function SubmitRequest() {
     handleToggle: toggleInfoVisibility,
   } = useOverlay();
 
+  const { isOpen: showSuccess, handleToggle: toggleSuccessVisibility } =
+    useOverlay();
+
   const methods = useForm();
   const [formData, setFormData] = React.useState(null);
 
   const onSubmit = methods.handleSubmit((data) => {
     methods.reset();
     setFormData(data);
+    toggleSuccessVisibility();
+
+    const formType = location.pathname.split("/").pop();
+    localStorage.removeItem(`${formType}-form-data`);
   });
 
   const titleValidation = textValidations("title", "Title", 45, true);
@@ -39,10 +47,14 @@ export default function SubmitRequest() {
   const descriptionValidation = textAreaValidations(
     "description",
     "Description",
-    2000,
+    10000,
     true,
   );
   const emailValidation = emailValidations(false);
+
+  function clearSavedFormData() {
+    localStorage.removeItem("submit-request-form");
+  }
 
   return (
     <section className="submit-request-page">
@@ -55,6 +67,7 @@ export default function SubmitRequest() {
         <CancelLink
           prevLocation={location.state?.prevLocation}
           prevSearchParams={location.state?.prevSearchParams}
+          onCancel={clearSavedFormData}
         />
       </div>
       <div className="submit-request-content-container">
@@ -78,43 +91,46 @@ export default function SubmitRequest() {
           should have.
         </p>
         {showInfo && (
-          <div className="overlay" onClick={toggleInfoVisibility}></div>
+          <>
+            <div className="overlay" onClick={toggleInfoVisibility}></div>
+            <dl className="info overlay-content" ref={ref}>
+              <button
+                className="close-modal close-btn"
+                aria-label="Close info modal"
+                onClick={toggleInfoVisibility}
+              >
+                <XCircleFill />
+              </button>
+              <div>
+                <dt>Title</dt>
+                <dd>Enter a concise, one line summmary of your idea.</dd>
+              </div>
+              <div>
+                <dt>Summary</dt>
+                <dd>
+                  Optionally add a summary that will show up under the title for
+                  other to quickly see and to understand your idea.
+                </dd>
+              </div>
+              <div>
+                <dt>Description</dt>
+                <dd>
+                  Use this section to go as in depth as you would like to
+                  provide details about your idea and how or why it should by
+                  implemented.
+                </dd>
+              </div>
+              <div>
+                <dt>Email</dt>
+                <dd>
+                  Optionally enter your email to be notified as the status or
+                  your submission is updated or if you need to be contacted for
+                  more details about your idea.
+                </dd>
+              </div>
+            </dl>
+          </>
         )}
-        <dl className={`info ${showInfo ? "" : "hidden"}`} ref={ref}>
-          <button
-            className="close-modal close-btn"
-            aria-label="Close info modal"
-            onClick={toggleInfoVisibility}
-          >
-            <XCircleFill />
-          </button>
-          <div>
-            <dt>Title</dt>
-            <dd>Enter a concise, one line summmary of your idea.</dd>
-          </div>
-          <div>
-            <dt>Summary</dt>
-            <dd>
-              Optionally add a summary that will show up under the title for
-              other to quickly see and to understand your idea.
-            </dd>
-          </div>
-          <div>
-            <dt>Description</dt>
-            <dd>
-              Use this section to go as in depth as you would like to provide
-              details about your idea and how or why it should by implemented.
-            </dd>
-          </div>
-          <div>
-            <dt>Email</dt>
-            <dd>
-              Optionally enter your email to be notified as the status or your
-              submission is updated or if you need to be contacted for more
-              details about your idea.
-            </dd>
-          </div>
-        </dl>
       </div>
       <FormProvider {...methods}>
         <form
@@ -136,16 +152,15 @@ export default function SubmitRequest() {
           />
         </form>
       </FormProvider>
-      {/* TODO: Show preview of what their request would look like before they submit it */}
-      {formData && (
-        <div className="success-message">
-          <h3>Success!</h3>
-          <p>Your feature request has been submitted.</p>
-          <p>Title: {formData.Title}</p>
-          <p>Summary: {formData.Summary}</p>
-          <p>Description: {formData.Description}</p>
-          <p>Email: {formData.Email}</p>
-        </div>
+      {showSuccess && (
+        <>
+          <div className="overlay" onClick={toggleSuccessVisibility}></div>
+          <FormSuccess
+            formData={formData}
+            type="submit-request"
+            closeForm={toggleSuccessVisibility}
+          />
+        </>
       )}
     </section>
   );

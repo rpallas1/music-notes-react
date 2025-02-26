@@ -1,3 +1,5 @@
+import startsWithVowel from "./startsWithVowel";
+
 function textValidations(id, label, maxLength = 50, required = false) {
   return {
     id: id,
@@ -6,7 +8,7 @@ function textValidations(id, label, maxLength = 50, required = false) {
     validation: {
       required: {
         value: required,
-        message: `Please enter a ${label.toLowerCase()}`,
+        message: `Please enter ${startsWithVowel(label) ? "an" : "a"} ${label.toLowerCase()}`,
       },
       maxLength: {
         value: maxLength,
@@ -25,7 +27,7 @@ function emailValidations(required = false) {
     validation: {
       required: {
         value: required,
-        message: "Please enter a email",
+        message: "Please enter an email",
       },
       pattern: {
         value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -43,7 +45,7 @@ function textAreaValidations(id, label, maxLength, required = false) {
     validation: {
       required: {
         value: required,
-        message: `Please enter a ${label.toLowerCase()}`,
+        message: `Please enter ${startsWithVowel(label) ? "an" : "a"} ${label.toLowerCase()}`,
       },
       maxLength: {
         value: maxLength,

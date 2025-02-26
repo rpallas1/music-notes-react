@@ -101,7 +101,7 @@ export default function Filter() {
         <>
           <div className="overlay" onClick={toggleFilterVisibility}></div>
           <div
-            className="filter-options"
+            className="filter-options overlay-content"
             ref={ref}
             aria-hidden={!showFilters}
             aria-labelledby="filterOptionsTitle"

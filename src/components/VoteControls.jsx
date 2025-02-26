@@ -16,9 +16,7 @@ export default function VoteControls({ count = 0, id }) {
   const [isDownvoted, setIsDownvoted] = React.useState(
     localStorage.getItem(`downvoted-${id}`) === "true" || false,
   );
-  const [voteCount, setVoteCount] = React.useState(
-    localStorage.getItem(`voteCount-${id}`) || count,
-  );
+  const [voteCount, setVoteCount] = React.useState(count);
   const namespace = `/api/feature-requests/${id}/`;
   let endpoint = namespace;
 
@@ -70,10 +68,7 @@ export default function VoteControls({ count = 0, id }) {
       },
     })
       .then((res) => res.json())
-      .then((data) => {
-        setVoteCount(data.featureRequest.voteCount);
-        localStorage.setItem(`voteCount-${id}`, data.featureRequest.voteCount);
-      })
+      .then((data) => setVoteCount(data.featureRequest.voteCount))
       .catch((err) => {
         console.error(err);
       });

@@ -1,6 +1,9 @@
 import React from "react";
+import { useLocation } from "react-router";
 import { useForm, FormProvider } from "react-hook-form";
+import useOverlay from "../hooks/useOverlay";
 import Input from "../components/Input";
+import FormSuccess from "../components/FormSuccess";
 import {
   textAreaValidations,
   emailValidations,
@@ -8,13 +11,19 @@ import {
 } from "../utils/formValidations";
 
 export default function Contact() {
+  const location = useLocation();
   const methods = useForm();
   const [formData, setFormData] = React.useState(null);
+  const { isOpen: showSuccess, handleToggle: toggleSuccessVisibility } =
+    useOverlay();
 
   const onSubmit = methods.handleSubmit((data) => {
-    console.log(data);
-    setFormData(data);
     methods.reset();
+    setFormData(data);
+    toggleSuccessVisibility();
+
+    const formType = location.pathname.split("/").pop();
+    localStorage.removeItem(`${formType}-form-data`);
   });
 
   const nameValidation = textValidations("name", "Name", 50, true);
@@ -22,7 +31,7 @@ export default function Contact() {
   const messageValidation = textAreaValidations(
     "message",
     "Message",
-    2000,
+    10000,
     true,
   );
 
@@ -52,14 +61,15 @@ export default function Contact() {
           />
         </form>
       </FormProvider>
-      {/* TODO: Show success message when form submitted */}
-      {formData && (
-        <div className="form-data">
-          <h3>Form Data</h3>
-          <p>Name: {formData.Name}</p>
-          <p>Email: {formData.Email}</p>
-          <p>Message: {formData.Message}</p>
-        </div>
+      {showSuccess && (
+        <>
+          <div className="overlay" onClick={toggleSuccessVisibility}></div>
+          <FormSuccess
+            formData={formData}
+            type="contact"
+            closeForm={toggleSuccessVisibility}
+          />
+        </>
       )}
     </section>
   );

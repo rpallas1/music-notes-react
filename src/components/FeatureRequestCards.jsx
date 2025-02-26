@@ -96,6 +96,7 @@ export default function FeatureRequestsLayout() {
               }}
             >
               Read More
+              <span className="sr-only"> about this feature request</span>
             </Link>
           </div>
           {featureRequest.tag && (

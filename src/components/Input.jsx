@@ -1,6 +1,7 @@
 import React from "react";
+import { useLocation } from "react-router";
+import { useFormContext, useWatch } from "react-hook-form";
 import classNames from "classnames";
-import { useFormContext } from "react-hook-form";
 import InputError from "./InputError";
 import findInputError from "../utils/findInputError";
 import isFormInvalid from "../utils/isFormInvalid";
@@ -15,21 +16,29 @@ export default function Input({
 }) {
   const {
     register,
+    getValues,
     formState: { errors },
   } = useFormContext();
-  const [currentLength, setCurrentLength] = React.useState(0);
-
-  const inputError = findInputError(errors, label);
+  const inputError = findInputError(errors, id);
   const isInvalid = isFormInvalid(inputError);
   const inputLabelContainerClass = classNames(
     "input-label-container",
     validation.required.value && "required",
     isInvalid && "error-input",
   );
+  const formType = useLocation().pathname.split("/").pop();
+  const savedFormData =
+    JSON.parse(localStorage.getItem(`${formType}-form-data`)) || {};
+  const savedValue = savedFormData[id] || "";
+  const currentLength = useWatch({ name: id })?.length || savedValue.length;
 
-  function updateCurrentLength(e) {
-    setCurrentLength(e.target.value.length);
-  }
+  localStorage.setItem(
+    `${formType}-form-data`,
+    JSON.stringify({
+      ...savedFormData,
+      [id]: getValues(id) || savedValue,
+    }),
+  );
 
   const input = () => {
     if (type === "textarea") {
@@ -37,11 +46,11 @@ export default function Input({
         <textarea
           id={id}
           className="custom-scroll-bar"
-          maxLength={validation.maxLength?.value}
+          maxLength={trackLength ? validation.maxLength?.value : null}
           placeholder={placeholder}
-          {...register(label, {
+          {...register(id, {
             ...validation,
-            onChange: trackLength ? (e) => updateCurrentLength(e) : null,
+            value: savedValue,
           })}
         />
       );
@@ -51,11 +60,11 @@ export default function Input({
       <input
         type={type}
         id={id}
-        maxLength={validation.maxLength?.value}
+        maxLength={trackLength ? validation.maxLength?.value : null}
         placeholder={placeholder}
-        {...register(label, {
+        {...register(id, {
           ...validation,
-          onChange: trackLength ? (e) => updateCurrentLength(e) : null,
+          value: savedValue,
         })}
       />
     );
