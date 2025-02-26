@@ -24,3 +24,4 @@ export { default as Line3Horizontal } from "./Line3Horizontal";
 export { default as XMark } from "./XMark";
 export { default as FolderFill } from "./FolderFill";
 export { default as PinFill } from "./PinFill";
+export { default as ArrowUpArrowDown } from "./ArrowUpArrowDown";

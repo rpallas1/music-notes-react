@@ -1,4 +1,5 @@
 import { createServer, Model, Response } from "miragejs";
+import { v4 as uuidv4 } from "uuid";
 
 createServer({
   models: {
@@ -7,7 +8,7 @@ createServer({
 
   seeds(server) {
     server.create("featureRequest", {
-      id: 1,
+      id: uuidv4(),
       title: "Easier way to search notes",
       summary: "",
       description:
@@ -18,7 +19,7 @@ createServer({
     });
 
     server.create("featureRequest", {
-      id: 2,
+      id: uuidv4(),
       title: "Spotify Integration",
       summary: "Have the option to create notes from a Spotify account",
       description:
@@ -29,7 +30,7 @@ createServer({
     });
 
     server.create("featureRequest", {
-      id: 3,
+      id: uuidv4(),
       title: "Outside of library notes",
       summary:
         "Expand the note-taking capability by being able to take notes on any Apple Music item, not just the ones in your library.",
@@ -41,7 +42,7 @@ createServer({
     });
 
     server.create("featureRequest", {
-      id: 4,
+      id: uuidv4(),
       title: "Collaborative Note Taking",
       summary: "Allow multiple users to collaborate on notes in real-time.",
       description:
@@ -51,7 +52,7 @@ createServer({
     });
 
     server.create("featureRequest", {
-      id: 5,
+      id: uuidv4(),
       title: "Customizable Themes",
       summary:
         "Offer different themes and color schemes to personalize the note-taking experience.",
@@ -63,7 +64,7 @@ createServer({
     });
 
     server.create("featureRequest", {
-      id: 6,
+      id: uuidv4(),
       title: "Voice-to-Text Note Taking",
       summary:
         "Enable users to create notes using voice-to-text functionality.",
@@ -101,6 +102,20 @@ createServer({
       let featureRequest = schema.featureRequests.find(id);
 
       return featureRequest.update({ voteCount: featureRequest.voteCount - 1 });
+    });
+
+    this.post("/feature-requests", (schema, request) => {
+      const attrs = JSON.parse(request.requestBody);
+
+      // Validate request body
+      // If valid, create new feature request
+      return schema.featureRequests.create({
+        ...attrs,
+        id: uuidv4(),
+        voteCount: 0,
+        dateCreated: new Date().getTime(),
+        tag: "new",
+      });
     });
   },
 });

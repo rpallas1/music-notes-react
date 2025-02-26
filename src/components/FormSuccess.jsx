@@ -1,5 +1,6 @@
 import React from "react";
 import { XCircleFill } from "../icons";
+import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
 
 export default function FormSuccess({ formData, type, closeForm }) {
   const header =
@@ -12,24 +13,24 @@ export default function FormSuccess({ formData, type, closeForm }) {
       return "We will get back to you as soon as possible.";
     }
 
-    if (formData.Email) {
+    if (formData.email) {
       return (
         <>
           We will review your feature request and get back to you at{" "}
-          <span className="submitted-email">{formData.Email}</span> if we have
+          <span className="submitted-email">{formData.email}</span> if we have
           any questions.
         </>
       );
     }
 
-    return "Keep an eye out for your feature request on our site!";
+    return "Your feature request will be reviewed and published if approved. Keep an eye out for your feature request on our site!";
   };
 
   const dataEls = Object.entries(formData).map(([key, value]) => {
     if (value) {
       return (
         <div key={key}>
-          <dt>{key}</dt>
+          <dt>{capitalizeFirstLetter(key)}</dt>
           <dd className="custom-scroll-bar">{value}</dd>
         </div>
       );

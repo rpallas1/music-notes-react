@@ -27,14 +27,22 @@ export default function SubmitRequest() {
 
   const methods = useForm();
   const [formData, setFormData] = React.useState(null);
+  const formType = location.pathname.split("/").pop();
 
   const onSubmit = methods.handleSubmit((data) => {
     methods.reset();
     setFormData(data);
     toggleSuccessVisibility();
 
-    const formType = location.pathname.split("/").pop();
     localStorage.removeItem(`${formType}-form-data`);
+
+    fetch("/api/feature-requests", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).catch((err) => console.error(err));
   });
 
   const titleValidation = textValidations("title", "Title", 45, true);
@@ -53,7 +61,7 @@ export default function SubmitRequest() {
   const emailValidation = emailValidations(false);
 
   function clearSavedFormData() {
-    localStorage.removeItem("submit-request-form");
+    localStorage.removeItem(`${formType}-form-data`);
   }
 
   return (

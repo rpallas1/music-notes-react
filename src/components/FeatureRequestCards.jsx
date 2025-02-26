@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, useOutletContext, useSearchParams } from "react-router";
-import formatDate from "../utils/formatDate";
 import truncate from "../utils/truncate";
-import VoteControls from "./VoteControls";
+import formatDate from "../utils/formatDate";
 import Tag from "./Tag";
+import VoteControls from "./VoteControls";
 
 export default function FeatureRequestsLayout() {
   const { featureRequests } = useOutletContext();
@@ -63,8 +63,8 @@ export default function FeatureRequestsLayout() {
     })
     .sort((a, b) => {
       if (!searchParams.has("sort")) {
-        const lhs = new Date(a.dateCreated);
-        const rhs = new Date(b.dateCreated);
+        const lhs = new Date(b.dateCreated);
+        const rhs = new Date(a.dateCreated);
 
         return lhs - rhs;
       }
@@ -115,13 +115,17 @@ export default function FeatureRequestsLayout() {
       </div>
     ));
 
+  if (searchParams.get("isDescending") === "true") {
+    cardEls.reverse();
+  }
+
   const renderContent = () => {
     if (featureRequests.length === 0) {
-      return <p>Loading...</p>;
+      return <p className="loading message">Loading...</p>;
     } else if (cardEls.length > 0) {
       return cardEls;
     } else {
-      return <p>No feature requests found.</p>;
+      return <p className="no-results message">No feature requests found.</p>;
     }
   };
 
