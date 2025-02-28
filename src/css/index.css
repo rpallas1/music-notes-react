@@ -170,6 +170,8 @@ body {
   min-width: calc(var(--min-screen-width) - 3rem);
   max-width: var(--max-screen-width);
   padding: 0 1rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
