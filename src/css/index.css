@@ -184,7 +184,8 @@ body {
 body,
 input,
 button,
-textarea {
+textarea,
+option {
   font-family: "SFProText", sans-serif;
   font-weight: var(--font-weight-text-regular);
 }
@@ -546,13 +547,17 @@ dd {
   transform: translate(-50%, -50%);
   width: calc(100% - 4rem);
   max-width: 750px;
+  min-height: 200px;
+  max-height: 75vh;
+  overflow: auto;
   background-color: var(--gray-900);
   padding: 1rem;
-  border: var(--stroke-width) solid var(--gray-500);
+  border: var(--stroke-width) solid var(--green);
   border-radius: var(--border-radius);
   display: grid;
   gap: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 2000;
 }
 
 .form-success h3,
@@ -659,7 +664,7 @@ nav input {
 
 nav label {
   position: absolute;
-  top: 0.65rem;
+  top: 12px;
   right: 12px;
 }
 

@@ -38,7 +38,7 @@ export default function FormSuccess({ formData, type, closeForm }) {
   });
 
   return (
-    <section className="form-success overlay-content">
+    <section className="form-success overlay-content custom-scroll-bar">
       <h3>{header}</h3>
       <p>{message()}</p>
       <dl>{dataEls}</dl>

@@ -1,10 +1,10 @@
 import React from "react";
-import { useLocation } from "react-router";
 import { useFormContext, useWatch } from "react-hook-form";
 import classNames from "classnames";
 import InputError from "./InputError";
 import findInputError from "../utils/findInputError";
 import isFormInvalid from "../utils/isFormInvalid";
+import useFormType from "../hooks/useFormType";
 
 export default function Input({
   label,
@@ -16,9 +16,11 @@ export default function Input({
 }) {
   const {
     register,
+    setValue,
     getValues,
     formState: { errors },
   } = useFormContext();
+  const formType = useFormType();
   const inputError = findInputError(errors, id);
   const isInvalid = isFormInvalid(inputError);
   const inputLabelContainerClass = classNames(
@@ -26,17 +28,26 @@ export default function Input({
     validation.required.value && "required",
     isInvalid && "error-input",
   );
-  const formType = useLocation().pathname.split("/").pop();
   const savedFormData =
     JSON.parse(localStorage.getItem(`${formType}-form-data`)) || {};
+  const [firstRender, setFirstRender] = React.useState(true);
+
+  React.useEffect(() => {
+    setValue(id, savedFormData[id] || "");
+
+    if (firstRender) {
+      setFirstRender(false);
+    }
+  }, []);
+
   const savedValue = savedFormData[id] || "";
-  const currentLength = useWatch({ name: id })?.length || savedValue.length;
+  const currentLength = useWatch({ name: id })?.length || 0;
 
   localStorage.setItem(
     `${formType}-form-data`,
     JSON.stringify({
       ...savedFormData,
-      [id]: getValues(id) || savedValue,
+      [id]: getValues(id) || (firstRender ? savedValue : ""),
     }),
   );
 

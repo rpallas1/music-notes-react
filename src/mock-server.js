@@ -8,7 +8,6 @@ createServer({
 
   seeds(server) {
     server.create("featureRequest", {
-      id: uuidv4(),
       title: "Easier way to search notes",
       summary: "",
       description:
@@ -19,7 +18,6 @@ createServer({
     });
 
     server.create("featureRequest", {
-      id: uuidv4(),
       title: "Spotify Integration",
       summary: "Have the option to create notes from a Spotify account",
       description:
@@ -30,7 +28,6 @@ createServer({
     });
 
     server.create("featureRequest", {
-      id: uuidv4(),
       title: "Outside of library notes",
       summary:
         "Expand the note-taking capability by being able to take notes on any Apple Music item, not just the ones in your library.",
@@ -42,7 +39,6 @@ createServer({
     });
 
     server.create("featureRequest", {
-      id: uuidv4(),
       title: "Collaborative Note Taking",
       summary: "Allow multiple users to collaborate on notes in real-time.",
       description:
@@ -52,7 +48,6 @@ createServer({
     });
 
     server.create("featureRequest", {
-      id: uuidv4(),
       title: "Customizable Themes",
       summary:
         "Offer different themes and color schemes to personalize the note-taking experience.",
@@ -64,7 +59,6 @@ createServer({
     });
 
     server.create("featureRequest", {
-      id: uuidv4(),
       title: "Voice-to-Text Note Taking",
       summary:
         "Enable users to create notes using voice-to-text functionality.",

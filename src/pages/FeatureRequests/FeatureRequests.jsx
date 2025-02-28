@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useSearchParams } from "react-router";
 import FeatureRequestCards from "../../components/FeatureRequestCards";
 import FilterDropdown from "../../components/FilterDropdown";
 import SortDropdown from "../../components/SortDropdown";

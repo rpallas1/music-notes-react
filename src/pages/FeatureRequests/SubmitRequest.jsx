@@ -7,6 +7,7 @@ import CloseModalLink from "../../components/CloseModalLink";
 import FormSuccess from "../../components/FormSuccess";
 import { InfoCircle, XCircleFill } from "../../icons";
 import useOverlay from "../../hooks/useOverlay";
+import useFormType from "../../hooks/useFormType";
 import {
   textValidations,
   textAreaValidations,
@@ -16,6 +17,7 @@ import Input from "../../components/Input";
 
 export default function SubmitRequest() {
   const location = useLocation();
+  const formType = useFormType();
   const {
     ref,
     isOpen: showInfo,
@@ -27,7 +29,6 @@ export default function SubmitRequest() {
 
   const methods = useForm();
   const [formData, setFormData] = React.useState(null);
-  const formType = location.pathname.split("/").pop();
 
   const onSubmit = methods.handleSubmit((data) => {
     methods.reset();
@@ -117,7 +118,7 @@ export default function SubmitRequest() {
                 <dt>Summary</dt>
                 <dd>
                   Optionally add a summary that will show up under the title for
-                  other to quickly see and to understand your idea.
+                  others to quickly see and understand your idea.
                 </dd>
               </div>
               <div>
@@ -131,7 +132,7 @@ export default function SubmitRequest() {
               <div>
                 <dt>Email</dt>
                 <dd>
-                  Optionally enter your email to be notified as the status or
+                  Optionally enter your email to be notified as the status of
                   your submission is updated or if you need to be contacted for
                   more details about your idea.
                 </dd>

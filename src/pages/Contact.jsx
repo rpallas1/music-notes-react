@@ -1,7 +1,7 @@
 import React from "react";
-import { useLocation } from "react-router";
 import { useForm, FormProvider } from "react-hook-form";
 import useOverlay from "../hooks/useOverlay";
+import useFormType from "../hooks/useFormType";
 import Input from "../components/Input";
 import FormSuccess from "../components/FormSuccess";
 import {
@@ -11,8 +11,8 @@ import {
 } from "../utils/formValidations";
 
 export default function Contact() {
-  const location = useLocation();
   const methods = useForm();
+  const formType = useFormType();
   const [formData, setFormData] = React.useState(null);
   const { isOpen: showSuccess, handleToggle: toggleSuccessVisibility } =
     useOverlay();
@@ -22,7 +22,6 @@ export default function Contact() {
     setFormData(data);
     toggleSuccessVisibility();
 
-    const formType = location.pathname.split("/").pop();
     localStorage.removeItem(`${formType}-form-data`);
   });
 

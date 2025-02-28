@@ -1,10 +1,10 @@
 import React from "react";
-import { useSearchParams } from "react-router";
+import { useSearchParams, createSearchParams } from "react-router";
 import { ArrowUpArrowDown, ChevronUp, ChevronDown } from "../icons";
 
 export default function SortDropdown() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [isDescending, setIsDescending] = React.useState(true);
+  const [isDescending, setIsDescending] = React.useState(false);
   const [sortOption, setSortOption] = React.useState(
     searchParams.get("sort") || "date-created",
   );
@@ -17,6 +17,7 @@ export default function SortDropdown() {
     setSearchParams((prevParams) => {
       if (value === "date-created") {
         prevParams.delete("sort");
+
         return prevParams;
       }
 
@@ -30,7 +31,7 @@ export default function SortDropdown() {
     setIsDescending((prev) => !prev);
 
     setSearchParams((prevParams) => {
-      if (!isDescending) {
+      if (isDescending) {
         prevParams.delete("isDescending");
 
         return prevParams;

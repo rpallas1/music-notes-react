@@ -15,6 +15,10 @@ export default function SearchBar() {
     setSearchQueryParams(searchQuery);
   }, [searchQuery]);
 
+  // React.useEffect(() => {
+  //   localStorage.setItem("searchParams", new URLSearchParams(searchParams));
+  // }, [searchParams]);
+
   function clearSearchBar() {
     setIsSearchBarActive(false);
     focusSearchBar();
