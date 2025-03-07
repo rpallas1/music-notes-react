@@ -22,10 +22,18 @@ export default function Contact() {
     setFormData(data);
     toggleSuccessVisibility();
 
+    fetch("http://localhost:3000/api/v1/contact-form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
     localStorage.removeItem(`${formType}-form-data`);
   });
 
-  const nameValidation = textValidations("name", "Name", 50, true);
+  const nameValidation = textValidations("name", "Name", 100, true);
   const emailValidation = emailValidations(true);
   const messageValidation = textAreaValidations(
     "message",

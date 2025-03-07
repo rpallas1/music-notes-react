@@ -37,7 +37,8 @@ export default function SubmitRequest() {
 
     localStorage.removeItem(`${formType}-form-data`);
 
-    fetch("/api/feature-requests", {
+    // fetch("/api/feature-requests", {
+    fetch("http://localhost:3000/api/v1/feature-requests", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,11 +47,11 @@ export default function SubmitRequest() {
     }).catch((err) => console.error(err));
   });
 
-  const titleValidation = textValidations("title", "Title", 45, true);
+  const titleValidation = textValidations("title", "Title", 50, true);
   const summaryValidation = textAreaValidations(
     "summary",
     "Summary",
-    120,
+    200,
     false,
   );
   const descriptionValidation = textAreaValidations(

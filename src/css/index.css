@@ -233,7 +233,6 @@ dd {
 
 /* Text link styles */
 .text-link {
-  border: 2px solid transparent;
   border-radius: calc(var(--border-radius) / 2);
   width: fit-content;
 }
@@ -410,9 +409,7 @@ dd {
   border-radius: var(--border-radius);
   width: 100%;
   color: var(--gray-0);
-  padding-left: 0.625rem;
-  padding-right: 0.625rem;
-  padding-top: 1rem;
+  padding: 1.25rem 0.625rem 0.625rem;
   box-sizing: border-box;
   font-size: var(--font-size-body);
   letter-spacing: var(--letter-spacing-body);
@@ -489,6 +486,7 @@ dd {
   position: absolute;
   bottom: 0rem;
   right: 0.625rem;
+  bottom: 0.25rem;
   margin: 0;
   color: var(--gray-100);
   font-size: var(--font-size-footnote);
@@ -568,15 +566,15 @@ dd {
 }
 
 .form-success h3 {
-  font-size: var(--font-size-title1);
-  letter-spacing: var(--letter-spacing-title1);
-  line-height: var(--line-height-title1);
+  font-size: var(--font-size-title2);
+  letter-spacing: var(--letter-spacing-title2);
+  line-height: var(--line-height-title2);
 }
 
 .form-success p {
-  font-size: var(--font-size-title3);
-  letter-spacing: var(--letter-spacing-title3);
-  line-height: var(--line-height-title3);
+  font-size: var(--font-size-body);
+  letter-spacing: var(--letter-spacing-body);
+  line-height: var(--line-height-body);
   font-weight: var(--font-weight-display-regular);
   margin: 0 auto;
   max-width: 45ch;
@@ -1445,6 +1443,7 @@ main > section {
   letter-spacing: var(--letter-spacing-footnote);
   line-height: var(--line-height-footnote);
   font-weight: var(--font-weight-text-regular);
+  /* TODO: Align to right/end */
 }
 
 .submit-request-link {

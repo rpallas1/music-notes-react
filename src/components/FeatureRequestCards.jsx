@@ -76,7 +76,7 @@ export default function FeatureRequestsLayout() {
       }
     })
     .map((featureRequest) => (
-      <div className="feature-request-card" key={featureRequest.id}>
+      <div className="feature-request-card" key={featureRequest._id}>
         <div>
           <div>
             <h3>{featureRequest.title}</h3>
@@ -88,7 +88,7 @@ export default function FeatureRequestsLayout() {
               )}
             </p>
             <Link
-              to={featureRequest.id}
+              to={featureRequest._id}
               className="view-request text-link"
               state={{
                 requestId: featureRequest.id,
@@ -106,7 +106,7 @@ export default function FeatureRequestsLayout() {
         <div>
           <VoteControls
             count={featureRequest.voteCount}
-            id={featureRequest.id}
+            id={featureRequest._id}
           />
           <p className="date-created">
             Created on {formatDate(featureRequest.dateCreated)}

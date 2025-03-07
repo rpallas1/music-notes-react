@@ -41,7 +41,7 @@ export default function Input({
   }, []);
 
   const savedValue = savedFormData[id] || "";
-  const currentLength = useWatch({ name: id })?.length || 0;
+  const currentLength = useWatch({ name: id })?.trim().length || 0;
 
   localStorage.setItem(
     `${formType}-form-data`,

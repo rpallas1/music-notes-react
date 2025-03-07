@@ -17,7 +17,7 @@ export default function VoteControls({ count = 0, id }) {
     localStorage.getItem(`downvoted-${id}`) === "true" || false,
   );
   const [voteCount, setVoteCount] = React.useState(count);
-  const namespace = `/api/feature-requests/${id}/`;
+  const namespace = `http://localhost:3000/api/v1/feature-requests/${id}/`;
   let endpoint = namespace;
 
   function toggleUpVote() {

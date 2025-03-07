@@ -36,9 +36,13 @@ export default function Tag({ tag, compact }) {
   }
 
   return (
-    <div className={`tag ${tag} ${compact ? "compact" : ""}`}>
-      {icon}
-      <p>{tagName}</p>
-    </div>
+    <>
+      {icon && (
+        <div className={`tag ${tag} ${compact ? "compact" : ""}`}>
+          {icon}
+          <p>{tagName}</p>
+        </div>
+      )}
+    </>
   );
 }

@@ -10,15 +10,20 @@ export default function FullFeatureRequest() {
   const location = useLocation();
   const id = location.state?.requestId || location.pathname.split("/").pop();
   const { featureRequests } = useOutletContext();
-  let featureRequest = featureRequests.find((req) => req.id === id);
+  const [featureRequest, setFeatureRequest] = React.useState(
+    featureRequests.find((req) => req._id === id),
+  );
 
-  if (!featureRequest) {
-    fetch(`/api/feature-requests/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        featureRequest = data.featureRequest;
-      });
-  }
+  React.useEffect(() => {
+    if (!featureRequest) {
+      fetch(`http://localhost:3000/api/v1/feature-requests/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setFeatureRequest(data.featureRequest);
+        })
+        .catch((err) => console.error(err));
+    }
+  }, []);
 
   return (
     <>
@@ -32,7 +37,7 @@ export default function FullFeatureRequest() {
           <div>
             <VoteControls
               count={featureRequest.voteCount}
-              id={featureRequest.id}
+              id={featureRequest._id}
             />
             <Tag tag={featureRequest.tag} compact={false} />
           </div>

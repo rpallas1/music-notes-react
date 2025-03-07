@@ -8,6 +8,34 @@ createServer({
 
   seeds(server) {
     server.create("featureRequest", {
+      title: "MacOS App",
+      summary: "Bring the app to MacOS with synced notes",
+      description: "",
+      voteCount: 0,
+      dateCreated: new Date("February 10, 2025").getTime(),
+    });
+
+    server.create("featureRequest", {
+      title: "Create notes for items outside of library",
+      summary:
+        "Bring notes to the entire Apple Music catalog instead of just the library",
+      description:
+        "Currently, notes notes can only be created for items that are in a users Apple Music Library. I find that there are times where I want to make connections between notes but don't have an artist or song that is in my library and have to go add it to my library. Instead, having the ability to create notes for any item in the Apple Music catalog without adding it to my library would be a great addition that would make the app more useful.",
+      tag: "trending",
+      voteCount: 0,
+      dateCreated: new Date("October 22, 2024").getTime(),
+    });
+
+    server.create("featureRequest", {
+      title: "Show songs in playlist for playlist notes",
+      summary: "Include all of the songs within a playlist in the note",
+      description:
+        "The idea behind this features is that when you create a note for a playlist, it would be great to have all of the songs within that playlist show up in the note. This allows the ability to write notes about each song in the playlist and have that note be different that the note for that song. I find myself wanting to write why a song is in a playlist and currently have to create a note for that song, write what I want, and then create a link to the playlist so that they are connected. Having this feature would make it easier to write notes that are more specific to the playlist and not the song.",
+      dateCreated: new Date("November, 7, 2024").getTime(),
+      voteCount: 99,
+    });
+
+    server.create("featureRequest", {
       title: "Easier way to search notes",
       summary: "",
       description:
@@ -73,6 +101,7 @@ createServer({
   routes() {
     this.namespace = "api";
     this.logging = false;
+    this.passthrough("http://localhost:3000/api/**");
 
     this.get("/feature-requests", (schema, request) => {
       return schema.featureRequests.all();
@@ -100,6 +129,8 @@ createServer({
 
     this.post("/feature-requests", (schema, request) => {
       const attrs = JSON.parse(request.requestBody);
+      const tags = ["new", "trending", "under-dev", "implemented"];
+      const tag = tags[Math.floor(Math.random() * tags.length + 2)] || "";
 
       // Validate request body
       // If valid, create new feature request
@@ -108,7 +139,7 @@ createServer({
         id: uuidv4(),
         voteCount: 0,
         dateCreated: new Date().getTime(),
-        tag: "new",
+        tag: tag,
       });
     });
   },
