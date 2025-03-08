@@ -9,7 +9,7 @@ import {
 } from "../icons";
 
 export default function VoteControls({ count = 0, id }) {
-  const { fetchFeatureRequests } = useOutletContext();
+  const { fetchFeatureRequests, setIsVoteError } = useOutletContext();
   const [isUpvoted, setIsUpvoted] = React.useState(
     localStorage.getItem(`upvoted-${id}`) === "true" || false,
   );
@@ -24,6 +24,8 @@ export default function VoteControls({ count = 0, id }) {
     endpoint += isUpvoted ? "downvote" : "upvote";
 
     updateVoteCount();
+
+    // TODO: Don't update if there is a vote error
 
     if (isDownvoted) {
       endpoint = namespace + "upvote";
@@ -44,6 +46,8 @@ export default function VoteControls({ count = 0, id }) {
     endpoint += isDownvoted ? "upvote" : "downvote";
 
     updateVoteCount();
+
+    // TODO: Don't update if there is a vote error
 
     if (isUpvoted) {
       endpoint = namespace + "downvote";
@@ -67,10 +71,19 @@ export default function VoteControls({ count = 0, id }) {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to update vote count");
+        }
+
+        setIsVoteError(false);
+
+        return res.json();
+      })
       .then((data) => setVoteCount(data.featureRequest.voteCount))
       .catch((err) => {
         console.error(err);
+        setIsVoteError(true);
       });
 
     fetchFeatureRequests();

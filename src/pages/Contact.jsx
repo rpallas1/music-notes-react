@@ -16,21 +16,35 @@ export default function Contact() {
   const [formData, setFormData] = React.useState(null);
   const { isOpen: showSuccess, handleToggle: toggleSuccessVisibility } =
     useOverlay();
+  const [isSuccessfulSubmission, setIsSuccessfulSubmission] =
+    React.useState(true);
 
   const onSubmit = methods.handleSubmit((data) => {
-    methods.reset();
-    setFormData(data);
-    toggleSuccessVisibility();
-
     fetch("http://localhost:3000/api/v1/contact-form", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to submit form");
+        }
 
-    localStorage.removeItem(`${formType}-form-data`);
+        methods.reset();
+        setIsSuccessfulSubmission(true);
+
+        localStorage.removeItem(`${formType}-form-data`);
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsSuccessfulSubmission(false);
+      })
+      .finally(() => {
+        setFormData(data);
+        toggleSuccessVisibility();
+      });
   });
 
   const nameValidation = textValidations("name", "Name", 100, true);
@@ -75,6 +89,7 @@ export default function Contact() {
             formData={formData}
             type="contact"
             closeForm={toggleSuccessVisibility}
+            success={isSuccessfulSubmission}
           />
         </>
       )}

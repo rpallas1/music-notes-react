@@ -1,14 +1,24 @@
 import React from "react";
+import classNames from "classnames";
 import { XCircleFill } from "../icons";
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
 
-export default function FormSuccess({ formData, type, closeForm }) {
-  const header =
-    type === "contact"
+export default function FormSuccess({ formData, type, closeForm, success }) {
+  const header = () => {
+    if (!success) {
+      return "Oops! Something went wrong.";
+    }
+
+    return type === "contact"
       ? "Thank you for reaching out!"
       : "Thank you for your feedback!";
+  };
 
   const message = () => {
+    if (!success) {
+      return "Your input could not be submitted at this time. Please try again later.";
+    }
+
     if (type === "contact") {
       return "We will get back to you as soon as possible.";
     }
@@ -37,11 +47,18 @@ export default function FormSuccess({ formData, type, closeForm }) {
     }
   });
 
+  const formSuccessClass = classNames(
+    "form-success overlay-content custom-scroll-bar",
+    {
+      error: !success,
+    },
+  );
+
   return (
-    <section className="form-success overlay-content custom-scroll-bar">
-      <h3>{header}</h3>
+    <section className={formSuccessClass}>
+      <h3>{header()}</h3>
       <p>{message()}</p>
-      <dl>{dataEls}</dl>
+      {success && <dl>{dataEls}</dl>}
       <button
         className="close-modal close-btn"
         aria-label="Close successful form submission modal"

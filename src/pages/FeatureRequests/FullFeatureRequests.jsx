@@ -13,17 +13,31 @@ export default function FullFeatureRequest() {
   const [featureRequest, setFeatureRequest] = React.useState(
     featureRequests.find((req) => req._id === id),
   );
+  const [notFound, setNotFound] = React.useState(false);
 
   React.useEffect(() => {
     if (!featureRequest) {
       fetch(`http://localhost:3000/api/v1/feature-requests/${id}`)
-        .then((res) => res.json())
+        .then((res) => {
+          if (res.ok) {
+            res.json();
+          }
+
+          throw new Error("Feature request not found");
+        })
         .then((data) => {
           setFeatureRequest(data.featureRequest);
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          console.error(err);
+          setNotFound(true);
+        });
     }
   }, []);
+
+  if (notFound) {
+    return <p>Feature request not found</p>;
+  }
 
   return (
     <>

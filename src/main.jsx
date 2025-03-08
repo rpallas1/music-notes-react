@@ -6,6 +6,7 @@ import {
   Route,
   useLocation,
 } from "react-router";
+import { ToastContainer, Slide, toast } from "react-toastify";
 import Layout from "./components/Layout";
 import FeatureRequestsLayout from "./components/FeatureRequestsLayout";
 import FeatureRequests from "./pages/FeatureRequests/FeatureRequests";
@@ -48,6 +49,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+      {/* <ToastContainer /> */}
     </Router>
   );
 }

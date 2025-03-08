@@ -124,6 +124,10 @@
   --tag-implemented-transparent: var(--green-transparent);
   --tag-under-dev: var(--mint);
   --tag-under-dev-transparent: var(--mint-transparent);
+
+  /* Toast styles */
+  --toastify-toast-bd-radius: var(--border-radius);
+  --toastify-font-family: "SFProText", sans-serif;
 }
 
 .sr-only {
@@ -159,6 +163,32 @@ form + .overlay {
 .hidden,
 .not-mobile {
   display: none;
+}
+
+/* Toast styles */
+.Toastify__toast-container {
+  width: calc(100vw - 1rem);
+}
+
+.Toastify__toast {
+  width: 280px;
+  border: var(--stroke-width) solid var(--error);
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.Toastify__toast-theme--light {
+  background: var(--gray-900);
+  color: var(--gray-0);
+}
+
+.Toastify__toast-icon svg * {
+  fill: var(--error);
+}
+
+.Toastify__close-button--light {
+  color: var(--gray-0);
+  opacity: 0.5;
 }
 
 /* ----- GLOBAL STYLES ----- */
@@ -560,6 +590,10 @@ dd {
   z-index: 2000;
 }
 
+.form-success.error {
+  border-color: var(--error);
+}
+
 .form-success h3,
 .form-success p {
   text-align: center;
@@ -692,7 +726,9 @@ nav label:focus-visible {
   height: 3px;
   background-color: var(--gray-0);
   border-radius: 999px;
-  transition: all 0.2s ease-in-out;
+  transition:
+    width 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
 }
 
 .hamburger.top,
@@ -1386,6 +1422,7 @@ main > section {
 
 /* Vote controls styles*/
 .vote-controls {
+  position: relative;
   display: flex;
   gap: 0.625rem;
   align-items: center;
@@ -1393,6 +1430,34 @@ main > section {
   border-radius: var(--border-radius);
   padding: 0.375rem;
   height: 32px;
+}
+
+.vote-error {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60vw;
+  min-width: 170px;
+  max-width: 200px;
+  text-align: center;
+  background-color: var(--gray-900);
+  border: var(--stroke-width) solid var(--error);
+  border-radius: var(--border-radius);
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 500;
+}
+
+.vote-error > svg {
+  width: 2rem;
+  min-width: 2rem;
+}
+
+.vote-error > svg * {
+  fill: var(--error);
 }
 
 .vote-button {
@@ -1779,6 +1844,9 @@ footer a {
 }
 
 @media screen and (max-width: 316px) {
+  .Toastify__toast {
+    width: 230px;
+  }
   .site-logo {
     gap: 0.5rem;
   }

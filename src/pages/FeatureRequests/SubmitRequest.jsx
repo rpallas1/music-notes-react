@@ -29,22 +29,34 @@ export default function SubmitRequest() {
 
   const methods = useForm();
   const [formData, setFormData] = React.useState(null);
+  const [isSuccessfulSubmission, setIsSuccessfulSubmission] =
+    React.useState(true);
 
   const onSubmit = methods.handleSubmit((data) => {
-    methods.reset();
-    setFormData(data);
-    toggleSuccessVisibility();
-
-    localStorage.removeItem(`${formType}-form-data`);
-
-    // fetch("/api/feature-requests", {
     fetch("http://localhost:3000/api/v1/feature-requests", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    }).catch((err) => console.error(err));
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to submit form");
+        }
+
+        methods.reset();
+        setIsSuccessfulSubmission(true);
+        localStorage.removeItem(`${formType}-form-data`);
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsSuccessfulSubmission(false);
+      })
+      .finally(() => {
+        setFormData(data);
+        toggleSuccessVisibility();
+      });
   });
 
   const titleValidation = textValidations("title", "Title", 50, true);
@@ -169,6 +181,7 @@ export default function SubmitRequest() {
             formData={formData}
             type="submit-request"
             closeForm={toggleSuccessVisibility}
+            success={isSuccessfulSubmission}
           />
         </>
       )}

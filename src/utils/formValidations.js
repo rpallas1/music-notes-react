@@ -42,7 +42,7 @@ function emailValidations(required = false) {
       },
       maxLength: {
         value: 100,
-        message: `Email cannot exceed 100 characters`,
+        message: "Email cannot exceed 100 characters",
       },
     },
   };

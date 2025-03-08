@@ -25,3 +25,4 @@ export { default as XMark } from "./XMark";
 export { default as FolderFill } from "./FolderFill";
 export { default as PinFill } from "./PinFill";
 export { default as ArrowUpArrowDown } from "./ArrowUpArrowDown";
+export { default as ExclamationMarkTriangle } from "./ExclamationMarkTriangle";
