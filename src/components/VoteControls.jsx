@@ -8,86 +8,116 @@ import {
   ArrowShapeDownFill,
 } from "../icons";
 
-export default function VoteControls({ count = 0, id }) {
+export default function VoteControls({ initialVoteCount = 0, id }) {
   const { fetchFeatureRequests, setIsVoteError } = useOutletContext();
-  const [isUpvoted, setIsUpvoted] = React.useState(
-    localStorage.getItem(`upvoted-${id}`) === "true" || false,
-  );
-  const [isDownvoted, setIsDownvoted] = React.useState(
-    localStorage.getItem(`downvoted-${id}`) === "true" || false,
-  );
-  const [voteCount, setVoteCount] = React.useState(count);
-  const namespace = `http://localhost:3000/api/v1/feature-requests/${id}/`;
-  let endpoint = namespace;
+  const [isUpvoted, setIsUpvoted] = React.useState(false);
+  const [isDownvoted, setIsDownvoted] = React.useState(false);
+  const [voteCount, setVoteCount] = React.useState(initialVoteCount);
 
-  function toggleUpVote() {
-    endpoint += isUpvoted ? "downvote" : "upvote";
+  React.useEffect(() => {
+    setIsUpvoted(localStorage.getItem(`upvoted-${id}`) === "true");
+    setIsDownvoted(localStorage.getItem(`downvoted-${id}`) === "true");
+  }, [id]);
 
-    updateVoteCount();
-
-    // TODO: Don't update if there is a vote error
-
-    if (isDownvoted) {
-      endpoint = namespace + "upvote";
-      updateVoteCount();
-    }
-
-    setIsUpvoted((prev) => {
-      localStorage.setItem(`upvoted-${id}`, !prev);
-
-      return !prev;
-    });
-
-    setIsDownvoted(false);
-    localStorage.removeItem(`downvoted-${id}`);
-  }
-
-  function toggleDownVote() {
-    endpoint += isDownvoted ? "upvote" : "downvote";
-
-    updateVoteCount();
-
-    // TODO: Don't update if there is a vote error
+  const toggleUpVote = async () => {
+    let newVoteValue;
 
     if (isUpvoted) {
-      endpoint = namespace + "downvote";
-      updateVoteCount();
+      newVoteValue = -1;
+    } else {
+      newVoteValue = 1;
+
+      if (isDownvoted) {
+        const downvoteRemovalSuccess = await updateVoteCount(1);
+
+        if (!downvoteRemovalSuccess) {
+          return;
+        }
+      }
     }
 
-    setIsDownvoted((prev) => {
-      localStorage.setItem(`downvoted-${id}`, !prev);
+    const success = await updateVoteCount(newVoteValue);
 
-      return !prev;
-    });
+    if (!success) {
+      return;
+    }
 
-    setIsUpvoted(false);
-    localStorage.removeItem(`upvoted-${id}`);
-  }
+    const newUpvotedState = !isUpvoted;
+    setIsUpvoted(newUpvotedState);
+    localStorage.setItem(`upvoted-${id}`, newUpvotedState);
 
-  function updateVoteCount() {
-    fetch(endpoint, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to update vote count");
-        }
-
-        setIsVoteError(false);
-
-        return res.json();
-      })
-      .then((data) => setVoteCount(data.featureRequest.voteCount))
-      .catch((err) => {
-        console.error(err);
-        setIsVoteError(true);
-      });
+    if (isDownvoted) {
+      setIsDownvoted(false);
+      localStorage.removeItem(`downvoted-${id}`);
+    }
 
     fetchFeatureRequests();
-  }
+  };
+
+  const toggleDownVote = async () => {
+    let newVoteValue;
+
+    if (isDownvoted) {
+      newVoteValue = 1;
+    } else {
+      newVoteValue = -1;
+
+      if (isUpvoted) {
+        const upvoteRemovalSuccess = await updateVoteCount(-1);
+
+        if (!upvoteRemovalSuccess) {
+          return;
+        }
+      }
+    }
+
+    const success = await updateVoteCount(newVoteValue);
+
+    if (!success) {
+      return;
+    }
+
+    const newDownvotedState = !isDownvoted;
+    setIsDownvoted(newDownvotedState);
+    localStorage.setItem(`downvoted-${id}`, newDownvotedState);
+
+    if (isUpvoted) {
+      setIsUpvoted(false);
+      localStorage.removeItem(`upvoted-${id}`);
+    }
+
+    fetchFeatureRequests();
+  };
+
+  const updateVoteCount = async (voteValue) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/v1/feature-requests/${id}/votes`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            value: voteValue,
+          }),
+        },
+      );
+
+      if (!res.ok) {
+        throw new Error("Failed to update vote count");
+      }
+
+      const data = await res.json();
+      setVoteCount(data.featureRequest.voteCount);
+
+      return true;
+    } catch (err) {
+      console.error(err);
+      setIsVoteError(true);
+      return false;
+    }
+  };
 
   return (
     <div className="vote-controls">

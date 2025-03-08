@@ -50,7 +50,7 @@ export default function FullFeatureRequest() {
           </p>
           <div>
             <VoteControls
-              count={featureRequest.voteCount}
+              initialVoteCount={featureRequest.voteCount}
               id={featureRequest._id}
             />
             <Tag tag={featureRequest.tag} compact={false} />

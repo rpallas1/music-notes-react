@@ -105,7 +105,7 @@ export default function FeatureRequestsLayout() {
         </div>
         <div>
           <VoteControls
-            count={featureRequest.voteCount}
+            initialVoteCount={featureRequest.voteCount}
             id={featureRequest._id}
           />
           <p className="date-created">

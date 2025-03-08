@@ -7,7 +7,7 @@ export default function FeatureRequestsLayout() {
   const [featureRequests, setFeatureRequests] = React.useState([]);
   const [isFetchError, setIsFetchError] = React.useState(false);
   const [isVoteError, setIsVoteError] = React.useState(false);
-  const voteErrorId = "vote-error-toast";
+  const voteErrorId = React.useRef(null);
 
   const fetchFeatureRequests = () => {
     fetch("http://localhost:3000/api/v1/feature-requests")
@@ -30,9 +30,13 @@ export default function FeatureRequestsLayout() {
       return;
     }
 
-    toast.error("Failed to update vote", {
-      toastId: voteErrorId,
-    });
+    toast.dismiss(voteErrorId.current);
+
+    if (!toast.isActive(voteErrorId.current)) {
+      voteErrorId.current = toast.error("Failed to update vote", {
+        onClose: () => setIsVoteError(false),
+      });
+    }
   }, [isVoteError]);
 
   React.useEffect(() => {
@@ -46,6 +50,7 @@ export default function FeatureRequestsLayout() {
           featureRequests,
           fetchFeatureRequests,
           isFetchError,
+          isVoteError,
           setIsVoteError,
         }}
       />
