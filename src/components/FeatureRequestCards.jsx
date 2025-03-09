@@ -6,7 +6,7 @@ import Tag from "./Tag";
 import VoteControls from "./VoteControls";
 
 export default function FeatureRequestsLayout() {
-  const { featureRequests, isFetchError } = useOutletContext();
+  const { featureRequests, fetchError } = useOutletContext();
   const [searchParams] = useSearchParams();
 
   const cardEls = featureRequests
@@ -120,9 +120,9 @@ export default function FeatureRequestsLayout() {
   }
 
   const renderContent = () => {
-    if (isFetchError) {
+    if (fetchError) {
       return (
-        <p className="message">An error occurred. Please try again later.</p>
+        <p className="message">{`${fetchError}. Please try again later.`}</p>
       );
     } else if (featureRequests.length === 0) {
       return <p className="loading message">Loading...</p>;

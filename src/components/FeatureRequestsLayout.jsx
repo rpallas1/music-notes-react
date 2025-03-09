@@ -5,11 +5,11 @@ import { ExclamationMarkTriangle } from "../icons";
 
 export default function FeatureRequestsLayout() {
   const [featureRequests, setFeatureRequests] = React.useState([]);
-  const [isFetchError, setIsFetchError] = React.useState(false);
+  const [fetchError, setFetchError] = React.useState(null);
   const [isVoteError, setIsVoteError] = React.useState(false);
   const voteErrorId = React.useRef(null);
 
-  const fetchFeatureRequests = () => {
+  const fetchFeatureRequests = async () => {
     fetch("http://localhost:3000/api/v1/feature-requests")
       .then((res) => {
         if (!res.ok) {
@@ -20,8 +20,7 @@ export default function FeatureRequestsLayout() {
       })
       .then((data) => setFeatureRequests(data.featureRequests))
       .catch((err) => {
-        console.error(err);
-        setIsFetchError(true);
+        setFetchError(err.message);
       });
   };
 
@@ -49,7 +48,7 @@ export default function FeatureRequestsLayout() {
         context={{
           featureRequests,
           fetchFeatureRequests,
-          isFetchError,
+          fetchError,
           isVoteError,
           setIsVoteError,
         }}
