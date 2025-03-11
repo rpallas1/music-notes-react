@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import { ExclamationMarkTriangle } from "../icons";
+import { getFeatureRequests } from "../utils/api";
 
 export default function FeatureRequestsLayout() {
   const [featureRequests, setFeatureRequests] = React.useState([]);
@@ -10,17 +11,12 @@ export default function FeatureRequestsLayout() {
   const voteErrorId = React.useRef(null);
 
   const fetchFeatureRequests = async () => {
-    fetch("http://localhost:3000/api/v1/feature-requests")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to fetch feature requests");
-        }
-
-        return res.json();
+    getFeatureRequests()
+      .then((data) => {
+        setFeatureRequests(data.featureRequests);
       })
-      .then((data) => setFeatureRequests(data.featureRequests))
       .catch((err) => {
-        setFetchError(err.message);
+        setFetchError("Network request failed");
       });
   };
 

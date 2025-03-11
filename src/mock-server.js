@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 createServer({
   models: {
     featureRequest: Model,
+    contactForm: Model,
   },
 
   seeds(server) {
@@ -99,7 +100,7 @@ createServer({
   },
 
   routes() {
-    this.namespace = "api";
+    this.namespace = "/sample/api/v1";
     this.logging = false;
     this.passthrough("http://localhost:3000/api/**");
 
@@ -113,18 +114,18 @@ createServer({
       return schema.featureRequests.find(id);
     });
 
-    this.put("/feature-requests/:id/upvote", (schema, request) => {
+    this.patch("/feature-requests/:id/votes", (schema, request) => {
       const id = request.params.id;
+      const { value } = JSON.parse(request.requestBody);
       let featureRequest = schema.featureRequests.find(id);
 
-      return featureRequest.update({ voteCount: featureRequest.voteCount + 1 });
-    });
+      if (value !== 1 && value !== -1) {
+        return new Response(400, {}, { error: "Invalid vote value" });
+      }
 
-    this.put("/feature-requests/:id/downvote", (schema, request) => {
-      const id = request.params.id;
-      let featureRequest = schema.featureRequests.find(id);
-
-      return featureRequest.update({ voteCount: featureRequest.voteCount - 1 });
+      return featureRequest.update({
+        voteCount: featureRequest.voteCount + value,
+      });
     });
 
     this.post("/feature-requests", (schema, request) => {
@@ -140,6 +141,16 @@ createServer({
         voteCount: 0,
         dateCreated: new Date().getTime(),
         tag: tag,
+      });
+    });
+
+    this.post("/contact-form", (schema, request) => {
+      const attrs = JSON.parse(request.requestBody);
+
+      return schema.contactForms.create({
+        ...attrs,
+        id: uuidv4(),
+        dateCreated: new Date().getTime(),
       });
     });
   },

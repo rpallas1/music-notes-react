@@ -5,31 +5,25 @@ import BackLink from "../../components/BackLink";
 import CloseModalLink from "../../components/CloseModalLink";
 import VoteControls from "../../components/VoteControls";
 import Tag from "../../components/Tag";
+import { getFeatureRequest } from "../../utils/api";
 
 export default function FullFeatureRequest() {
   const location = useLocation();
   const id = location.state?.requestId || location.pathname.split("/").pop();
   const { featureRequests } = useOutletContext();
   const [featureRequest, setFeatureRequest] = React.useState(
-    featureRequests.find((req) => req._id === id),
+    featureRequests.find((req) => req._id === id || req.id === id),
   );
   const [notFound, setNotFound] = React.useState(false);
 
   React.useEffect(() => {
     if (!featureRequest) {
-      fetch(`http://localhost:3000/api/v1/feature-requests/${id}`)
-        .then((res) => {
-          if (res.ok) {
-            res.json();
-          }
-
-          throw new Error("Feature request not found");
-        })
+      getFeatureRequest(id)
         .then((data) => {
           setFeatureRequest(data.featureRequest);
         })
         .catch((err) => {
-          console.error(err);
+          console.error(err.message);
           setNotFound(true);
         });
     }
@@ -51,7 +45,7 @@ export default function FullFeatureRequest() {
           <div>
             <VoteControls
               initialVoteCount={featureRequest.voteCount}
-              id={featureRequest._id}
+              id={featureRequest._id || featureRequest.id}
             />
             <Tag tag={featureRequest.tag} compact={false} />
           </div>

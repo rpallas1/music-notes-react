@@ -28,7 +28,8 @@ export default function FeatureRequestsLayout() {
 
       const dateFilters = searchParams.get("date").split(",");
       const currentDate = searchParams.get("current-date") || new Date();
-      const dateDiff = Math.abs(currentDate - featureRequest.dateCreated);
+      const dateCreated = new Date(featureRequest.dateCreated);
+      const dateDiff = Math.abs(currentDate - dateCreated);
 
       if (dateFilters.includes("past-week")) {
         return dateDiff <= 604800000;
@@ -47,13 +48,15 @@ export default function FeatureRequestsLayout() {
         return true;
       }
 
-      const searchQuery = decodeURI(searchParams.get("search").toLowerCase());
+      const searchQuery = decodeURI(
+        searchParams.get("search").trim().toLowerCase(),
+      );
 
       if (featureRequest.title.toLowerCase().includes(searchQuery)) {
         return true;
       }
 
-      if (featureRequest.summary.toLowerCase().includes(searchQuery)) {
+      if (featureRequest.summary?.toLowerCase().includes(searchQuery)) {
         return true;
       }
 
@@ -76,22 +79,23 @@ export default function FeatureRequestsLayout() {
       }
     })
     .map((featureRequest) => (
-      <div className="feature-request-card" key={featureRequest._id}>
+      <div
+        className="feature-request-card"
+        key={featureRequest._id || featureRequest.id}
+      >
         <div>
           <div>
             <h3>{featureRequest.title}</h3>
             <p>
-              {featureRequest.summary.length > 0 ? (
-                <>{truncate(featureRequest.summary, 120)}</>
-              ) : (
-                <>{truncate(featureRequest.description, 120)}</>
-              )}
+              {featureRequest.summary?.length > 0
+                ? truncate(featureRequest.summary, 120)
+                : truncate(featureRequest.description, 120)}
             </p>
             <Link
-              to={featureRequest._id}
+              to={featureRequest._id || featureRequest.id}
               className="view-request text-link"
               state={{
-                requestId: featureRequest.id,
+                requestId: featureRequest._id || featureRequest.id,
                 prevLocation: location.pathname,
               }}
             >
@@ -106,7 +110,7 @@ export default function FeatureRequestsLayout() {
         <div>
           <VoteControls
             initialVoteCount={featureRequest.voteCount}
-            id={featureRequest._id}
+            id={featureRequest._id || featureRequest.id}
           />
           <p className="date-created">
             Created on {formatDate(featureRequest.dateCreated)}

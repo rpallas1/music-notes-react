@@ -7,6 +7,7 @@ import {
   ArrowShapeUpFill,
   ArrowShapeDownFill,
 } from "../icons";
+import { updateVoteCount } from "../utils/api";
 
 export default function VoteControls({ initialVoteCount = 0, id }) {
   const { fetchFeatureRequests, setIsVoteError } = useOutletContext();
@@ -28,7 +29,7 @@ export default function VoteControls({ initialVoteCount = 0, id }) {
       newVoteValue = 1;
 
       if (isDownvoted) {
-        const downvoteRemovalSuccess = await updateVoteCount(1);
+        const downvoteRemovalSuccess = await updateFeatureRequest(1);
 
         if (!downvoteRemovalSuccess) {
           return;
@@ -36,7 +37,7 @@ export default function VoteControls({ initialVoteCount = 0, id }) {
       }
     }
 
-    const success = await updateVoteCount(newVoteValue);
+    const success = await updateFeatureRequest(newVoteValue);
 
     if (!success) {
       return;
@@ -63,7 +64,7 @@ export default function VoteControls({ initialVoteCount = 0, id }) {
       newVoteValue = -1;
 
       if (isUpvoted) {
-        const upvoteRemovalSuccess = await updateVoteCount(-1);
+        const upvoteRemovalSuccess = await updateFeatureRequest(-1);
 
         if (!upvoteRemovalSuccess) {
           return;
@@ -71,7 +72,7 @@ export default function VoteControls({ initialVoteCount = 0, id }) {
       }
     }
 
-    const success = await updateVoteCount(newVoteValue);
+    const success = await updateFeatureRequest(newVoteValue);
 
     if (!success) {
       return;
@@ -89,32 +90,17 @@ export default function VoteControls({ initialVoteCount = 0, id }) {
     fetchFeatureRequests();
   };
 
-  const updateVoteCount = async (voteValue) => {
+  const updateFeatureRequest = async (voteValue) => {
     try {
-      const res = await fetch(
-        `http://localhost:3000/api/v1/feature-requests/${id}/votes`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            value: voteValue,
-          }),
-        },
-      );
+      const data = await updateVoteCount(id, voteValue);
 
-      if (!res.ok) {
-        throw new Error("Failed to update vote count");
-      }
-
-      const data = await res.json();
       setVoteCount(data.featureRequest.voteCount);
 
       return true;
     } catch (err) {
       console.error(err);
       setIsVoteError(true);
+
       return false;
     }
   };

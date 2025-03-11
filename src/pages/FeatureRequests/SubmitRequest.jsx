@@ -13,6 +13,7 @@ import {
   textAreaValidations,
   emailValidations,
 } from "../../utils/formValidations";
+import { createFeatureRequest } from "../../utils/api";
 import Input from "../../components/Input";
 
 export default function SubmitRequest() {
@@ -33,18 +34,8 @@ export default function SubmitRequest() {
     React.useState(true);
 
   const onSubmit = methods.handleSubmit((data) => {
-    fetch("http://localhost:3000/api/v1/feature-requests", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to submit form");
-        }
-
+    createFeatureRequest(data)
+      .then(() => {
         methods.reset();
         setIsSuccessfulSubmission(true);
         localStorage.removeItem(`${formType}-form-data`);

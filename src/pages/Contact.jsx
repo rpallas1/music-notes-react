@@ -9,6 +9,7 @@ import {
   emailValidations,
   textValidations,
 } from "../utils/formValidations";
+import { createContactForm } from "../utils/api";
 
 export default function Contact() {
   const methods = useForm();
@@ -20,21 +21,10 @@ export default function Contact() {
     React.useState(true);
 
   const onSubmit = methods.handleSubmit((data) => {
-    fetch("http://localhost:3000/api/v1/contact-form", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to submit form");
-        }
-
+    createContactForm(data)
+      .then(() => {
         methods.reset();
         setIsSuccessfulSubmission(true);
-
         localStorage.removeItem(`${formType}-form-data`);
       })
       .catch((err) => {
