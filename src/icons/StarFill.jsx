@@ -5,7 +5,12 @@ const StarFill = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="26.0251"
     height="26.543"
+    viewBox="0 0 26.0251 26.543"
+    aria-describedby="star-fill-title star-fill-desc"
+    role="img"
   >
+    <title id="star-fill-title">Filled star</title>
+    <desc id="star-fill-desc">Icon of a filled star to indicate favorite</desc>
     <g>
       <rect height="26.543" opacity="0" width="26.0251" x="0" y="0" />
       <path

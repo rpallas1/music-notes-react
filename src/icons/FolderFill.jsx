@@ -6,7 +6,13 @@ const FolderFill = () => (
     width="26.6133"
     height="21.5977"
     viewBox="0 0 26.6133 21.5977"
+    aria-describedby="folder-fill-title folder-fill-desc"
+    role="img"
   >
+    <title id="folder-fill-title">Folder icon</title>
+    <desc id="folder-fill-desc">
+      Folder icon to indicate a collection of music notes
+    </desc>
     <g>
       <rect height="21.5977" opacity="0" width="26.6133" x="0" y="0" />
       <path

@@ -5,7 +5,14 @@ const PlayNext = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="31.0195"
     height="24.0408"
+    viewBox="0 0 31.0195 24.0408"
+    aria-describedby="play-next-title play-next-desc"
+    role="img"
   >
+    <title id="play-next-title">Play next icon</title>
+    <desc id="play-next-desc">
+      Play next icon to indicate skipping to the next song
+    </desc>
     <g>
       <rect height="24.0408" opacity="0" width="31.0195" x="0" y="0" />
       <path

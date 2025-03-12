@@ -6,7 +6,11 @@ const XMark = () => (
     width="18.583"
     height="18.5948"
     viewBox="0 0 18.583 18.5948"
+    aria-describedby="x-mark-title x-mark-desc"
+    role="img"
   >
+    <title id="x-mark-title">X Mark icon</title>
+    <desc id="x-mark-desc">X Mark icon to indicate close functionality</desc>
     <g>
       <rect height="18.5948" opacity="0" width="18.583" x="0" y="0" />
       <path

@@ -6,7 +6,15 @@ const ExplamationMarkTriangle = () => (
     width="24.5625"
     height="22.3945"
     viewBox="0 0 24.5625 22.3945"
+    aria-describedby="exclamation-mark-triangle-title exclamation-mark-triangle-desc"
+    role="img"
   >
+    <title id="exclamation-mark-triangle-title">
+      Exclamation mark in a triangle
+    </title>
+    <desc id="exclamation-mark-triangle-desc">
+      Warning icon to indicate an error
+    </desc>
     <g>
       <rect height="22.3945" opacity="0" width="24.5625" x="0" y="0" />
       <path

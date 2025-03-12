@@ -6,7 +6,13 @@ const CheckmarkSquare = () => (
     width="21.5742"
     height="21.5977"
     viewBox="0 0 21.5742 21.5977"
+    aria-describedby="checkmark-square-title checkmark-square-desc"
+    role="img"
   >
+    <title id="checkmark-square-title">Checkmark in square</title>
+    <desc id="checkmark-square-desc">
+      Checkmark in square to indicate feature request that is implemented
+    </desc>
     <g>
       <rect height="21.5977" opacity="0" width="21.5742" x="0" y="0" />
       <path

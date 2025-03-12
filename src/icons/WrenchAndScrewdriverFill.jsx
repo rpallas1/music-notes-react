@@ -6,7 +6,16 @@ const WrenchAndScrewdriverFill = () => (
     width="27.8449"
     height="28.1837"
     viewBox="0 0 27.8449 28.1837"
+    aria-describedby="wrench-and-screwdriver-fill-title wrench-and-screwdriver-fill-desc"
+    role="img"
   >
+    <title id="wrench-and-screwdriver-fill-title">
+      Wrench and screwdriver icon
+    </title>
+    <desc id="wrench-and-screwdriver-fill-desc">
+      Wrench and screwdriver icon to indicate feature request in under
+      development
+    </desc>
     <g>
       <rect height="28.1837" opacity="0" width="27.8449" x="0" y="0" />
       <path

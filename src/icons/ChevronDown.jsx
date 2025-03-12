@@ -5,7 +5,14 @@ const ChevronDown = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="20.3555"
     height="12.4805"
+    viewBox="0 0 20.3555 12.4805"
+    aria-describedby="chevron-down-title chevron-down-desc"
+    role="img"
   >
+    <title id="chevron-down-title">Chevron pointing down</title>
+    <desc id="chevron-down-desc">
+      Downward-pointing chevron to indicate descending sort order
+    </desc>
     <g>
       <rect height="12.4805" opacity="0" width="20.3555" x="0" y="0" />
       <path

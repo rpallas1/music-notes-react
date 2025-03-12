@@ -7,7 +7,13 @@ const XCircleFill = () => (
     width={23.906}
     height={23.918}
     viewBox="0 0 23.906 23.918"
+    aria-describedby="x-circle-fill-title x-circle-fill-desc"
+    role="img"
   >
+    <title id="x-circle-fill-title">X Circle icon</title>
+    <desc id="x-circle-fill-desc">
+      X Circle icon to indicate closing a modal or dialog
+    </desc>
     <g>
       <rect height={23} width={23} opacity={0} x={0} y={0} />
       <path

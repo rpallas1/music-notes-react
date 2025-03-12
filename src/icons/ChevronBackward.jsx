@@ -6,7 +6,13 @@ const ChevronBackward = () => (
     width="11.4609"
     height="20.3555"
     viewBox="0 0 11.4609 20.3555"
+    aria-describedby="chevron-backward-title chevron-backward-desc"
+    role="img"
   >
+    <title id="chevron-backward-title">Chevron pointing backward</title>
+    <desc id="chevron-backward-desc">
+      Leftward-pointing chevron to indicate backward navigation
+    </desc>
     <g>
       <rect height="20.3555" opacity="0" width="11.4609" x="0" y="0" />
       <path

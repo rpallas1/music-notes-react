@@ -6,7 +6,13 @@ const ArrowShapeUp = () => (
     width="21.5039"
     height="25.2773"
     viewBox="0 0 21.5039 25.2773"
+    aria-describedby="arrow-shape-up-title arrow-shape-up-desc"
+    role="img"
   >
+    <title id="arrow-shape-up-title">Arrow pointing up</title>
+    <desc id="arrow-shape-up-desc">
+      Outline of upward-pointing arrow to indicate deselected state of upvote
+    </desc>
     <g>
       <rect height="25.2773" opacity="0" width="21.5039" x="0" y="0" />
       <path

@@ -6,7 +6,13 @@ const MagnifyingGlass = () => (
     width="22.8984"
     height="23.1211"
     viewBox="0 0 22.8984 23.1211"
+    aria-describedby="magnifying-glass-title magnifying-glass-desc"
+    role="img"
   >
+    <title id="magnifying-glass-title">Magnifying glass</title>
+    <desc id="magnifying-glass-desc">
+      Icon of a magnifying glass to indicate search functionality
+    </desc>
     <g>
       <rect height="23.1211" opacity="0" width="22.8984" x="0" y="0" />
       <path

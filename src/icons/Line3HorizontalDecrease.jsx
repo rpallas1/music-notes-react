@@ -5,7 +5,16 @@ const Line3HorizontalDecrease = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="23.707"
     height="13.9805"
+    viewBox="0 0 23.707 13.9805"
+    aria-describedby="line3-horizontal-decrease-title line3-horizontal-decrease-desc"
+    role="img"
   >
+    <title id="line3-horizontal-decrease-title">
+      Three horizontal lines with decrease
+    </title>
+    <desc id="line3-horizontal-decrease-desc">
+      Icon of three horizontal lines with decrease to indicate filter menu
+    </desc>
     <g>
       <rect height="13.9805" opacity="0" width="23.707" x="0" y="0" />
       <path

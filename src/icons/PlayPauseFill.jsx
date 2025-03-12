@@ -5,7 +5,14 @@ const PlayPauseFill = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="35.2031"
     height="19.0898"
+    viewBox="0 0 35.2031 19.0898"
+    aria-describedby="play-pause-fill-title play-pause-fill-desc"
+    role="img"
   >
+    <title id="play-pause-fill-title">Play/Pause icon</title>
+    <desc id="play-pause-fill-desc">
+      Play/Pause icon to indicate play/pause functionality
+    </desc>
     <g>
       <rect height="19.0898" opacity="0" width="35.2031" x="0" y="0" />
       <path

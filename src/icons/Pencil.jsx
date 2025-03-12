@@ -6,7 +6,13 @@ const Pencil = () => (
     width="18.6761"
     height="18.623"
     viewBox="0 0 18.6761 18.623"
+    aria-describedby="pencil-title pencil-desc"
+    role="img"
   >
+    <title id="pencil-title">Pencil icon</title>
+    <desc id="pencil-desc">
+      Pencil icon to indicate note taking functionality
+    </desc>
     <g>
       <rect height="18.623" opacity="0" width="18.6761" x="0" y="0" />
       <path

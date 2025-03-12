@@ -5,7 +5,14 @@ const ChevronUp = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="20.3555"
     height="12.4102"
+    viewBox="0 0 20.3555 12.4102"
+    aria-describedby="chevron-up-title chevron-up-desc"
+    role="img"
   >
+    <title id="chevron-up-title">Chevron pointing up</title>
+    <desc id="chevron-up-desc">
+      Upward-pointing chevron to indicate ascending sort order
+    </desc>
     <g>
       <rect height="12.4102" opacity="0" width="20.3555" x="0" y="0" />
       <path

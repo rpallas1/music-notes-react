@@ -6,7 +6,13 @@ const InfoCircle = () => (
     width={23.9062}
     height={23.918}
     viewBox="0 0 23.9062 23.918"
+    aria-describedby="info-circle-title info-circle-desc"
+    role="img"
   >
+    <title id="info-circle-title">Information icon</title>
+    <desc id="info-circle-desc">
+      Information icon to indicate additional details
+    </desc>
     <g>
       <rect height={23.91} opacity={0} width={23.9062} x={0} y={0} />
       <path

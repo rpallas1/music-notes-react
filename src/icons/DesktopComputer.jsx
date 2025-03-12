@@ -6,7 +6,13 @@ const DesktopComputer = () => (
     width="27.9375"
     height="24.4336"
     viewBox="0 0 27.9375 24.4336"
+    aria-describedby="desktop-computer-title desktop-computer-desc"
+    role="img"
   >
+    <title id="desktop-computer-title">Desktop computer</title>
+    <desc id="desktop-computer-desc">
+      Desktop computer icon to indicate device color scheme
+    </desc>
     <g>
       <rect height="24.4336" opacity="0" width="27.9375" x="0" y="0" />
       <path

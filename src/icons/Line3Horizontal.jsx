@@ -6,7 +6,13 @@ const Line3Horizontal = () => (
     width="23.707"
     height="12.0352"
     viewBox="0 0 23.707 12.0352"
+    aria-describedby="line3-horizontal-title line3-horizontal-desc"
+    role="img"
   >
+    <title id="line3-horizontal-title">Three horizontal lines</title>
+    <desc id="line3-horizontal-desc">
+      Icon of three horizontal lines to indicate dropdown menu
+    </desc>
     <g>
       <rect height="12.0352" opacity="0" width="23.707" x="0" y="0" />
       <path

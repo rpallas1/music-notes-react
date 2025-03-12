@@ -6,7 +6,13 @@ const ArrowShapeUpFill = () => (
     width="21.5039"
     height="25.3008"
     viewBox="0 0 21.5039 25.2773"
+    aria-describedby="arrow-shape-up-fill-title arrow-shape-up-fill-desc"
+    role="img"
   >
+    <title id="arrow-shape-up-fill-title">Filled arrow pointing up</title>
+    <desc id="arrow-shape-up-fill-desc">
+      Filled upward-pointing arrow to indicate selected state of upvote
+    </desc>
     <g>
       <rect height="25.3008" opacity="0" width="21.5039" x="0" y="0" />
       <path

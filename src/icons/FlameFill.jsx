@@ -6,7 +6,13 @@ const FlameFill = () => (
     width="19.5234"
     height="27.4805"
     viewBox="0 0 19.5234 27.4805"
+    aria-describedby="flame-fill-title flame-fill-desc"
+    role="img"
   >
+    <title id="flame-fill-title">Flame</title>
+    <desc id="flame-fill-desc">
+      Flame icon to indicate hot or trending content
+    </desc>
     <g>
       <rect height="27.4805" opacity="0" width="19.5234" x="0" y="0" />
       <path

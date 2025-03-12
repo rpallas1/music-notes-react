@@ -6,7 +6,14 @@ const ArrowUpArrowDown = () => (
     width="27.4219"
     height="22.0342"
     viewBox="0 0 27.4219 22.0342"
+    aria-describedby="arrow-up-arrow-down-title arrow-up-arrow-down-desc"
+    role="img"
   >
+    <title id="arrow-up-arrow-down-title">Arrow pointing up and down</title>
+    <desc id="arrow-up-arrow-down-desc">
+      Outline of upward-pointing and downward-pointing arrows to indicate
+      sorting
+    </desc>
     <g>
       <rect height="22.0342" opacity="0" width="27.4219" x="0" y="0" />
       <path

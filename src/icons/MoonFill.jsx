@@ -6,7 +6,11 @@ const MoonFill = () => (
     width="23.1211"
     height="23.2617"
     viewBox="0 0 23.1211 23.2617"
+    aria-describedby="moon-fill-title moon-fill-desc"
+    role="img"
   >
+    <title id="moon-fill-title">Moon icon</title>
+    <desc id="moon-fill-desc">Moon icon to indicate dark mode</desc>
     <g>
       <rect height="23.2617" opacity="0" width="23.1211" x="0" y="0" />
       <path

@@ -6,7 +6,14 @@ const ArrowShapeDown = () => (
     width="21.5039"
     height="25.2773"
     viewBox="0 0 21.5039 25.2773"
+    aria-describedby="arrow-shape-down-title arrow-shape-down-desc"
+    role="img"
   >
+    <title id="arrow-shape-down-title">Arrow pointing down</title>
+    <desc id="arrow-shape-down-desc">
+      Outline of downward-pointing arrow to indicate deselected state of
+      downvote
+    </desc>
     <g>
       <rect height="25.2773" opacity="0" width="21.5039" x="0" y="0" />
       <path

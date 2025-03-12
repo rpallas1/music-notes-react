@@ -6,7 +6,11 @@ const PinFill = () => (
     width="18.1992"
     height="28.043"
     viewBox="0 0 18.1992 28.043"
+    aria-describedby="pin-fill-title pin-fill-desc"
+    role="img"
   >
+    <title id="pin-fill-title">Pin icon</title>
+    <desc id="pin-fill-desc">Pin icon to indicate a pinning a note</desc>
     <g>
       <rect height="28.043" opacity="0" width="18.1992" x="0" y="0" />
       <path

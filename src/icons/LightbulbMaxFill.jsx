@@ -6,7 +6,13 @@ const LightbulbMaxFill = () => (
     width="27.7266"
     height="40.9102"
     viewBox="0 0 27.7266 40.9102"
+    aria-describedby="lightbulb-max-fill-title lightbulb-max-fill-desc"
+    role="img"
   >
+    <title id="lightbulb-max-fill-title">Lightbulb icon</title>
+    <desc id="lightbulb-max-fill-desc">
+      Lightbulb icon to indicate a feature request is new
+    </desc>
     <g>
       <rect height="40.9102" opacity="0" width="27.7266" x="0" y="0" />
       <path
