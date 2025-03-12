@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { DesktopComputer, SunMaxFill, MoonFill } from "../icons";
-import useThemeDetector from "../hooks/useThemeDetector.js";
+import useThemeDetector from "../hooks/useThemeDetector";
 
 export default function Footer() {
   const isDarkTheme = useThemeDetector();

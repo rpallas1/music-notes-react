@@ -10,6 +10,7 @@ import {
   textValidations,
 } from "../utils/formValidations";
 import { createContactForm } from "../utils/api";
+import log from "../utils/log";
 
 export default function Contact() {
   const methods = useForm();
@@ -28,7 +29,7 @@ export default function Contact() {
         localStorage.removeItem(`${formType}-form-data`);
       })
       .catch((err) => {
-        console.error(err);
+        log.error(err);
         setIsSuccessfulSubmission(false);
       })
       .finally(() => {

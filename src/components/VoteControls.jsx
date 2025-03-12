@@ -8,6 +8,7 @@ import {
   ArrowShapeDownFill,
 } from "../icons";
 import { updateVoteCount } from "../utils/api";
+import log from "../utils/log";
 
 export default function VoteControls({ initialVoteCount = 0, id }) {
   const { fetchFeatureRequests, setIsVoteError } = useOutletContext();
@@ -98,7 +99,7 @@ export default function VoteControls({ initialVoteCount = 0, id }) {
 
       return true;
     } catch (err) {
-      console.error(err);
+      log.error(err);
       setIsVoteError(true);
 
       return false;

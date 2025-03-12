@@ -66,17 +66,23 @@ export default function SortDropdown() {
         <option value="upvotes">Upvotes</option>
       </select>
       <div className="sort-order-checkbox">
+        <label htmlFor="sort-direction" tabIndex="0" onKeyDown={handleKeyDown}>
+          <>
+            {isDescending ? <ChevronUp /> : <ChevronDown />}
+            <span className="sr-only">
+              Sort Order: {isDescending ? "Ascending" : "Descending"}
+            </span>
+          </>
+        </label>
         <input
           type="checkbox"
-          id="sort-order"
+          name="sort-direction"
+          id="sort-direction"
           className="sr-only"
           tabIndex="-1"
           checked={isDescending}
           onChange={toggleSortOrder}
         />
-        <label htmlFor="sort-order" tabIndex="0" onKeyDown={handleKeyDown}>
-          {isDescending ? <ChevronUp /> : <ChevronDown />}
-        </label>
       </div>
     </div>
   );

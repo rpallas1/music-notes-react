@@ -13,7 +13,8 @@ export default function FeatureRequestsLayout() {
   const fetchFeatureRequests = async () => {
     getFeatureRequests()
       .then((data) => {
-        setFeatureRequests(data.featureRequests);
+        // setFeatureRequests(data.featureRequests);
+        setTimeout(() => setFeatureRequests(data.featureRequests), 3000);
       })
       .catch((err) => {
         setFetchError("Network request failed");

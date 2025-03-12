@@ -1,9 +1,16 @@
+import log from "./log";
+
 const development = false;
 
 const API_BASE_URL = () => {
+  if (import.meta.env.PROD) {
+    return "some-production-url";
+  }
+
   if (development) {
     return "/sample/api/v1";
   }
+
   return "http://localhost:3000/api/v1";
 };
 
@@ -14,6 +21,7 @@ const headers = {
 const handleResponse = async (res) => {
   if (!res.ok) {
     const errorData = await res.json();
+
     throw new Error(errorData.message || "Something went wrong");
   }
 

@@ -5,6 +5,7 @@ import BackLink from "../../components/BackLink";
 import CancelLink from "../../components/CancelLink";
 import CloseModalLink from "../../components/CloseModalLink";
 import FormSuccess from "../../components/FormSuccess";
+import Input from "../../components/Input";
 import { InfoCircle, XCircleFill } from "../../icons";
 import useOverlay from "../../hooks/useOverlay";
 import useFormType from "../../hooks/useFormType";
@@ -14,7 +15,7 @@ import {
   emailValidations,
 } from "../../utils/formValidations";
 import { createFeatureRequest } from "../../utils/api";
-import Input from "../../components/Input";
+import log from "../../utils/log";
 
 export default function SubmitRequest() {
   const location = useLocation();
@@ -41,7 +42,7 @@ export default function SubmitRequest() {
         localStorage.removeItem(`${formType}-form-data`);
       })
       .catch((err) => {
-        console.error(err);
+        log.error(err);
         setIsSuccessfulSubmission(false);
       })
       .finally(() => {

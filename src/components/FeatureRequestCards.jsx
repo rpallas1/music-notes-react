@@ -4,6 +4,7 @@ import truncate from "../utils/truncate";
 import formatDate from "../utils/formatDate";
 import Tag from "./Tag";
 import VoteControls from "./VoteControls";
+import Spinner from "./Spinner";
 
 export default function FeatureRequestsLayout() {
   const { featureRequests, fetchError } = useOutletContext();
@@ -128,8 +129,8 @@ export default function FeatureRequestsLayout() {
       return (
         <p className="message">{`${fetchError}. Please try again later.`}</p>
       );
-    } else if (featureRequests.length === 0) {
-      return <p className="loading message">Loading...</p>;
+    } else if (cardEls.length === 0) {
+      return <Spinner delay={750} />;
     } else if (cardEls.length > 0) {
       return cardEls;
     } else {
