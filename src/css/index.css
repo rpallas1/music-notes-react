@@ -419,6 +419,7 @@ form + .overlay {
 /* Spinner styles */
 .spinner-wrapper {
   margin-top: 1.5rem;
+  margin-bottom: auto;
 }
 
 .spinner-container {
@@ -433,6 +434,10 @@ form + .overlay {
   font-weight: var(--font-weight-display-regular);
   color: var(--gray-50);
   margin-top: 1rem;
+}
+
+.spinner div div {
+  background: var(--gray-10);
 }
 
 @keyframes spinner-line-fade-default {
@@ -821,10 +826,6 @@ nav a:focus-visible {
   outline: none;
   border: 2px solid var(--primary);
   border-radius: var(--border-radius);
-}
-
-nav .disabled {
-  pointer-events: none;
 }
 
 .download-app {
@@ -1310,6 +1311,8 @@ main > section {
   margin: 1.5rem 0 3rem;
   width: 100%;
   word-break: break-word;
+  /* min-height: 100vh; */
+  justify-content: flex-start;
 }
 
 .feature-request-card {

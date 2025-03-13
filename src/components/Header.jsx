@@ -90,7 +90,7 @@ export default function Header() {
                 Contact
               </NavLink>
             </li>
-            <li className="download-app disabled">
+            <li className="download-app disabled" inert={true}>
               <NavLink
                 to="#"
                 end

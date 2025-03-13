@@ -5,7 +5,7 @@ import FilterDropdown from "../../components/FilterDropdown";
 import SortDropdown from "../../components/SortDropdown";
 import SearchBar from "../../components/SearchBar";
 
-export default function FeatureRequestLayout() {
+export default function FeatureRequests() {
   const location = useLocation();
 
   return (

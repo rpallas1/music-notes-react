@@ -5,9 +5,10 @@ import formatDate from "../utils/formatDate";
 import Tag from "./Tag";
 import VoteControls from "./VoteControls";
 import Spinner from "./Spinner";
+import log from "../utils/log";
 
-export default function FeatureRequestsLayout() {
-  const { featureRequests, fetchError } = useOutletContext();
+export default function FeatureRequestCards() {
+  const { featureRequests, fetchError, isLoading } = useOutletContext();
   const [searchParams] = useSearchParams();
 
   const cardEls = featureRequests
@@ -129,13 +130,17 @@ export default function FeatureRequestsLayout() {
       return (
         <p className="message">{`${fetchError}. Please try again later.`}</p>
       );
-    } else if (cardEls.length === 0) {
-      return <Spinner delay={750} />;
-    } else if (cardEls.length > 0) {
-      return cardEls;
-    } else {
-      return <p className="no-results message">No feature requests found.</p>;
     }
+
+    if (cardEls.length === 0 && isLoading) {
+      return <Spinner delay={750} />;
+    }
+
+    if (cardEls.length > 0) {
+      return cardEls;
+    }
+
+    return <p className="no-results message">No feature requests found.</p>;
   };
 
   return (
