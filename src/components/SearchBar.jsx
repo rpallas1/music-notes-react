@@ -10,6 +10,7 @@ export default function SearchBar() {
   const [isSearchBarActive, setIsSearchBarActive] = React.useState(false);
   const [isSearchBarFocused, setIsSearchBarFocused] =
     React.useState(searchQuery);
+  const searchBarRef = React.useRef(null);
 
   React.useEffect(() => {
     setSearchQueryParams(searchQuery);
@@ -17,7 +18,7 @@ export default function SearchBar() {
 
   function clearSearchBar() {
     setIsSearchBarActive(false);
-    focusSearchBar();
+    searchBarRef.current.focus();
     setSearchQuery("");
     setSearchParams((prevParams) => {
       prevParams.delete("search");
@@ -53,17 +54,17 @@ export default function SearchBar() {
     clearSearchBar();
     setIsSearchBarActive(false);
     setIsSearchBarFocused(false);
-    document.getElementById("search").blur();
+    searchBarRef.current.blur();
   }
 
   function handleOnBlur() {
-    if (document.getElementById("search").value === "") {
+    if (searchBarRef.current.value === "") {
       setIsSearchBarFocused(false);
     }
   }
 
-  function focusSearchBar() {
-    document.getElementById("search").focus();
+  function handleFocusSearchBar() {
+    searchBarRef.current.focus();
     setIsSearchBarFocused(true);
 
     if (searchQuery) {
@@ -74,7 +75,7 @@ export default function SearchBar() {
   function handleKeyPress(e) {
     if (e.key === "Enter") {
       setIsSearchBarActive(false);
-      document.getElementById("search").blur();
+      searchBarRef.current.blur();
     } else if (e.key === "Escape") {
       handleSearchCancel();
     }
@@ -93,11 +94,12 @@ export default function SearchBar() {
           placeholder="Search"
           value={searchQuery}
           onChange={handleSearchBarChange}
-          onFocus={focusSearchBar}
+          onFocus={handleFocusSearchBar}
           onBlur={handleOnBlur}
           onKeyDown={handleKeyPress}
+          ref={searchBarRef}
         />
-        {isSearchBarActive && (
+        {isSearchBarActive && searchQuery && (
           <button onClick={clearSearchBar} className="close-btn">
             <XCircleFill />
           </button>

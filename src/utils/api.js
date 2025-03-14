@@ -1,19 +1,5 @@
 import log from "./log";
 
-const development = false;
-
-const API_BASE_URL = () => {
-  if (import.meta.env.PROD) {
-    return "some-production-url";
-  }
-
-  if (development) {
-    return "/sample/api/v1";
-  }
-
-  return "http://localhost:3000/api/v1";
-};
-
 const headers = {
   "Content-Type": "application/json",
 };
@@ -29,12 +15,17 @@ const handleResponse = async (res) => {
 };
 
 const fetchData = async (endpoint, options = {}) => {
-  const res = await fetch(`${API_BASE_URL()}${endpoint}`, {
+  const baseUrl = import.meta.env.PROD
+    ? import.meta.env.VITE_PROD_API_URL
+    : import.meta.env.VITE_DEV_API_URL;
+
+  const res = await fetch(`${baseUrl}${endpoint}`, {
     ...options,
     headers: {
       ...headers,
       ...options.headers,
     },
+    credentials: "include",
   });
 
   return handleResponse(res);

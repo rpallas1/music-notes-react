@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
-    "dompurify": "^3.2.4",
     "loglevel": "^1.9.2",
     "miragejs": "^0.1.48",
     "react": "^19.0.0",

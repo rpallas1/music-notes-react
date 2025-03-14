@@ -1,11 +1,13 @@
 import React from "react";
 import { NavLink, Link, useLocation } from "react-router";
 import classnames from "classnames";
-import { Pencil, Line3Horizontal, XMark } from "../icons";
+import { Pencil } from "../icons";
 
 export default function Header() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const navBtnRef = React.useRef(null);
+  const homeLinkRef = React.useRef(null);
 
   function toggleMenu() {
     setIsMenuOpen((prev) => !prev);
@@ -17,7 +19,7 @@ export default function Header() {
 
   function closeMenu(e) {
     e.target.blur();
-    document.getElementById("nav-btn").checked = false;
+    navBtnRef.current.checked = false;
     setIsMenuOpen(false);
   }
 
@@ -28,13 +30,27 @@ export default function Header() {
     }
   }
 
+  function handleNavFocusCapture() {
+    if (homeLinkRef.current === document.activeElement) {
+      return;
+    }
+
+    navBtnRef.current.checked = true;
+    setIsMenuOpen(true);
+  }
+
   return (
     <>
       {isMenuOpen && <div className="overlay" onClick={closeMenu}></div>}
       <header>
         <nav>
           <h2 className="sr-only">Main Navigation</h2>
-          <input type="checkbox" id="nav-btn" onChange={toggleMenu} />
+          <input
+            type="checkbox"
+            id="nav-btn"
+            onChange={toggleMenu}
+            ref={navBtnRef}
+          />
           <label
             htmlFor="nav-btn"
             tabIndex="0"
@@ -53,9 +69,14 @@ export default function Header() {
               ></div>
             </div>
           </label>
-          <ul>
+          <ul onFocusCapture={handleNavFocusCapture} onBlurCapture={closeMenu}>
             <li>
-              <Link className="site-logo" to="/" onClick={closeMenu}>
+              <Link
+                className="site-logo"
+                to="/"
+                onClick={closeMenu}
+                ref={homeLinkRef}
+              >
                 <div className="logo-container">
                   <Pencil />
                 </div>

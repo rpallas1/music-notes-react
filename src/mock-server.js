@@ -1,3 +1,4 @@
+import { log } from "loglevel";
 import { createServer, Model, Response } from "miragejs";
 import { v4 as uuidv4 } from "uuid";
 
@@ -102,7 +103,7 @@ createServer({
   routes() {
     this.namespace = "/sample/api/v1";
     this.logging = false;
-    this.passthrough("http://localhost:3000/api/**");
+    this.passthrough(`${import.meta.env.VITE_DEV_API_URL}/**`);
 
     this.get("/feature-requests", (schema, request) => {
       return schema.featureRequests.all();
