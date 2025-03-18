@@ -186,7 +186,6 @@ export default function Filter() {
               <fieldset>
                 <legend>Date Created</legend>
                 <div className="dates options">
-                  {/* TODO: Change date options to radio buttons and adjust styling */}
                   <input
                     type="checkbox"
                     id="past-week"
