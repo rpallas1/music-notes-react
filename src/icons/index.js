@@ -18,7 +18,7 @@ export { default as LightbulbMaxFill } from "./LightbulbMaxFill";
 export { default as CheckmarkSquare } from "./CheckmarkSquare";
 export { default as Pencil } from "./Pencil";
 export { default as PlayPauseFill } from "./PlayPauseFill";
-export { default as PlayNext } from "./PlayNext";
+export { default as AddToQueue } from "./AddToQueue";
 export { default as StarFill } from "./StarFill";
 export { default as Line3Horizontal } from "./Line3Horizontal";
 export { default as XMark } from "./XMark";

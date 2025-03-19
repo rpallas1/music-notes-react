@@ -9,7 +9,7 @@ const ArrowShapeUpFill = () => (
     aria-describedby="arrow-shape-up-fill-title arrow-shape-up-fill-desc"
     role="img"
   >
-    <title id="arrow-shape-up-fill-title">Filled arrow pointing up</title>
+    <title id="arrow-shape-up-fill-title">Remove Upvote</title>
     <desc id="arrow-shape-up-fill-desc">
       Filled upward-pointing arrow to indicate selected state of upvote
     </desc>

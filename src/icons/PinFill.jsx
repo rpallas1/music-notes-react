@@ -9,7 +9,7 @@ const PinFill = () => (
     aria-describedby="pin-fill-title pin-fill-desc"
     role="img"
   >
-    <title id="pin-fill-title">Pin icon</title>
+    <title id="pin-fill-title">Pin notes</title>
     <desc id="pin-fill-desc">Pin icon to indicate a pinning a note</desc>
     <g>
       <rect height="28.043" opacity="0" width="18.1992" x="0" y="0" />

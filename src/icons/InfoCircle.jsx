@@ -9,7 +9,7 @@ const InfoCircle = () => (
     aria-describedby="info-circle-title info-circle-desc"
     role="img"
   >
-    <title id="info-circle-title">Information icon</title>
+    <title id="info-circle-title">More info</title>
     <desc id="info-circle-desc">
       Information icon to indicate additional details
     </desc>

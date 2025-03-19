@@ -9,7 +9,7 @@ const ArrowShapeUp = () => (
     aria-describedby="arrow-shape-up-title arrow-shape-up-desc"
     role="img"
   >
-    <title id="arrow-shape-up-title">Arrow pointing up</title>
+    <title id="arrow-shape-up-title">Upvote</title>
     <desc id="arrow-shape-up-desc">
       Outline of upward-pointing arrow to indicate deselected state of upvote
     </desc>

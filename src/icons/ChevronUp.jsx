@@ -9,7 +9,7 @@ const ChevronUp = () => (
     aria-describedby="chevron-up-title chevron-up-desc"
     role="img"
   >
-    <title id="chevron-up-title">Chevron pointing up</title>
+    <title id="chevron-up-title">Ascending</title>
     <desc id="chevron-up-desc">
       Upward-pointing chevron to indicate ascending sort order
     </desc>

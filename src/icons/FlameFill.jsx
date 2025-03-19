@@ -9,7 +9,7 @@ const FlameFill = () => (
     aria-describedby="flame-fill-title flame-fill-desc"
     role="img"
   >
-    <title id="flame-fill-title">Flame</title>
+    <title id="flame-fill-title">Trending</title>
     <desc id="flame-fill-desc">
       Flame icon to indicate hot or trending content
     </desc>

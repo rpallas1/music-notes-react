@@ -10,7 +10,7 @@ const XCircleFill = () => (
     aria-describedby="x-circle-fill-title x-circle-fill-desc"
     role="img"
   >
-    <title id="x-circle-fill-title">X Circle icon</title>
+    <title id="x-circle-fill-title">Close</title>
     <desc id="x-circle-fill-desc">
       X Circle icon to indicate closing a modal or dialog
     </desc>

@@ -9,7 +9,7 @@ const DesktopComputer = () => (
     aria-describedby="desktop-computer-title desktop-computer-desc"
     role="img"
   >
-    <title id="desktop-computer-title">Desktop computer</title>
+    <title id="desktop-computer-title">Preferred color scheme</title>
     <desc id="desktop-computer-desc">
       Desktop computer icon to indicate device color scheme
     </desc>

@@ -9,7 +9,7 @@ const CheckmarkSquare = () => (
     aria-describedby="checkmark-square-title checkmark-square-desc"
     role="img"
   >
-    <title id="checkmark-square-title">Checkmark in square</title>
+    <title id="checkmark-square-title">Implemented</title>
     <desc id="checkmark-square-desc">
       Checkmark in square to indicate feature request that is implemented
     </desc>

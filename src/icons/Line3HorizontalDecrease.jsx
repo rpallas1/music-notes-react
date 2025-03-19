@@ -9,9 +9,7 @@ const Line3HorizontalDecrease = () => (
     aria-describedby="line3-horizontal-decrease-title line3-horizontal-decrease-desc"
     role="img"
   >
-    <title id="line3-horizontal-decrease-title">
-      Three horizontal lines with decrease
-    </title>
+    <title id="line3-horizontal-decrease-title">Filtered by</title>
     <desc id="line3-horizontal-decrease-desc">
       Icon of three horizontal lines with decrease to indicate filter menu
     </desc>

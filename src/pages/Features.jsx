@@ -1,7 +1,7 @@
 import React from "react";
 import {
   PlayPauseFill,
-  PlayNext,
+  AddToQueue,
   StarFill,
   PinFill,
   FolderFill,
@@ -66,7 +66,7 @@ export default function Features() {
             </li>
             <li>
               <p>Add to Queue</p>
-              <PlayNext />
+              <AddToQueue />
             </li>
             <li>
               <p>Playback Controls</p>

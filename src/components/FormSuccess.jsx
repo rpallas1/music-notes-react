@@ -55,19 +55,17 @@ export default function FormSuccess({ formData, type, closeForm, success }) {
   );
 
   return (
-    <div className="form-success-container custom-scroll-bar">
-      <section className={formSuccessClass}>
-        <h3>{header()}</h3>
-        <p>{message()}</p>
-        {success && <dl>{dataEls}</dl>}
-        <button
-          className="close-modal close-btn"
-          aria-label="Close successful form submission modal"
-          onClick={closeForm}
-        >
-          <XCircleFill />
-        </button>
-      </section>
-    </div>
+    <section className={formSuccessClass}>
+      <h3>{header()}</h3>
+      <p>{message()}</p>
+      {success && <dl>{dataEls}</dl>}
+      <button
+        className="close-modal close-btn"
+        aria-label="Close successful form submission modal"
+        onClick={closeForm}
+      >
+        <XCircleFill />
+      </button>
+    </section>
   );
 }

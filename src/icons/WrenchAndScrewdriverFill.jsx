@@ -9,9 +9,7 @@ const WrenchAndScrewdriverFill = () => (
     aria-describedby="wrench-and-screwdriver-fill-title wrench-and-screwdriver-fill-desc"
     role="img"
   >
-    <title id="wrench-and-screwdriver-fill-title">
-      Wrench and screwdriver icon
-    </title>
+    <title id="wrench-and-screwdriver-fill-title">Under development</title>
     <desc id="wrench-and-screwdriver-fill-desc">
       Wrench and screwdriver icon to indicate feature request in under
       development

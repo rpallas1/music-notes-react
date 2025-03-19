@@ -9,7 +9,7 @@ const FolderFill = () => (
     aria-describedby="folder-fill-title folder-fill-desc"
     role="img"
   >
-    <title id="folder-fill-title">Folder icon</title>
+    <title id="folder-fill-title">Folder</title>
     <desc id="folder-fill-desc">
       Folder icon to indicate a collection of music notes
     </desc>

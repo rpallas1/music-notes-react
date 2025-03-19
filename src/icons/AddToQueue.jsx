@@ -1,4 +1,4 @@
-const PlayNext = () => (
+const AddToQueue = () => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -6,12 +6,12 @@ const PlayNext = () => (
     width="31.0195"
     height="24.0408"
     viewBox="0 0 31.0195 24.0408"
-    aria-describedby="play-next-title play-next-desc"
+    aria-describedby="add-to-queue-title add-to-queue-desc"
     role="img"
   >
-    <title id="play-next-title">Play next icon</title>
-    <desc id="play-next-desc">
-      Play next icon to indicate skipping to the next song
+    <title id="add-to-queue-title">Add to queue</title>
+    <desc id="add-to-queue-desc">
+      Add to queue icon to indicate adding to queue functionality
     </desc>
     <g>
       <rect height="24.0408" opacity="0" width="31.0195" x="0" y="0" />
@@ -29,4 +29,4 @@ const PlayNext = () => (
   </svg>
 );
 
-export default PlayNext;
+export default AddToQueue;

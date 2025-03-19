@@ -9,7 +9,7 @@ const PlayPauseFill = () => (
     aria-describedby="play-pause-fill-title play-pause-fill-desc"
     role="img"
   >
-    <title id="play-pause-fill-title">Play/Pause icon</title>
+    <title id="play-pause-fill-title">Play/Pause</title>
     <desc id="play-pause-fill-desc">
       Play/Pause icon to indicate play/pause functionality
     </desc>

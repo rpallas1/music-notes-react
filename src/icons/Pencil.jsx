@@ -9,7 +9,7 @@ const Pencil = () => (
     aria-describedby="pencil-title pencil-desc"
     role="img"
   >
-    <title id="pencil-title">Pencil icon</title>
+    <title id="pencil-title">Pencil</title>
     <desc id="pencil-desc">
       Pencil icon to indicate note taking functionality
     </desc>

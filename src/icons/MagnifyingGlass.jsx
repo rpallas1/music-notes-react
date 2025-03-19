@@ -9,7 +9,7 @@ const MagnifyingGlass = () => (
     aria-describedby="magnifying-glass-title magnifying-glass-desc"
     role="img"
   >
-    <title id="magnifying-glass-title">Magnifying glass</title>
+    <title id="magnifying-glass-title">Search</title>
     <desc id="magnifying-glass-desc">
       Icon of a magnifying glass to indicate search functionality
     </desc>

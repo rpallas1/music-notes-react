@@ -9,7 +9,7 @@ const ArrowUpArrowDown = () => (
     aria-describedby="arrow-up-arrow-down-title arrow-up-arrow-down-desc"
     role="img"
   >
-    <title id="arrow-up-arrow-down-title">Arrow pointing up and down</title>
+    <title id="arrow-up-arrow-down-title">Sorted by</title>
     <desc id="arrow-up-arrow-down-desc">
       Outline of upward-pointing and downward-pointing arrows to indicate
       sorting

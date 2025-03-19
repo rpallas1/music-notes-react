@@ -474,7 +474,7 @@ form + .overlay {
   border-radius: var(--border-radius);
   width: 100%;
   color: var(--gray-0);
-  padding: 1.25rem 0.625rem 0.625rem;
+  padding: 1.95rem 0.625rem 0.625rem;
   box-sizing: border-box;
   font-size: var(--font-size-body);
   letter-spacing: var(--letter-spacing-body);
@@ -536,12 +536,13 @@ form + .overlay {
 
 /* Chrome, Edge and Safari */
 .custom-scroll-bar::-webkit-scrollbar {
-  width: 0.3rem;
+  width: 0.5rem;
 }
 
 .custom-scroll-bar::-webkit-scrollbar-thumb {
   border-radius: var(--border-radius);
   background-color: var(--gray-300);
+  border: 2.25px solid var(--gray-900);
 }
 
 .custom-scroll-bar::-webkit-scrollbar-thumb:hover {
@@ -626,77 +627,29 @@ form + .overlay {
 }
 
 /* Form success styles */
-.form-success-container {
+.form-success {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: calc(100% - 6rem);
-  z-index: 2000;
-}
-
-.form-success {
   max-width: 750px;
   min-height: 200px;
   max-height: 60vh;
+  z-index: 2000;
   overflow: auto;
   background-color: var(--gray-900);
   padding: 1rem;
-  border: var(--stroke-width) solid var(--gray-500);
+  border: var(--stroke-width) solid var(--green);
   border-radius: var(--border-radius);
+  box-shadow: 0 0 5px var(--green);
   display: grid;
   gap: 1rem;
 }
 
-@property --transparent-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-.form-success-container::before,
-.form-success-container::after {
-  --gradient-color: var(--green);
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  background-image: conic-gradient(
-    from 180deg,
-    transparent var(--transparent-angle),
-    var(--green) 0deg
-  );
-  border-radius: var(--border-radius);
-  padding: 1px;
-  z-index: -1;
-  animation: 5s spin linear 1;
-}
-
-@keyframes spin {
-  from {
-    --transparent-angle: 360deg;
-  }
-
-  to {
-    --transparent-angle: 0deg;
-  }
-}
-
-.form-success-container::after {
-  filter: blur(1.5rem);
-  opacity: 0.5;
-}
-
-.form-success-container:has(.form-success.error)::after,
-.form-success-container:has(.form-success.error)::before {
-  background-image: conic-gradient(
-    from 180deg,
-    transparent var(--transparent-angle),
-    var(--error) 0deg
-  );
+.form-success.error {
+  border-color: var(--error);
+  box-shadow: 0 0 5px var(--error);
 }
 
 .form-success h3,
@@ -719,7 +672,7 @@ form + .overlay {
   max-width: 45ch;
 }
 .form-success .submitted-email {
-  color: var(--primary);
+  border-bottom: calc(var(--stroke-width) * 2) solid var(--primary);
 }
 
 .form-success dd {
@@ -1406,8 +1359,36 @@ main > section {
   margin: 1.5rem 0 3rem;
   width: 100%;
   word-break: break-word;
-  /* min-height: 100vh; */
   justify-content: flex-start;
+}
+
+.feature-request-cards-container .no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 400px;
+  text-align: center;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  svg * {
+    fill: var(--gray-300);
+  }
+
+  .message:first-of-type {
+    font-size: var(--font-size-title2);
+    letter-spacing: var(--letter-spacing-title2);
+    line-height: var(--line-height-title2);
+    font-weight: var(--font-weight-display-bold);
+  }
+
+  .message:last-of-type {
+    color: var(--gray-100);
+  }
 }
 
 .feature-request-card {

@@ -5,6 +5,7 @@ import formatDate from "../utils/formatDate";
 import Tag from "./Tag";
 import VoteControls from "./VoteControls";
 import Spinner from "./Spinner";
+import { MagnifyingGlass, Line3HorizontalDecrease } from "../icons";
 import log from "../utils/log";
 
 export default function FeatureRequestCards() {
@@ -138,6 +139,31 @@ export default function FeatureRequestCards() {
 
     if (cardEls.length > 0) {
       return cardEls;
+    }
+
+    if (searchParams.has("search")) {
+      return (
+        <div className="no-results">
+          <MagnifyingGlass />
+          <p className="message">
+            No results for &quot;{decodeURI(searchParams.get("search"))}&quot;
+          </p>
+          <p className="message">
+            Check your spelling or try a different search term.
+          </p>
+        </div>
+      );
+    }
+
+    if (searchParams.has("tag") || searchParams.has("date")) {
+      return (
+        <div className="no-results">
+          <Line3HorizontalDecrease />
+          <p className="message">
+            No feature requests found with the selected filters.
+          </p>
+        </div>
+      );
     }
 
     return <p className="no-results message">No feature requests found.</p>;

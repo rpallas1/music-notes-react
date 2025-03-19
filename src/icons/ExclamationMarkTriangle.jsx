@@ -9,9 +9,7 @@ const ExplamationMarkTriangle = () => (
     aria-describedby="exclamation-mark-triangle-title exclamation-mark-triangle-desc"
     role="img"
   >
-    <title id="exclamation-mark-triangle-title">
-      Exclamation mark in a triangle
-    </title>
+    <title id="exclamation-mark-triangle-title">Error</title>
     <desc id="exclamation-mark-triangle-desc">
       Warning icon to indicate an error
     </desc>

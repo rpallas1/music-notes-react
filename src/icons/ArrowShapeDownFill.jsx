@@ -9,7 +9,7 @@ const ArrowShapeDownFill = () => (
     aria-describedby="arrow-shape-down-fill-title arrow-shape-down-fill-desc"
     role="img"
   >
-    <title id="arrow-shape-down-fill-title">Filled arrow pointing down</title>
+    <title id="arrow-shape-down-fill-title">Remove Downvote</title>
     <desc id="arrow-shape-down-fill-desc">
       Filled downward-pointing arrow to indicate selected state of downvote
     </desc>

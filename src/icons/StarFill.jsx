@@ -9,7 +9,7 @@ const StarFill = () => (
     aria-describedby="star-fill-title star-fill-desc"
     role="img"
   >
-    <title id="star-fill-title">Filled star</title>
+    <title id="star-fill-title">Favorite</title>
     <desc id="star-fill-desc">Icon of a filled star to indicate favorite</desc>
     <g>
       <rect height="26.543" opacity="0" width="26.0251" x="0" y="0" />

@@ -9,7 +9,7 @@ const ChevronBackward = () => (
     aria-describedby="chevron-backward-title chevron-backward-desc"
     role="img"
   >
-    <title id="chevron-backward-title">Chevron pointing backward</title>
+    <title id="chevron-backward-title">Back</title>
     <desc id="chevron-backward-desc">
       Leftward-pointing chevron to indicate backward navigation
     </desc>

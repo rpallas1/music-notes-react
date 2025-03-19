@@ -9,7 +9,7 @@ const SunMaxFill = () => (
     aria-describedby="sun-max-fill-title sun-max-fill-desc"
     role="img"
   >
-    <title id="sun-max-fill-title">Sun icon</title>
+    <title id="sun-max-fill-title">Light mode</title>
     <desc id="sun-max-fill-desc">Sun icon to indicate light mode</desc>
     <g>
       <rect height="25.4414" opacity="0" width="25.3477" x="0" y="0" />

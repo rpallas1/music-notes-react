@@ -9,7 +9,7 @@ const LightbulbMaxFill = () => (
     aria-describedby="lightbulb-max-fill-title lightbulb-max-fill-desc"
     role="img"
   >
-    <title id="lightbulb-max-fill-title">Lightbulb icon</title>
+    <title id="lightbulb-max-fill-title">New</title>
     <desc id="lightbulb-max-fill-desc">
       Lightbulb icon to indicate a feature request is new
     </desc>

@@ -9,7 +9,7 @@ const ChevronDown = () => (
     aria-describedby="chevron-down-title chevron-down-desc"
     role="img"
   >
-    <title id="chevron-down-title">Chevron pointing down</title>
+    <title id="chevron-down-title">Descending</title>
     <desc id="chevron-down-desc">
       Downward-pointing chevron to indicate descending sort order
     </desc>
