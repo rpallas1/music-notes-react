@@ -3,7 +3,6 @@ import { useLocation } from "react-router";
 import { useForm, FormProvider } from "react-hook-form";
 import BackLink from "../../components/BackLink";
 import CancelLink from "../../components/CancelLink";
-import CloseModalLink from "../../components/CloseModalLink";
 import FormSuccess from "../../components/FormSuccess";
 import Input from "../../components/Input";
 import { InfoCircle, XCircleFill } from "../../icons";
@@ -77,7 +76,6 @@ export default function SubmitRequest() {
           prevLocation={location.state?.prevLocation}
           prevSearchParams={location.state?.prevSearchParams}
         />
-        <CloseModalLink prevLocation={location.state?.prevLocation} />
         <CancelLink
           prevLocation={location.state?.prevLocation}
           prevSearchParams={location.state?.prevSearchParams}
@@ -104,47 +102,48 @@ export default function SubmitRequest() {
           Share whatever ideas, improvements, or features you think Music Notes
           should have.
         </p>
-        {showInfo && (
-          <>
-            <div className="overlay" onClick={toggleInfoVisibility}></div>
-            <dl className="info overlay-content" ref={ref}>
-              <button
-                className="close-modal close-btn"
-                aria-label="Close info modal"
-                onClick={toggleInfoVisibility}
-              >
-                <XCircleFill />
-              </button>
-              <div>
-                <dt>Title</dt>
-                <dd>Enter a concise, one line summmary of your idea.</dd>
-              </div>
-              <div>
-                <dt>Summary</dt>
-                <dd>
-                  Optionally add a summary that will show up under the title for
-                  others to quickly see and understand your idea.
-                </dd>
-              </div>
-              <div>
-                <dt>Description</dt>
-                <dd>
-                  Use this section to go as in depth as you would like to
-                  provide details about your idea and how or why it should by
-                  implemented.
-                </dd>
-              </div>
-              <div>
-                <dt>Email</dt>
-                <dd>
-                  Optionally enter your email to be notified as the status of
-                  your submission is updated or if you need to be contacted for
-                  more details about your idea.
-                </dd>
-              </div>
-            </dl>
-          </>
-        )}
+        <div
+          className={`${showInfo ? "" : "hidden"}`}
+          onClick={toggleInfoVisibility}
+        ></div>
+        <dl
+          className={`info overlay-content ${showInfo ? "" : "hidden"}`}
+          ref={ref}
+        >
+          <button
+            className="close-modal close-btn"
+            aria-label="Close info modal"
+            onClick={toggleInfoVisibility}
+          >
+            <XCircleFill />
+          </button>
+          <div>
+            <dt>Title</dt>
+            <dd>Enter a concise, one line summmary of your idea.</dd>
+          </div>
+          <div>
+            <dt>Summary</dt>
+            <dd>
+              Optionally add a summary that will show up under the title for
+              others to quickly see and understand your idea.
+            </dd>
+          </div>
+          <div>
+            <dt>Description</dt>
+            <dd>
+              Use this section to go as in depth as you would like to provide
+              details about your idea and how or why it should by implemented.
+            </dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd>
+              Optionally enter your email to be notified as the status of your
+              submission is updated or if you need to be contacted for more
+              details about your idea.
+            </dd>
+          </div>
+        </dl>
       </div>
       <FormProvider {...methods}>
         <form

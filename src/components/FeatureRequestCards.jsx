@@ -11,6 +11,11 @@ import log from "../utils/log";
 export default function FeatureRequestCards() {
   const { featureRequests, fetchError, isLoading } = useOutletContext();
   const [searchParams] = useSearchParams();
+  const [showSpinner, setShowSpinner] = React.useState(false);
+
+  // React.useEffect(() => {
+  //   setTimeout(() => setShowSpinner(true), 1000);
+  // }, []);
 
   const cardEls = featureRequests
     .filter((featureRequest) => {
@@ -134,7 +139,21 @@ export default function FeatureRequestCards() {
     }
 
     if (cardEls.length === 0 && isLoading) {
-      return <Spinner delay={750} />;
+      // if (showSpinner) {
+      //   return <Spinner delay={0} />;
+      // }
+
+      return (
+        <>
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="feature-request-card skeleton">
+              <div className="title"></div>
+              <div className="summary"></div>
+              <div className="date-created"></div>
+            </div>
+          ))}
+        </>
+      );
     }
 
     if (cardEls.length > 0) {

@@ -21,6 +21,7 @@ export default function FullFeatureRequest() {
     if (!featureRequest) {
       getFeatureRequest(id)
         .then((data) => {
+          // setTimeout(() => setFeatureRequest(data.featureRequest), 5000);
           setFeatureRequest(data.featureRequest);
         })
         .catch((err) => {

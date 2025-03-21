@@ -281,6 +281,14 @@ form + .overlay {
 }
 
 /* Close button styles */
+.close-btn svg path:first-of-type {
+  fill: var(--gray-100);
+}
+
+.light .close-btn svg path:first-of-type {
+  fill: var(--gray-500);
+}
+
 .close-btn:focus {
   outline: none;
 }
@@ -295,18 +303,7 @@ form + .overlay {
 
 .close-btn:hover {
   cursor: pointer;
-}
-
-.close-btn:hover svg path:first-of-type {
-  fill: var(--gray-300);
-}
-
-.light .close-btn:hover svg path:first-of-type {
-  fill: var(--gray-500);
-}
-
-.close-btn:hover svg path:last-of-type {
-  fill: var(--gray-900);
+  opacity: 0.65;
 }
 
 /* Skip link styles*/
@@ -851,7 +848,8 @@ nav a:not(.site-logo)::before {
   transition: width 0.2s ease-in-out;
 }
 
-nav a:not(.site-logo)::before {
+nav a.active:not(.site-logo)::before,
+nav a:not(.site-logo):hover::before {
   filter: blur(5px);
 }
 
@@ -1319,22 +1317,6 @@ main > section {
   right: 28px;
 }
 
-.search-bar .close-btn svg path:first-of-type {
-  fill: var(--gray-200);
-}
-
-.light .search-bar .close-btn svg path:first-of-type {
-  fill: var(--gray-500);
-}
-
-.search-bar .close-btn:hover svg path:first-of-type {
-  fill: var(--gray-300);
-}
-
-.search-bar .close-btn:focus-visible svg path:first-of-type {
-  fill: var(--primary);
-}
-
 .search-bar-container > button {
   border: var(--stroke-width) solid transparent;
 }
@@ -1404,6 +1386,56 @@ main > section {
   max-height: 280px;
   width: calc(100% - 1rem);
   max-width: calc(400px - (2 * 0.625rem) - 2rem);
+}
+
+.feature-request-card.skeleton {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  div {
+    border-radius: calc(var(--border-radius) / 2);
+    animation-duration: 1.8s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(
+      90deg,
+      var(--gray-700) 8%,
+      var(--gray-600) 38%,
+      var(--gray-700) 54%
+    );
+    background-size: 1000px 640px;
+  }
+
+  .title {
+    width: 80%;
+    height: 1.5rem;
+  }
+
+  .summary {
+    width: 100%;
+    height: 4rem;
+    margin: 1rem 0 0.5rem;
+  }
+
+  .date-created {
+    width: 50%;
+    height: 0.85rem;
+    margin-top: auto;
+    align-self: flex-end;
+  }
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
 }
 
 .feature-request-card > div:first-of-type {
@@ -1815,6 +1847,10 @@ main > section {
   width: 85%;
   max-width: 350px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.submit-request-page .info.hidden {
+  display: none;
 }
 
 .submit-request-page .info .close-modal {
