@@ -8,6 +8,33 @@ import {
 } from "../icons";
 
 export default function Features() {
+  const NUM_ICONS = 5;
+  const [iconPositions, setIconPositions] = React.useState([
+    "center",
+    "right",
+    null,
+    null,
+    "left",
+  ]);
+  const iconIntervals = [2000, 2200, 2500, 2100, 2000];
+  const [centerIconPosition, setCenterIconPosition] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCenterIconPosition((prev) => (prev + 1) % NUM_ICONS);
+
+      setIconPositions((prev) => {
+        const newIconPositions = [...prev];
+
+        newIconPositions.unshift(newIconPositions.pop());
+
+        return newIconPositions;
+      });
+    }, iconIntervals[centerIconPosition]);
+
+    return () => clearInterval(interval);
+  }, [centerIconPosition]);
+
   return (
     <section className="features-page">
       <h2>Features</h2>
@@ -53,26 +80,30 @@ export default function Features() {
         <section className="feature-container">
           <h3>Light and Dark Mode</h3>
         </section>
-        <section className="feature-container">
+        <section className="feature-container familiar-functions">
           <h3>Familar Functionality</h3>
+          <img
+            src="src/assets/videos/familiar-functions-compressed.gif"
+            alt="Familiar Functionality"
+          />
           <ul className="familiar-functions-list">
-            <li>
+            <li className={iconPositions[0] ?? ""}>
               <p>Favorite</p>
               <StarFill />
             </li>
-            <li>
+            <li className={iconPositions[1] ?? ""}>
               <p>Pin</p>
               <PinFill />
             </li>
-            <li>
+            <li className={iconPositions[2] ?? ""}>
               <p>Add to Queue</p>
               <AddToQueue />
             </li>
-            <li>
+            <li className={iconPositions[3] ?? ""}>
               <p>Playback Controls</p>
               <PlayPauseFill />
             </li>
-            <li>
+            <li className={iconPositions[4] ?? ""}>
               <p>Folders</p>
               <FolderFill />
             </li>

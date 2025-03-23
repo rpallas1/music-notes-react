@@ -15,17 +15,17 @@ export default function FeatureRequestsLayout() {
 
     try {
       const data = await getFeatureRequests();
-      setTimeout(() => {
-        setFeatureRequests(data.featureRequests);
-      }, 5000);
-      // setFeatureRequests(data.featureRequests);
+      // setTimeout(() => {
+      //   setFeatureRequests(data.featureRequests);
+      // }, 5000);
+      setFeatureRequests(data.featureRequests);
     } catch (err) {
       setFetchError("Network request failed");
     } finally {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 5000);
-      // setIsLoading(false);
+      // setTimeout(() => {
+      //   setIsLoading(false);
+      // }, 5000);
+      setIsLoading(false);
     }
   };
 

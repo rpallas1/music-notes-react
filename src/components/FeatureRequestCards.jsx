@@ -4,18 +4,17 @@ import truncate from "../utils/truncate";
 import formatDate from "../utils/formatDate";
 import Tag from "./Tag";
 import VoteControls from "./VoteControls";
-import Spinner from "./Spinner";
 import { MagnifyingGlass, Line3HorizontalDecrease } from "../icons";
 import log from "../utils/log";
 
 export default function FeatureRequestCards() {
   const { featureRequests, fetchError, isLoading } = useOutletContext();
   const [searchParams] = useSearchParams();
-  const [showSpinner, setShowSpinner] = React.useState(false);
+  const [showShimmer, setShowShimmer] = React.useState(false);
 
-  // React.useEffect(() => {
-  //   setTimeout(() => setShowSpinner(true), 1000);
-  // }, []);
+  React.useEffect(() => {
+    setTimeout(() => setShowShimmer(true), 1000);
+  }, []);
 
   const cardEls = featureRequests
     .filter((featureRequest) => {
@@ -139,14 +138,11 @@ export default function FeatureRequestCards() {
     }
 
     if (cardEls.length === 0 && isLoading) {
-      // if (showSpinner) {
-      //   return <Spinner delay={0} />;
-      // }
-
       return (
         <>
           {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="feature-request-card skeleton">
+              {/* TODO: Add shimmer class after timeout */}
               <div className="title"></div>
               <div className="summary"></div>
               <div className="date-created"></div>

@@ -1,5 +1,6 @@
 echo "--- Building Project ---"
 
+NODE_ENV=production
 yarn build
 
 echo "--- Project Built ---"

@@ -25,7 +25,7 @@ const fetchData = async (endpoint, options = {}) => {
       ...headers,
       ...options.headers,
     },
-    credentials: "include",
+    // credentials: "include",
   });
 
   return handleResponse(res);

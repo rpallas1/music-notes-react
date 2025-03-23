@@ -941,6 +941,7 @@ main > section {
   color: var(--gray-0);
   border: var(--stroke-width) solid var(--gray-500);
   border-radius: var(--border-radius);
+  position: relative;
 }
 
 .feature-container h3 {
@@ -959,12 +960,10 @@ main > section {
 
 .familiar-functions-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  column-gap: 0.75rem;
-  row-gap: 1.5rem;
   align-items: flex-end;
+  justify-content: center;
   width: 100%;
+  overflow: hidden;
 }
 
 .familiar-functions-list li {
@@ -972,7 +971,38 @@ main > section {
   align-items: center;
   flex-direction: column-reverse;
   gap: 0.75rem;
-  min-width: 80px;
+  min-width: 150px;
+  position: absolute;
+  right: -10rem;
+  transform: scale(0.7);
+  opacity: 0.6;
+
+  &.center,
+  &.right,
+  &.left {
+    visibility: initial;
+    transition: all 0.5s ease-in-out;
+  }
+
+  &.center {
+    left: 50%;
+    right: -50%;
+    transform: translateX(-50%);
+    opacity: 1;
+
+    svg * {
+      fill: var(--primary);
+    }
+  }
+
+  &.left {
+    left: -1rem;
+    right: initial;
+  }
+
+  &.right {
+    right: -1rem;
+  }
 }
 
 .familiar-functions-list li p {
@@ -981,6 +1011,25 @@ main > section {
 
 .familiar-functions-list li svg * {
   fill: var(--gray-0);
+}
+
+.familiar-functions {
+  display: flex;
+  flex-direction: column;
+}
+
+.familiar-functions img {
+  align-self: center;
+  width: 320px;
+  /* width: 100%; */
+  /* min-width: 120px; */
+  /* max-width: 320px; */
+  height: 650px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+  object-position: 100% 60%;
+  margin-bottom: 5.5rem;
 }
 
 /* ----------- CONTACT PAGE STYLES ---------- */
@@ -1398,7 +1447,7 @@ main > section {
     animation-duration: 1.8s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
-    animation-name: placeHolderShimmer;
+    animation-name: placeholder-shimmer;
     animation-timing-function: linear;
     background: #f6f7f8;
     background: linear-gradient(
@@ -1429,7 +1478,7 @@ main > section {
   }
 }
 
-@keyframes placeHolderShimmer {
+@keyframes placeholder-shimmer {
   0% {
     background-position: -468px 0;
   }
