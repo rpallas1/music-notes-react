@@ -83,7 +83,7 @@ export default function Features() {
         <section className="feature-container familiar-functions">
           <h3>Familar Functionality</h3>
           <img
-            src="src/assets/videos/familiar-functions-compressed.gif"
+            src="/images/familiar-functions-compressed.gif"
             alt="Familiar Functionality"
           />
           <ul className="familiar-functions-list">
