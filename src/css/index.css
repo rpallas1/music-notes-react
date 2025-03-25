@@ -946,8 +946,7 @@ main > section {
   width: 100%;
   overflow: hidden;
   position: relative;
-  height: 200px;
-  gap: 1rem;
+  height: 100px;
 }
 
 .familiar-functions-list li {
@@ -959,11 +958,11 @@ main > section {
   position: absolute;
   transform: scale(0.7);
   opacity: 0.6;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s linear;
 
   &.center {
-    left: 50%;
-    transform: translateX(-50%);
+    right: 50%;
+    transform: translateX(50%) scale(1);
     opacity: 1;
 
     svg * {
@@ -972,23 +971,21 @@ main > section {
   }
 
   &.left {
-    left: -1rem;
-    right: initial;
+    right: 70%;
   }
 
   &.left-outer {
-    left: -10rem;
-    right: initial;
+    opacity: 0;
+    right: 120%;
   }
 
   &.right {
-    right: -1rem;
-    left: initial;
+    right: 15%;
   }
 
   &.right-outer {
+    opacity: 0;
     right: -10rem;
-    left: initial;
   }
 }
 
@@ -1006,18 +1003,13 @@ main > section {
 }
 
 .familiar-functions img {
-  visibility: hidden;
   align-self: center;
   width: 320px;
-  /* width: 100%; */
-  /* min-width: 120px; */
-  /* max-width: 320px; */
   height: 650px;
   border-radius: var(--border-radius);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   object-fit: cover;
   object-position: 100% 60%;
-  margin-bottom: 5.5rem;
 }
 
 /* ----------- CONTACT PAGE STYLES ---------- */
