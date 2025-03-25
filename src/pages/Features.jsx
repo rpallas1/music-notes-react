@@ -12,11 +12,11 @@ export default function Features() {
   const [iconPositions, setIconPositions] = React.useState([
     "center",
     "right",
-    null,
-    null,
+    "right-outer",
+    "left-outer",
     "left",
   ]);
-  const iconIntervals = [2000, 2200, 2500, 2100, 2000];
+  const iconIntervals = [3000, 3200, 3100, 3100, 4500];
   const [centerIconPosition, setCenterIconPosition] = React.useState(0);
 
   React.useEffect(() => {
@@ -31,7 +31,6 @@ export default function Features() {
         return newIconPositions;
       });
     }, iconIntervals[centerIconPosition]);
-
     return () => clearInterval(interval);
   }, [centerIconPosition]);
 
@@ -83,7 +82,7 @@ export default function Features() {
         <section className="feature-container familiar-functions">
           <h3>Familar Functionality</h3>
           <img
-            src="/images/familiar-functions-compressed.gif"
+            src="/images/familiar-functions-2-compressed.gif"
             alt="Familiar Functionality"
           />
           <ul className="familiar-functions-list">

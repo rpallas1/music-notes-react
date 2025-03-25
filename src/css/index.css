@@ -486,23 +486,7 @@ form + .overlay {
 
 .input-label-container:focus-within {
   border: var(--stroke-width) solid var(--primary);
-}
-
-.input-label-container:focus-within::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  width: 100%;
-  height: 100%;
-  border: var(--stroke-width) solid var(--primary);
-  border-radius: var(--border-radius);
-  background-color: var(--primary);
-  padding: 1px;
-  filter: blur(5px);
-  opacity: 0.5;
-  z-index: -1;
+  box-shadow: 0 0 10px var(--primary);
 }
 
 .error-input:focus-within input,
@@ -516,10 +500,7 @@ form + .overlay {
 
 .error-input:focus-within {
   border: var(--stroke-width) solid var(--gray-100);
-}
-
-.error-input:focus-within::before {
-  background-color: var(--gray-100);
+  box-shadow: 0 0 10px var(--gray-100);
 }
 
 /* START CUSTOM SCROLL BAR */
@@ -964,6 +945,9 @@ main > section {
   justify-content: center;
   width: 100%;
   overflow: hidden;
+  position: relative;
+  height: 200px;
+  gap: 1rem;
 }
 
 .familiar-functions-list li {
@@ -973,22 +957,14 @@ main > section {
   gap: 0.75rem;
   min-width: 150px;
   position: absolute;
-  right: -10rem;
   transform: scale(0.7);
   opacity: 0.6;
-
-  &.center,
-  &.right,
-  &.left {
-    visibility: initial;
-    transition: all 0.5s ease-in-out;
-  }
+  transition: all 0.5s ease-in-out;
 
   &.center {
     left: 50%;
     transform: translateX(-50%);
     opacity: 1;
-    transition: transform 0.5s ease-in-out;
 
     svg * {
       fill: var(--primary);
@@ -1000,8 +976,19 @@ main > section {
     right: initial;
   }
 
+  &.left-outer {
+    left: -10rem;
+    right: initial;
+  }
+
   &.right {
     right: -1rem;
+    left: initial;
+  }
+
+  &.right-outer {
+    right: -10rem;
+    left: initial;
   }
 }
 
@@ -1019,6 +1006,7 @@ main > section {
 }
 
 .familiar-functions img {
+  visibility: hidden;
   align-self: center;
   width: 320px;
   /* width: 100%; */
