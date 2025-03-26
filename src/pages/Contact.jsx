@@ -12,6 +12,11 @@ import {
 import { createContactForm } from "../utils/api";
 import log from "../utils/log";
 
+/**
+ * The Contact component displays a form to contact the site owner.
+ *
+ * It provides fields for the name, email, and message.
+ */
 export default function Contact() {
   const methods = useForm();
   const formType = useFormType();
@@ -21,6 +26,11 @@ export default function Contact() {
   const [isSuccessfulSubmission, setIsSuccessfulSubmission] =
     React.useState(true);
 
+  /**
+   * Submits the form data to the server.
+   *
+   * If the submission is successful, it resets the form and displays a success message.
+   */
   const onSubmit = methods.handleSubmit((data) => {
     createContactForm(data)
       .then(() => {

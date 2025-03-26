@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * The PrivacyPolicy component renders the privacy policy page content.
+ */
 export default function PrivacyPolicy() {
   return (
     <section className="privacy-policy-page">

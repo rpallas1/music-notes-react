@@ -17,6 +17,10 @@ import NotFound from "./pages/NotFound";
 
 import "./mock-server";
 
+/**
+ * The App component is the root component of the application.
+ * It sets up the router and defines the routes for the application.
+ */
 export default function App() {
   function ScorllToTop() {
     const { pathname } = useLocation();

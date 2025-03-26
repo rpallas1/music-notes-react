@@ -10,17 +10,30 @@ import {
 import { updateVoteCount } from "../utils/api";
 import log from "../utils/log";
 
+/**
+ * The VoteControls component displays the upvote and downvote buttons for a feature request.
+ *
+ * @param {object} props - The component props.
+ * @param {number} props.initialVoteCount - The initial vote count for the feature request. Defaults to 0.
+ * @param {string} props.id - The ID of the feature request
+ */
 export default function VoteControls({ initialVoteCount = 0, id }) {
   const { fetchFeatureRequests, setIsVoteError } = useOutletContext();
   const [isUpvoted, setIsUpvoted] = React.useState(false);
   const [isDownvoted, setIsDownvoted] = React.useState(false);
   const [voteCount, setVoteCount] = React.useState(initialVoteCount);
 
+  // Check if the feature request has been upvoted or downvoted
   React.useEffect(() => {
     setIsUpvoted(localStorage.getItem(`upvoted-${id}`) === "true");
     setIsDownvoted(localStorage.getItem(`downvoted-${id}`) === "true");
   }, [id]);
 
+  /**
+   * Toggle the upvote for the feature request.
+   *
+   * If the feature request is currently downvoted then two requests are made: One to remove the downvote and one to add the upvote.
+   */
   const toggleUpVote = async () => {
     let newVoteValue;
 
@@ -56,6 +69,11 @@ export default function VoteControls({ initialVoteCount = 0, id }) {
     fetchFeatureRequests();
   };
 
+  /**
+   * Toggle the downvote for the feature request.
+   *
+   * If the feature request is currently upvoted then two requests are made: One to remove the upvote and one to add the downvote.
+   */
   const toggleDownVote = async () => {
     let newVoteValue;
 
@@ -91,6 +109,11 @@ export default function VoteControls({ initialVoteCount = 0, id }) {
     fetchFeatureRequests();
   };
 
+  /**
+   * Update the vote count for the feature request.
+   *
+   * @param {number} voteValue - The value to add to the vote count.
+   */
   const updateFeatureRequest = async (voteValue) => {
     try {
       const data = await updateVoteCount(id, voteValue);

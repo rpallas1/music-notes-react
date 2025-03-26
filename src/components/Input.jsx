@@ -6,6 +6,17 @@ import findInputError from "../utils/findInputError";
 import isFormInvalid from "../utils/isFormInvalid";
 import useFormType from "../hooks/useFormType";
 
+/**
+ * The Input component renders an input or textarea element.
+ *
+ * @param {object} props - The component props.
+ * @param {string} props.label - The input label.
+ * @param {string} props.type - The input type.
+ * @param {string} props.id - The input id.
+ * @param {string} props.placeholder - The input placeholder.
+ * @param {object} props.validation - The input validation rules.
+ * @param {boolean} props.trackLength - Whether to track the length of the input value. Defaults to false.
+ */
 export default function Input({
   label,
   type,
@@ -32,6 +43,7 @@ export default function Input({
     JSON.parse(localStorage.getItem(`${formType}-form-data`)) || {};
   const [firstRender, setFirstRender] = React.useState(true);
 
+  // Set the form data value to the saved value on the first render
   React.useEffect(() => {
     setValue(id, savedFormData[id] || "");
 
@@ -51,6 +63,11 @@ export default function Input({
     }),
   );
 
+  /**
+   * Render the input element based on the input type.
+   *
+   * @returns {object} The input element
+   */
   const input = () => {
     if (type === "textarea") {
       return (

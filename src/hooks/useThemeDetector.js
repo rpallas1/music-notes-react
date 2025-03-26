@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * Hook to detect the current theme.
+ *
+ * @returns {boolean} A boolean indicating if the current theme is dark. True if dark, false if light.
+ */
 export default function useThemeDetector() {
   const getCurrentTheme = () =>
     window.matchMedia("(prefers-color-scheme: dark)").matches;

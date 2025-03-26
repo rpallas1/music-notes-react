@@ -7,6 +7,9 @@ import {
   FolderFill,
 } from "../icons";
 
+/**
+ * The Features component displays a list of features that Music Notes offers.
+ */
 export default function Features() {
   const NUM_ICONS = 5;
   const [iconPositions, setIconPositions] = React.useState([
@@ -19,6 +22,7 @@ export default function Features() {
   const iconIntervals = [3000, 3200, 3100, 3100, 4500];
   const [centerIconPosition, setCenterIconPosition] = React.useState(0);
 
+  // Rotate the icons every few seconds
   React.useEffect(() => {
     const interval = setInterval(() => {
       setCenterIconPosition((prev) => (prev + 1) % NUM_ICONS);
@@ -31,6 +35,7 @@ export default function Features() {
         return newIconPositions;
       });
     }, iconIntervals[centerIconPosition]);
+
     return () => clearInterval(interval);
   }, [centerIconPosition]);
 

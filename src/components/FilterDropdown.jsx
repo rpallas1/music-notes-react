@@ -3,6 +3,10 @@ import { useSearchParams } from "react-router";
 import useOverlay from "../hooks/useOverlay";
 import { Line3HorizontalDecrease } from "../icons";
 
+/**
+ * A filter dropdown that allows users to filter the feature requests.
+ *
+ */
 export default function Filter() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [tagOptions, setTagOptions] = React.useState(
@@ -18,6 +22,12 @@ export default function Filter() {
     handleToggle: toggleFilterVisibility,
   } = useOverlay();
 
+  /**
+   * Handles the change event for the checkboxes by updating the state of the filter options.
+   *
+   * @param {Event} e - The event object.
+   * @param {string} key - The key to update.
+   */
   function handleCheckboxChange(e, key) {
     const value = e.target.value;
 
@@ -39,6 +49,12 @@ export default function Filter() {
     }
   }
 
+  /**
+   * Handles the keydown event for the labels to allow keyboard navigation.
+   *
+   * @param {Event} e - The event object.
+   * @param {string} id - The id of the checkbox.
+   */
   function handleKeyDown(e, id) {
     if (e.key === " ") {
       e.preventDefault();
@@ -46,6 +62,11 @@ export default function Filter() {
     }
   }
 
+  /**
+   * Applies the filters by updating the search params.
+   *
+   * @param {Event} e - The event object.
+   */
   function applyFilters(e) {
     e.preventDefault();
     toggleFilterVisibility();
@@ -71,6 +92,11 @@ export default function Filter() {
     });
   }
 
+  /**
+   * Clears the filters by resetting the form and updating the search params.
+   *
+   * @param {Event} e - The event object.
+   */
   function clearFilters(e) {
     e.preventDefault();
 

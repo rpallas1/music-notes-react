@@ -4,12 +4,22 @@ import { ToastContainer, toast, Slide } from "react-toastify";
 import { ExclamationMarkTriangle } from "../icons";
 import { getFeatureRequests } from "../utils/api";
 
+/**
+ * The layout for the feature requests page.
+ *
+ * Responsible for fetching the feature requests data and providing context to the children.
+ */
 export default function FeatureRequestsLayout() {
   const [featureRequests, setFeatureRequests] = React.useState([]);
   const [fetchError, setFetchError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(true);
   const [isVoteError, setIsVoteError] = React.useState(false);
 
+  /**
+   * Fetches the feature requests data from the server.
+   *
+   * Sets the feature requests state if the request is successful as well as the loading state.
+   */
   const fetchFeatureRequests = async () => {
     setIsLoading(true);
 
@@ -35,6 +45,7 @@ export default function FeatureRequestsLayout() {
     fetchFeatureRequests();
   }, []);
 
+  // Display a toast notification if there is a vote error
   React.useEffect(() => {
     if (!isVoteError) {
       return;

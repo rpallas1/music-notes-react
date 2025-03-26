@@ -16,6 +16,11 @@ import {
 import { createFeatureRequest } from "../../utils/api";
 import log from "../../utils/log";
 
+/**
+ * The SubmitRequest component displays the form to submit a feature request.
+ *
+ * It provides fields for the title, summary, description, and email.
+ */
 export default function SubmitRequest() {
   const location = useLocation();
   const formType = useFormType();
@@ -24,15 +29,18 @@ export default function SubmitRequest() {
     isOpen: showInfo,
     handleToggle: toggleInfoVisibility,
   } = useOverlay();
-
   const { isOpen: showSuccess, handleToggle: toggleSuccessVisibility } =
     useOverlay();
-
   const methods = useForm();
   const [formData, setFormData] = React.useState(null);
   const [isSuccessfulSubmission, setIsSuccessfulSubmission] =
     React.useState(true);
 
+  /**
+   * Submits the form data to the server.
+   *
+   * If the submission is successful, it resets the form and displays a success message.
+   */
   const onSubmit = methods.handleSubmit((data) => {
     createFeatureRequest(data)
       .then(() => {
@@ -65,6 +73,9 @@ export default function SubmitRequest() {
   );
   const emailValidation = emailValidations(false);
 
+  /**
+   * Clears the saved form data from local storage.
+   */
   function clearSavedFormData() {
     localStorage.removeItem(`${formType}-form-data`);
   }

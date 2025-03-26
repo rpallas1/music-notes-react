@@ -1,5 +1,14 @@
 import startsWithVowel from "./startsWithVowel";
 
+/**
+ * Returns an object with text input validations
+ *
+ * @param {string} id - The id of the input
+ * @param {string} label - The label of the input
+ * @param {number} maxLength - The maximum length of the input default is 50
+ * @param {boolean} required - Whether the input is required default is false
+ * @returns {object} An object with text input validations
+ */
 function textValidations(id, label, maxLength = 50, required = false) {
   return {
     id: id,
@@ -25,6 +34,12 @@ function textValidations(id, label, maxLength = 50, required = false) {
   };
 }
 
+/**
+ * Returns an object with email input validations
+ *
+ * @param {boolean} required - Whether the input is required default is false
+ * @returns {object} An object with email input validations
+ */
 function emailValidations(required = false) {
   return {
     id: "email",
@@ -48,6 +63,15 @@ function emailValidations(required = false) {
   };
 }
 
+/**
+ * Returns an object with textarea input validations
+ *
+ * @param {string} id - The id of the input
+ * @param {string} label - The label of the input
+ * @param {number} maxLength - The maximum length of the input
+ * @param {boolean} required - Whether the input is required default is false
+ * @returns {object} An object with textarea input validations
+ */
 function textAreaValidations(id, label, maxLength, required = false) {
   return {
     id: id,

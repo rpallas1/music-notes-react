@@ -3,26 +3,49 @@ import { NavLink, Link, useLocation } from "react-router";
 import classnames from "classnames";
 import { Pencil } from "../icons";
 
+/**
+ * The Header component that displays the main navigation.
+ */
 export default function Header() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const navBtnRef = React.useRef(null);
   const homeLinkRef = React.useRef(null);
 
+  /**
+   * Toggle the menu open and closed.
+   */
   function toggleMenu() {
     setIsMenuOpen((prev) => !prev);
   }
 
+  /**
+   * Get the classes for the link.
+   *
+   * @param {boolean} isActive - Whether the link is active. Defaults to false.
+   * @returns {object} The classes for the link.
+   */
   function linkClasses(isActive = false) {
     return classnames(isActive ? "active" : null);
   }
 
+  /**
+   * Closes the menu.
+   *
+   * @param {object} e - The event object.
+   */
   function closeMenu(e) {
     e.target.blur();
     navBtnRef.current.checked = false;
     setIsMenuOpen(false);
   }
 
+  /**
+   * Handle the key press event used to select a menu option.
+   *
+   * @param {object} e - The event object.
+   * @param {string} id - The ID of the menu option.
+   */
   function handleKeyPress(e, id) {
     if (e.key === " ") {
       e.preventDefault();
@@ -30,6 +53,9 @@ export default function Header() {
     }
   }
 
+  /**
+   * Handle the focus event used to open the menu.
+   */
   function handleNavFocusCapture() {
     if (homeLinkRef.current === document.activeElement) {
       return;

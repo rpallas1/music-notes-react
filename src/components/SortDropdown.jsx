@@ -2,6 +2,9 @@ import React from "react";
 import { useSearchParams, createSearchParams } from "react-router";
 import { ArrowUpArrowDown, ChevronUp, ChevronDown } from "../icons";
 
+/**
+ * A dropdown to sort the list feature requests.
+ */
 export default function SortDropdown() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isDescending, setIsDescending] = React.useState(false);
@@ -9,6 +12,11 @@ export default function SortDropdown() {
     searchParams.get("sort") || "date-created",
   );
 
+  /**
+   * Handle the sort change event.
+   *
+   * @param {object} e - The event object.
+   */
   function handleSortChange(e) {
     const value = e.target.value;
 
@@ -27,6 +35,9 @@ export default function SortDropdown() {
     });
   }
 
+  /**
+   * Toggle the sort order.
+   */
   function toggleSortOrder() {
     setIsDescending((prev) => !prev);
 
@@ -43,6 +54,11 @@ export default function SortDropdown() {
     });
   }
 
+  /**
+   * Handle the key down event used to toggle the sort order.
+   *
+   * @param {object} e - The event object
+   */
   function handleKeyDown(e) {
     if (e.key === " ") {
       toggleSortOrder();

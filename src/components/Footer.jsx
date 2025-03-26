@@ -3,6 +3,9 @@ import { Link } from "react-router";
 import { DesktopComputer, SunMaxFill, MoonFill } from "../icons";
 import useThemeDetector from "../hooks/useThemeDetector";
 
+/**
+ * The footer component that displays the privacy policy link and the color scheme options.
+ */
 export default function Footer() {
   const isDarkTheme = useThemeDetector();
   const [storedPreference, setStoredPreference] = React.useState(
@@ -12,9 +15,14 @@ export default function Footer() {
   document.body.classList = "";
   document.body.classList.add(getColorScheme(storedPreference));
 
-  function handleColorSchemeChange(event) {
+  /**
+   * Handle the color scheme change event.
+   *
+   * @param {object} e - The event object.
+   */
+  function handleColorSchemeChange(e) {
     const body = document.body;
-    const preference = event.target.value;
+    const preference = e.target.value;
     const theme = getColorScheme(preference);
 
     localStorage.setItem("color-scheme-preference", preference);
@@ -24,6 +32,12 @@ export default function Footer() {
     body.classList.add(theme);
   }
 
+  /**
+   * Handle the key down event used to select a color scheme option.
+   *
+   * @param {object} e - The event object.
+   * @param {string} id - The ID of the color scheme option.
+   */
   function handleKeyDown(e, id) {
     if (e.key === " ") {
       e.preventDefault();
@@ -31,6 +45,12 @@ export default function Footer() {
     }
   }
 
+  /**
+   * Get the color scheme based on the user preference.
+   *
+   * @param {string} preference - The user preference.
+   * @returns {string} The color scheme.
+   */
   function getColorScheme(preference) {
     if (!preference || preference === "device") {
       return isDarkTheme ? "dark" : "light";

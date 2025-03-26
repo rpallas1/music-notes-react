@@ -2,6 +2,9 @@ import React from "react";
 import { useSearchParams } from "react-router";
 import { MagnifyingGlass, XCircleFill } from "../icons";
 
+/**
+ * A search bar that allows users to search for content.
+ */
 export default function SearchBar() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = React.useState(
@@ -12,10 +15,14 @@ export default function SearchBar() {
     React.useState(searchQuery);
   const searchBarRef = React.useRef(null);
 
+  // Update the search query params when the search query changes
   React.useEffect(() => {
     setSearchQueryParams(searchQuery);
   }, [searchQuery]);
 
+  /**
+   * Clears the search bar and search query.
+   */
   function clearSearchBar() {
     setIsSearchBarActive(false);
     searchBarRef.current.focus();
@@ -26,6 +33,11 @@ export default function SearchBar() {
     });
   }
 
+  /**
+   * Handle the search bar change event.
+   *
+   * @param {object} e - The event object
+   */
   function handleSearchBarChange(e) {
     const value = e.target.value;
 
@@ -38,6 +50,11 @@ export default function SearchBar() {
     setSearchQuery(value);
   }
 
+  /**
+   * Set the search query params.
+   *
+   * @param {string} query - The search query.
+   */
   function setSearchQueryParams(query) {
     setSearchParams((prevParams) => {
       if (!query) {
@@ -50,6 +67,9 @@ export default function SearchBar() {
     });
   }
 
+  /**
+   * Handle the search cancel event.
+   */
   function handleSearchCancel() {
     clearSearchBar();
     setIsSearchBarActive(false);
@@ -57,12 +77,18 @@ export default function SearchBar() {
     searchBarRef.current.blur();
   }
 
+  /**
+   * Handle the blur search bar event.
+   */
   function handleOnBlur() {
     if (searchBarRef.current.value === "") {
       setIsSearchBarFocused(false);
     }
   }
 
+  /**
+   * Handle the focus search bar event.
+   */
   function handleFocusSearchBar() {
     searchBarRef.current.focus();
     setIsSearchBarFocused(true);
@@ -72,6 +98,9 @@ export default function SearchBar() {
     }
   }
 
+  /**
+   * Handle the key press event.
+   */
   function handleKeyPress(e) {
     if (e.key === "Enter") {
       setIsSearchBarActive(false);

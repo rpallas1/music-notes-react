@@ -3,6 +3,15 @@ import classNames from "classnames";
 import { XCircleFill } from "../icons";
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
 
+/**
+ * The FormSuccess component displays a success message after a form submission.
+ *
+ * @param {object} props - The component props.
+ * @param {object} props.formData - The form data.
+ * @param {string} props.type - The form type.
+ * @param {function} props.closeForm - The callback function to close the form.
+ * @param {boolean} props.success - The success status of the form submission.
+ */
 export default function FormSuccess({ formData, type, closeForm, success }) {
   const header = () => {
     if (!success) {

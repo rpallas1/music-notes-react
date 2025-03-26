@@ -8,6 +8,11 @@ import Spinner from "../../components/Spinner";
 import { getFeatureRequest } from "../../utils/api";
 import log from "../../utils/log";
 
+/**
+ * The FullFeatureRequest component displays the full feature request.
+ *
+ * It shows the title, summary, description, date created, vote count, and tag.
+ */
 export default function FullFeatureRequest() {
   const location = useLocation();
   const id = location.state?.requestId || location.pathname.split("/").pop();
@@ -17,6 +22,7 @@ export default function FullFeatureRequest() {
   );
   const [notFound, setNotFound] = React.useState(false);
 
+  // Fetch the feature request if it's not already in the context
   React.useEffect(() => {
     if (!featureRequest) {
       getFeatureRequest(id)
@@ -31,6 +37,13 @@ export default function FullFeatureRequest() {
     }
   }, []);
 
+  /**
+   * Renders the content of the page.
+   *
+   * If the feature request is not found, it displays a message.
+   * If the feature request is found, it displays the feature request details.
+   * If the feature request is not yet loaded, it displays a spinner.
+   */
   const renderContent = () => {
     if (notFound) {
       return <p className="message">Feature request not found</p>;

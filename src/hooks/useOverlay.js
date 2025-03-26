@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * Hook to manage an overlay.
+ *
+ * @returns {object} An object with the isOpen state, a handleToggle function, and a ref to the overlay element.
+ */
 const useOverlay = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const ref = React.useRef(null);

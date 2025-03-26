@@ -3,7 +3,7 @@
 :root {
   font-size: 16px;
 
-  /* ----- PRIMITIVES ----- */
+  /* Colors (dark theme default) */
   --gray-0: #fff;
   --gray-10: #f2f2f7;
   --gray-50: #e5e5ea;
@@ -83,7 +83,7 @@
   --popup-shadow: box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* ----- PRIMITIVES ----- */
+/* Light theme */
 .light {
   --gray-0: #000;
   --gray-10: #1c1c1e;
@@ -130,7 +130,7 @@
   --toastify-font-family: "SFProText", sans-serif;
 }
 
-/* ----- GLOBAL STYLES ----- */
+/* Start - Global styles */
 body {
   background-color: var(--gray-1000);
   color: var(--gray-10);
@@ -230,12 +230,11 @@ form + .overlay {
   z-index: 500;
 }
 
-.hidden,
-.not-mobile {
+.hidden {
   display: none;
 }
 
-/* Toast styles */
+/* Start - Toast styles */
 .Toastify__toast-container {
   width: calc(100vw - 1rem);
 }
@@ -260,8 +259,9 @@ form + .overlay {
   color: var(--gray-0);
   opacity: 0.5;
 }
+/* End - Toast styles */
 
-/* Text link styles */
+/* Start - Text link styles */
 .text-link {
   border-radius: calc(var(--border-radius) / 2);
   width: fit-content;
@@ -279,8 +279,9 @@ form + .overlay {
   opacity: 0.7;
   text-decoration: none;
 }
+/* End - Text link styles */
 
-/* Close button styles */
+/* Start - Close button styles */
 .close-btn svg path:first-of-type {
   fill: var(--gray-100);
 }
@@ -305,8 +306,9 @@ form + .overlay {
   cursor: pointer;
   opacity: 0.65;
 }
+/* End - Close button styles */
 
-/* Skip link styles*/
+/* Start - Skip link styles*/
 #skip-link {
   position: absolute;
   left: 50%;
@@ -335,8 +337,9 @@ form + .overlay {
 #skip-link:active {
   opacity: 0.8;
 }
+/* End - Skip link styles*/
 
-/* Link button styles */
+/* Start - Link button styles */
 .form .link-btn,
 .link-btn {
   padding: 0.5rem 1rem;
@@ -376,8 +379,9 @@ form + .overlay {
 .link-btn:active {
   background-color: var(--gray-700);
 }
+/* End - Link button styles */
 
-/* Back link styles */
+/* Start - Back link styles */
 .back-link {
   display: flex;
   align-items: center;
@@ -398,8 +402,9 @@ form + .overlay {
 .back-link svg * {
   fill: var(--primary);
 }
+/* End - Back link styles */
 
-/* Close modal styles*/
+/* Start - Close modal styles*/
 .close-modal {
   background-color: transparent;
   border: none;
@@ -412,8 +417,9 @@ form + .overlay {
 .close-modal:hover {
   cursor: pointer;
 }
+/* End - Close modal styles*/
 
-/* Spinner styles */
+/* Start - Spinner styles */
 .spinner-wrapper {
   margin-top: 1.5rem;
   margin-bottom: auto;
@@ -446,8 +452,15 @@ form + .overlay {
     opacity: 1;
   }
 }
+/* End - Spinner styles */
 
-/* Form styles (Contact and Submit Feature Request)*/
+/* Start - Message styles */
+.message {
+  text-align: center;
+}
+/* End - Message styles */
+
+/* Start - Form styles (Contact and Submit Feature Request)*/
 .form {
   display: flex;
   flex-direction: column;
@@ -503,7 +516,7 @@ form + .overlay {
   box-shadow: 0 0 10px var(--gray-100);
 }
 
-/* START CUSTOM SCROLL BAR */
+/* Start - Custom scroll bar */
 @-moz-document url-prefix() {
   /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
   .custom-scroll-bar {
@@ -530,7 +543,7 @@ form + .overlay {
 .custom-scroll-bar::-webkit-scrollbar-thumb:active {
   background-color: var(--gray-400);
 }
-/* END CUSTOM SCROLL BAR */
+/* End - Custom scroll bar */
 
 .form div {
   position: relative;
@@ -604,7 +617,7 @@ form + .overlay {
   height: fit-content;
 }
 
-/* Form success styles */
+/* Start - Form success styles */
 .form-success {
   position: fixed;
   top: 50%;
@@ -666,8 +679,11 @@ form + .overlay {
   grid-row: 1 / 2;
   justify-self: end;
 }
+/* End - Form success styles */
+/* End - Form styles */
+/* End - Global styles */
 
-/* ----- HEADER STYLES ----- */
+/* Start - Header styles */
 header {
   --nav-padding: 0.25rem;
   --nav-margin: 1rem;
@@ -823,7 +839,7 @@ nav a:not(.site-logo)::before {
   display: block;
   bottom: 0;
   left: 0;
-  width: 0%;
+  width: 0;
   height: 2px;
   background-color: var(--primary);
   transition: width 0.2s ease-in-out;
@@ -842,6 +858,7 @@ nav a.active:not(.download-app a)::before {
 
 nav a:hover:not(.site-logo)::after,
 nav a:hover:not(.site-logo)::before {
+  background-color: var(--primary);
   width: 100%;
 }
 
@@ -853,6 +870,12 @@ nav a:focus-visible {
   outline: none;
   border: 2px solid var(--primary);
   border-radius: var(--border-radius);
+  box-shadow: 0 0 8px var(--primary);
+
+  &:hover {
+    border-color: var(--gray-0);
+    box-shadow: 0 0 8px var(--gray-0);
+  }
 }
 
 .download-app {
@@ -879,8 +902,9 @@ nav a:focus-visible {
 .download-app a.active {
   border: none;
 }
+/* End - Header styles */
 
-/* ----- MAIN STYLES ----- */
+/* Start - Main styles */
 main {
   margin-top: 6rem;
   scroll-margin-top: 6rem;
@@ -908,8 +932,9 @@ main > section {
   margin-bottom: 2.5rem;
   max-width: 36ch;
 }
+/* End - Main styles */
 
-/* ----- FEATURES STYLES ----- */
+/* Start - Features page styles */
 .features-container {
   display: flex;
   flex-direction: column;
@@ -939,14 +964,17 @@ main > section {
   font-weight: var(--font-weight-text-regular);
 }
 
+.familiar-functions {
+  position: relative;
+  overflow: hidden;
+}
+
 .familiar-functions-list {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
   height: 100px;
+  align-self: center;
 }
 
 .familiar-functions-list li {
@@ -959,6 +987,34 @@ main > section {
   transform: scale(0.7);
   opacity: 0.6;
   transition: all 0.4s linear;
+  /* &.center { */
+  /*   right: 50%; */
+  /*   transform: translateX(50%) scale(1); */
+  /*   opacity: 1; */
+  /**/
+  /*   svg * { */
+  /*     fill: var(--primary); */
+  /*   } */
+  /* } */
+  /**/
+  /* &.left { */
+  /*   right: 100%; */
+  /*   transform: translateX(100%) scale(0.7); */
+  /* } */
+  /**/
+  /* &.left-outer { */
+  /*   opacity: 0; */
+  /*   right: calc(100% + 1rem); */
+  /* } */
+  /**/
+  /* &.right { */
+  /*   right: 0; */
+  /* } */
+  /**/
+  /* &.right-outer { */
+  /*   opacity: 0; */
+  /*   right: -8rem; */
+  /* } */
 
   &.center {
     right: 50%;
@@ -971,21 +1027,22 @@ main > section {
   }
 
   &.left {
-    right: 70%;
+    right: 100%;
+    transform: translateX(100%) scale(0.7);
   }
 
   &.left-outer {
     opacity: 0;
-    right: 120%;
+    right: calc(100% + 1rem);
   }
 
   &.right {
-    right: 15%;
+    right: 0;
   }
 
   &.right-outer {
     opacity: 0;
-    right: -10rem;
+    right: -8rem;
   }
 }
 
@@ -1011,14 +1068,16 @@ main > section {
   object-fit: cover;
   object-position: 100% 60%;
 }
+/* End - Features page styles */
 
-/* ----------- CONTACT PAGE STYLES ---------- */
+/* Start - Contact page styles */
 .contact-page {
   display: flex;
   flex-direction: column;
 }
+/* End - Contact page styles */
 
-/* ----------- FEATURE REQUESTS PAGE STYLES ---------- */
+/* Start - Feature requests page styles */
 .feature-requests-page {
   display: flex;
   flex-direction: column;
@@ -1269,7 +1328,7 @@ main > section {
   font-weight: var(--font-weight-text-semibold);
 }
 
-/* Search bar styles */
+/* Start - Search bar styles */
 .search-bar-container {
   width: 100%;
   display: flex;
@@ -1359,8 +1418,9 @@ main > section {
   border: var(--stroke-width) solid var(--primary);
   border-radius: var(--border-radius);
 }
+/* End - Search bar styles */
 
-/* Feature request card */
+/* Start - Feature request card */
 .feature-request-cards-container {
   display: flex;
   flex-direction: column;
@@ -1437,6 +1497,12 @@ main > section {
       var(--gray-700) 54%
     );
     background-size: 1000px 640px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .hide-shimmer {
+    opacity: 0;
   }
 
   .title {
@@ -1504,7 +1570,7 @@ main > section {
   font-weight: var(--font-weight-text-semibold);
 }
 
-/* Tag styles */
+/* Start - Tag styles */
 .tag {
   border-width: 1px;
   border-style: solid;
@@ -1578,8 +1644,9 @@ main > section {
 .tag.compact p {
   display: none;
 }
+/* End - Tag styles */
 
-/* Vote controls styles*/
+/* Start - Vote controls styles */
 .vote-controls {
   position: relative;
   display: flex;
@@ -1659,6 +1726,7 @@ main > section {
   color: var(--gray-0);
   margin: 0;
 }
+/* End - Vote controls styles */
 
 .feature-request-card .date-created {
   margin: 0;
@@ -1686,8 +1754,10 @@ main > section {
 .submit-request-link:focus {
   border: var(--stroke-width) solid var(--primary);
 }
+/* End - Feature request card */
+/* End - Feature requests page styles */
 
-/* ----------- FULL FEATURE REQUEST PAGE STYLES ---------- */
+/* Start - Full feature request page styles */
 .full-feature-request-page {
   display: grid;
   max-width: 1000px;
@@ -1708,16 +1778,6 @@ main > section {
   font-weight: var(--font-weight-text-regular);
   max-width: 60ch;
 }
-
-/* .full-feature-request-page .message { */
-/*   font-size: var(--font-size-title3); */
-/*   letter-spacing: var(--letter-spacing-title3); */
-/*   line-height: var(--line-height-title3); */
-/*   font-weight: var(--font-weight-display-regular); */
-/*   text-align: center; */
-/*   color: var(--gray-10); */
-/*   margin-top: 1.5rem; */
-/* } */
 
 .full-feature-request-page > p:first-of-type {
   margin-bottom: 1.5rem;
@@ -1754,8 +1814,9 @@ main > section {
   line-height: var(--line-height-footnote);
   font-weight: var(--font-weight-text-regular);
 }
+/* End - Full feature request page styles */
 
-/* ----------- PRIVACY POLICY PAGE STYLES ---------- */
+/* Start - Privacy policy page styles */
 .privacy-policy-page > *,
 .privacy-policy-page li {
   margin-bottom: 1rem;
@@ -1791,8 +1852,9 @@ main > section {
   list-style-type: disc;
   padding-inline-start: 40px;
 }
+/* End - Privacy policy page styles */
 
-/* ----------- SUBMIT FEATURE REQUEST PAGE STYLES ---------- */
+/* Start - Submit request page styles */
 .submit-request-content-container {
   display: grid;
   position: relative;
@@ -1895,8 +1957,9 @@ main > section {
   padding-bottom: 1rem;
   grid-row: 1 / 2;
 }
+/* End - Submit request page styles */
 
-/* ----- FOOTER STYLES ----- */
+/* Start - Footer styles */
 footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1904,7 +1967,8 @@ footer {
   align-items: end;
   row-gap: 0.75rem;
   padding-bottom: 1rem;
-  margin-top: 84px;
+  padding-top: 84px;
+  margin-top: auto;
   width: 100%;
   max-width: var(--max-screen-width);
 }
@@ -1925,7 +1989,7 @@ footer a {
   width: fit-content;
 }
 
-/* Color scheme options styles */
+/* Start - Color scheme options styles */
 .color-scheme-options {
   grid-column: 2 / -1;
   grid-row: 1 / -1;
@@ -2000,6 +2064,17 @@ footer a {
 .color-scheme-options input:checked + label svg path {
   fill: var(--gray-900);
 }
+/* End - Color scheme options styles */
+/* End - Footer styles */
+
+/* Start - Not found page styles */
+.not-found-page {
+  height: 100%;
+  h2 {
+    text-align: center;
+  }
+}
+/* End - Not found page styles */
 
 /* ---------- EXTRA SMALL SCREEN STYLES --------- */
 @media screen and (max-width: 270px) {
@@ -2045,9 +2120,9 @@ footer a {
   }
 }
 
-/* ----------0Medium Screen Styles ---------- */
+/* ---------- Medium Screen Styles ---------- */
 @media screen and (min-width: 834px) {
-  /* ----- HEADER STYLES ----- */
+  /* Start - Header styles */
   nav label {
     display: none;
   }
@@ -2079,8 +2154,9 @@ footer a {
     align-self: initial;
     height: fit-content;
   }
+  /* End - Header styles */
 
-  /* ----- FEATURES PAGE STYLES ----- */
+  /* Start - Features page styles */
   .features-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2094,8 +2170,9 @@ footer a {
   .feature-container p {
     max-width: 30ch;
   }
+  /* End - Features page styles */
 
-  /* ----- FEATURE REQUESTS PAGE STYLES ----- */
+  /* Start - Feature requests page styles */
   .feature-requests-page {
     max-width: var(--max-screen-width);
   }
@@ -2133,11 +2210,13 @@ footer a {
   .submit-request-link {
     align-self: center;
   }
+  /* End - Feature requests page styles */
 
-  /* ----- FULL FEATURE REQUEST PAGE STYLES ----- */
+  /* Start - Full feature request page styles */
   .description {
     max-width: 65ch;
   }
+  /* End - Full feature request page styles */
 }
 
 /* ---------- Large Screen Styles ---------- */
@@ -2154,12 +2233,13 @@ footer a {
 }
 
 @media screen and (min-width: 1440px) {
-  /* ----- MAIN STYLES ----- */
+  /* Start - Main styles */
   .page-description {
     max-width: 50ch;
   }
+  /* End - Main styles */
 
-  /* ---- SUBMIT REQUEST PAGE STYLES ---- */
+  /* Start - Submit request page styles */
   .submit-request-page {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2200,8 +2280,9 @@ footer a {
   .info-btn-container {
     display: none;
   }
+  /* End - Submit request page styles */
 
-  /* ---- CONTACT PAGE STYLES ---- */
+  /* Start - Contact page styles */
   .contact-page {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2216,4 +2297,5 @@ footer a {
     grid-column: 2 / -1;
     grid-row: 3 / -1;
   }
+  /* End - Contact page styles */
 }

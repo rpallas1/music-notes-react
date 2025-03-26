@@ -6,6 +6,13 @@ import {
   CheckmarkSquare,
 } from "../icons";
 
+/**
+ * A tag component that displays a tag with an icon and text.
+ *
+ * @param {object} props - The component props.
+ * @param {string} props.tag - The tag to display.
+ * @param {boolean} props.compact - Whether to display the tag in compact mode.
+ */
 export default function Tag({ tag, compact }) {
   if (!tag) {
     return;

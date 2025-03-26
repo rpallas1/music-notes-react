@@ -2,10 +2,17 @@ import React from "react";
 import { Spinner as JSSpinner } from "spin.js";
 import useDelayedRender from "../hooks/useDelayedRender";
 
+/**
+ * The Spinner component is a loading spinner component.
+ *
+ * @param {object} props - The component props.
+ * @param {number} props.delay - The delay in milliseconds before rendering the spinner.
+ */
 export default function Spinner({ delay }) {
   const spinnerContainerRef = React.useRef(null);
   const delayedRender = useDelayedRender(delay);
 
+  // Create the spinner when the component mounts and destroy it when the component unmounts
   React.useEffect(() => {
     var opts = {
       lines: 8, // The number of lines to draw

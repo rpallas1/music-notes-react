@@ -5,6 +5,11 @@ import FilterDropdown from "../../components/FilterDropdown";
 import SortDropdown from "../../components/SortDropdown";
 import SearchBar from "../../components/SearchBar";
 
+/**
+ * FeatureRequests component is the main page for the Feature Requests section.
+ *
+ * It displays a list of feature requests and provides options to sort and filter them.
+ */
 export default function FeatureRequests() {
   const location = useLocation();
 
