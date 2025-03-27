@@ -19,7 +19,17 @@ export default function FeatureRequests() {
         <h2>Feature Requests</h2>
         <p className="page-description">
           See a feature you like? Give it an upvote! Don&apos;t see a feature
-          that Music Notes should have? Submit a Feature Request!
+          that Music Notes should have?{" "}
+          <Link
+            to="/submit-request"
+            className="text-link"
+            state={{
+              prevLocation: location.pathname,
+              prevSearchParams: location.search,
+            }}
+          >
+            Submit a Feature Request!
+          </Link>
         </p>
         <div className="options-container">
           <div className="sort-filter-container">

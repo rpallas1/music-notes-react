@@ -866,6 +866,14 @@ nav a.active:not(.download-app a):hover::after {
   background-color: var(--primary);
 }
 
+nav a.active:not(.site-logo):focus-visible,
+nav a:not(.site-logo):focus-visible {
+  &::before,
+  &::after {
+    width: 0;
+  }
+}
+
 nav a:focus-visible {
   outline: none;
   border: 2px solid var(--primary);
@@ -882,7 +890,7 @@ nav a:focus-visible {
   text-align: center;
   background-color: var(--gray-0);
   border-radius: var(--border-radius);
-  align-self: flex-end;
+  align-self: center;
   width: 100%;
   max-width: 350px;
   margin-top: auto;
@@ -931,6 +939,10 @@ main > section {
   font-weight: var(--font-weight-text-semibold);
   margin-bottom: 2.5rem;
   max-width: 36ch;
+
+  a:hover {
+    text-shadow: 0 0 10px var(--primary);
+  }
 }
 /* End - Main styles */
 
@@ -1228,7 +1240,8 @@ main > section {
   border-radius: var(--border-radius);
   padding: 1rem;
   position: absolute;
-  right: 0;
+  /* right: 0; */
+  left: 0;
   width: calc(100vw - 3rem);
   max-width: 21.875rem;
   min-width: 150px;
@@ -2108,11 +2121,6 @@ footer a {
     height: 1.5rem;
   }
 
-  .filter-options {
-    left: 50vw;
-    transform: translateX(-50vw);
-  }
-
   footer {
     display: flex;
     flex-direction: column;
@@ -2120,7 +2128,22 @@ footer a {
   }
 }
 
+@media screen and (min-width: 371px) {
+  .filter-options {
+    right: 0;
+    left: inherit;
+  }
+}
+
 /* ---------- Medium Screen Styles ---------- */
+@media screen and (min-width: 560px) {
+  /* Start - Header styles */
+  .download-app {
+    align-self: flex-end;
+  }
+  /* End - Header styles */
+}
+
 @media screen and (min-width: 834px) {
   /* Start - Header styles */
   nav label {

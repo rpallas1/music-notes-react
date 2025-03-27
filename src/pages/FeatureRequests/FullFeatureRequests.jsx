@@ -76,7 +76,10 @@ export default function FullFeatureRequest() {
     <section className="full-feature-request-page">
       {renderContent()}
       <div className="back-link-container">
-        <BackLink prevLocation={location.state?.prevLocation} />
+        <BackLink
+          prevLocation={location.state?.prevLocation}
+          prevSearchParams={location.state?.prevSearchParams}
+        />
       </div>
     </section>
   );
