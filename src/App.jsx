@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
 import Layout from "./components/Layout";
 import FeatureRequestsLayout from "./components/FeatureRequestsLayout";
 import FeatureRequests from "./pages/FeatureRequests/FeatureRequests";
@@ -14,27 +9,17 @@ import Features from "./pages/Features";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
-
-import "./mock-server";
+import ScrollToTop from "./components/ScrollTo";
+// import "./mock-server";
 
 /**
  * The App component is the root component of the application.
  * It sets up the router and defines the routes for the application.
  */
 export default function App() {
-  function ScorllToTop() {
-    const { pathname } = useLocation();
-
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-
-    return null;
-  }
-
   return (
     <Router>
-      <ScorllToTop />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Features />} />

@@ -1,28 +1,29 @@
-import React from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import classNames from "classnames";
 import { ChevronBackward } from "../icons";
+import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
 
 /**
- * A back link that navigates to the previous location.
+ * A component that renders a navigation link. Used to navigate back one in the history stack.
  *
  * @param {object} props - The component props.
- * @param {string} props.prevLocation - The previous location.
- * @param {string} props.prevSearchParams - The previous search params.
- * @param {function} props.onBack - The callback function to call when the back link is clicked. Defaults to an empty function.
+ * @param {string} props.type - The type of navigation link. Defaults to "back".
+ * @param {function} props.onNav - The callback function to run on navigation. Defaults to an empty function.
  */
-export default function BackLink({
-  prevLocation,
-  prevSearchParams,
-  onBack = () => {},
-}) {
+export default function BackLink({ type = "back", onBack = () => {} }) {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(-1);
+    onBack();
+  };
+  const linkClasses = classNames("text-link", {
+    "back-link": type === "back",
+  });
+
   return (
-    <Link
-      to={{ pathname: prevLocation || "..", search: prevSearchParams }}
-      className="back-link text-link"
-      onClick={onBack}
-    >
-      <ChevronBackward />
-      Back
+    <Link className={linkClasses} onClick={handleClick}>
+      {type === "back" && <ChevronBackward />}
+      {capitalizeFirstLetter(type)}
     </Link>
   );
 }

@@ -11,8 +11,6 @@ import SearchBar from "../../components/SearchBar";
  * It displays a list of feature requests and provides options to sort and filter them.
  */
 export default function FeatureRequests() {
-  const location = useLocation();
-
   return (
     <section className="feature-requests-page">
       <div>
@@ -20,14 +18,7 @@ export default function FeatureRequests() {
         <p className="page-description">
           See a feature you like? Give it an upvote! Don&apos;t see a feature
           that Music Notes should have?{" "}
-          <Link
-            to="/submit-request"
-            className="text-link"
-            state={{
-              prevLocation: location.pathname,
-              prevSearchParams: location.search,
-            }}
-          >
+          <Link to="/submit-request" className="text-link">
             Submit a Feature Request!
           </Link>
         </p>
@@ -40,14 +31,7 @@ export default function FeatureRequests() {
         </div>
       </div>
       <FeatureRequestCards />
-      <Link
-        to="/submit-request"
-        className="link-btn submit-request-link"
-        state={{
-          prevLocation: location.pathname,
-          prevSearchParams: location.search,
-        }}
-      >
+      <Link to="/submit-request" className="link-btn submit-request-link">
         Submit a Feature Request
       </Link>
     </section>

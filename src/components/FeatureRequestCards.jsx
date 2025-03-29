@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Link,
-  useOutletContext,
-  useSearchParams,
-  useLocation,
-} from "react-router";
+import { Link, useOutletContext, useSearchParams } from "react-router";
 import truncate from "../utils/truncate";
 import formatDate from "../utils/formatDate";
 import Tag from "./Tag";
@@ -18,7 +13,6 @@ import { MagnifyingGlass, Line3HorizontalDecrease } from "../icons";
  * It is also responsible for filtering and sorting the feature requests based on the saved searchParams.
  */
 export default function FeatureRequestCards() {
-  const location = useLocation();
   const { featureRequests, fetchError, isLoading } = useOutletContext();
   const [searchParams] = useSearchParams();
   const [showShimmer, setShowShimmer] = React.useState(false);
@@ -123,8 +117,6 @@ export default function FeatureRequestCards() {
               className="view-request text-link"
               state={{
                 requestId: featureRequest._id || featureRequest.id,
-                prevLocation: location.pathname,
-                prevSearchParams: location.search,
               }}
             >
               Read More

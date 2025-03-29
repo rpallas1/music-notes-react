@@ -2,7 +2,6 @@ import React from "react";
 import { useLocation } from "react-router";
 import { useForm, FormProvider } from "react-hook-form";
 import BackLink from "../../components/BackLink";
-import CancelLink from "../../components/CancelLink";
 import FormSuccess from "../../components/FormSuccess";
 import Input from "../../components/Input";
 import { InfoCircle, XCircleFill } from "../../icons";
@@ -83,15 +82,8 @@ export default function SubmitRequest() {
   return (
     <section className="submit-request-page">
       <div className="form-nav">
-        <BackLink
-          prevLocation={location.state?.prevLocation}
-          prevSearchParams={location.state?.prevSearchParams}
-        />
-        <CancelLink
-          prevLocation={location.state?.prevLocation}
-          prevSearchParams={location.state?.prevSearchParams}
-          onCancel={clearSavedFormData}
-        />
+        <BackLink />
+        <BackLink type="cancel" onNav={clearSavedFormData} />
       </div>
       <div className="submit-request-content-container">
         <h2>
