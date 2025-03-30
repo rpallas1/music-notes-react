@@ -26,3 +26,7 @@ export { default as FolderFill } from "./FolderFill";
 export { default as PinFill } from "./PinFill";
 export { default as ArrowUpArrowDown } from "./ArrowUpArrowDown";
 export { default as ExclamationMarkTriangle } from "./ExclamationMarkTriangle";
+export { default as MusicMic } from "./MusicMic";
+export { default as MusicNote } from "./MusicNote";
+export { default as Link } from "./Link";
+export { default as ArrowLeftArrowRight } from "./ArrowLeftArrowRight";
