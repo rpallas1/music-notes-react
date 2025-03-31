@@ -68,7 +68,6 @@ export default function DarkLightMode() {
   };
 
   const startDragging = (e) => {
-    e.preventDefault();
     setIsDragging(true);
 
     const cX = e.clientX || e.touches[0].clientX || 0;

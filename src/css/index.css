@@ -1078,6 +1078,7 @@ main > section {
       width: calc(3.5rem - 0.5rem);
       height: 2px;
       position: absolute;
+      opacity: 1;
       top: 50%;
       transform: translateY(-50%);
       animation: connector 4s linear infinite;
@@ -1115,6 +1116,7 @@ main > section {
 
 @keyframes connector {
   0% {
+    opacity: 1;
     --connector-percent-right: 0%;
     --connector-percent-left: 0%;
   }

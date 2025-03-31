@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useLocation, useSearchParams } from "react-router";
+import { Link } from "react-router";
+import { saveScrollY } from "../../utils/handleScrollPosition";
 import FeatureRequestCards from "../../components/FeatureRequestCards";
 import FilterDropdown from "../../components/FilterDropdown";
 import SortDropdown from "../../components/SortDropdown";
@@ -18,7 +19,11 @@ export default function FeatureRequests() {
         <p className="page-description">
           See a feature you like? Give it an upvote! Don&apos;t see a feature
           that Music Notes should have?{" "}
-          <Link to="/submit-request" className="text-link">
+          <Link
+            to="/submit-request"
+            className="text-link"
+            onClick={saveScrollY}
+          >
             Submit a Feature Request!
           </Link>
         </p>
@@ -31,7 +36,11 @@ export default function FeatureRequests() {
         </div>
       </div>
       <FeatureRequestCards />
-      <Link to="/submit-request" className="link-btn submit-request-link">
+      <Link
+        to="/submit-request"
+        className="link-btn submit-request-link"
+        onClick={saveScrollY}
+      >
         Submit a Feature Request
       </Link>
     </section>

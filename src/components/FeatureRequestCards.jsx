@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useOutletContext, useSearchParams } from "react-router";
 import truncate from "../utils/truncate";
 import formatDate from "../utils/formatDate";
+import { saveScrollY } from "../utils/handleScrollPosition";
 import Tag from "./Tag";
 import VoteControls from "./VoteControls";
 import { MagnifyingGlass, Line3HorizontalDecrease } from "../icons";
@@ -118,6 +119,7 @@ export default function FeatureRequestCards() {
               state={{
                 requestId: featureRequest._id || featureRequest.id,
               }}
+              onClick={saveScrollY}
             >
               Read More
               <span className="sr-only"> about this feature request</span>
