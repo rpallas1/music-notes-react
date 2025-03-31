@@ -8,26 +8,47 @@ export default function DarkLightMode() {
   const sliderRef = React.useRef(null);
   const darkModeRef = React.useRef(null);
 
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setOffsetX(e.clientX - sliderRef.current.getBoundingClientRect().left);
-    sliderRef.current.style.animationPlayState = "paused";
-    sliderRef.current.children[0].style.animationPlayState = "paused";
+  React.useEffect(() => {
+    window.addEventListener("mouseup", stopDragging);
+    window.addEventListener("mousemove", updatePosition);
+    window.addEventListener("touchend", stopDragging);
+    window.addEventListener("touchmove", updatePosition);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("mouseup", stopDragging);
+      window.removeEventListener("mousemove", updatePosition);
+      window.removeEventListener("touchend", stopDragging);
+      window.removeEventListener("touchmove", updatePosition);
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
+  const handleResize = () => {
+    const containerWidth = parseFloat(
+      themeContainerRef.current.getBoundingClientRect().width,
+    ).toFixed(2);
+    const darkModeWidth = parseFloat(
+      darkModeRef.current.getBoundingClientRect().width,
+    ).toFixed(2);
+
+    if (darkModeWidth > containerWidth * 0.9) {
+      console.log("resizing");
+      darkModeRef.current.style.width = `${containerWidth - 10}px`;
+      sliderRef.current.style.left = `${containerWidth - 10}px`;
+    }
   };
 
-  const handleMouseMove = (e) => {
-    if (!isDragging) {
-      return;
-    }
+  const updatePosition = (e) => {
+    if (!isDragging) return;
 
+    const cX = e.clientX || e.touches[0].clientX || 0;
     const padding = 10;
     const maxX = parseFloat(
-      themeContainerRef.current.getBoundingClientRect().right - padding,
+      themeContainerRef.current.getBoundingClientRect().width - padding,
     ).toFixed(2);
     let newX = parseFloat(
-      e.clientX -
-        offsetX -
-        themeContainerRef.current.getBoundingClientRect().left,
+      cX - themeContainerRef.current.getBoundingClientRect().left - offsetX,
     ).toFixed(2);
 
     if (Math.round(newX) <= padding) {
@@ -40,10 +61,21 @@ export default function DarkLightMode() {
     darkModeRef.current.style.width = `${newX}px`;
   };
 
-  const handleMouseUp = () => {
+  const stopDragging = () => {
     setIsDragging(false);
     sliderRef.current.style.animationPlayState = "running";
     sliderRef.current.children[0].style.animationPlayState = "running";
+  };
+
+  const startDragging = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+
+    const cX = e.clientX || e.touches[0].clientX || 0;
+
+    setOffsetX(cX - sliderRef.current.getBoundingClientRect().left);
+    sliderRef.current.style.animationPlayState = "paused";
+    sliderRef.current.children[0].style.animationPlayState = "paused";
   };
 
   return (
@@ -61,9 +93,8 @@ export default function DarkLightMode() {
         </div>
         <button
           className="theme-slider"
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
+          onMouseDownCapture={startDragging}
+          onTouchStartCapture={startDragging}
           onDragStart={(e) => e.preventDefault()}
           ref={sliderRef}
         >
