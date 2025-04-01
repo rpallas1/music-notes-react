@@ -17,11 +17,18 @@ import log from "../utils/log";
  * @param {number} props.initialVoteCount - The initial vote count for the feature request. Defaults to 0.
  * @param {string} props.id - The ID of the feature request
  */
-export default function VoteControls({ initialVoteCount = 0, id }) {
+export default function VoteControls({ featureRequest }) {
   const { fetchFeatureRequests, setIsVoteError } = useOutletContext();
   const [isUpvoted, setIsUpvoted] = React.useState(false);
   const [isDownvoted, setIsDownvoted] = React.useState(false);
-  const [voteCount, setVoteCount] = React.useState(initialVoteCount);
+  const [voteCount, setVoteCount] = React.useState(
+    featureRequest.voteCount || 0,
+  );
+  const id = featureRequest._id || featureRequest.id;
+
+  React.useEffect(() => {
+    setVoteCount(featureRequest.voteCount || 0);
+  }, [featureRequest]);
 
   // Check if the feature request has been upvoted or downvoted
   React.useEffect(() => {

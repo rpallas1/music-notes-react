@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import { ExclamationMarkTriangle } from "../icons";
 import { getFeatureRequests } from "../utils/api";
@@ -10,7 +10,10 @@ import { getFeatureRequests } from "../utils/api";
  * Responsible for fetching the feature requests data and providing context to the children.
  */
 export default function FeatureRequestsLayout() {
-  const [featureRequests, setFeatureRequests] = React.useState([]);
+  const { pathname } = useLocation();
+  const [featureRequests, setFeatureRequests] = React.useState(
+    JSON.parse(localStorage.getItem("feature-requests")) || [],
+  );
   const [fetchError, setFetchError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(true);
   const [isVoteError, setIsVoteError] = React.useState(false);
@@ -26,8 +29,18 @@ export default function FeatureRequestsLayout() {
     try {
       const data = await getFeatureRequests();
       // setTimeout(() => {
+      //   localStorage.setItem(
+      //     "feature-requests",
+      //     JSON.stringify(data.featureRequests),
+      //   );
       //   setFeatureRequests(data.featureRequests);
+      //   console.log("data saved");
       // }, 5000);
+
+      localStorage.setItem(
+        "feature-requests",
+        JSON.stringify(data.featureRequests),
+      );
       setFeatureRequests(data.featureRequests);
     } catch (err) {
       setFetchError("Network request failed");
@@ -43,7 +56,7 @@ export default function FeatureRequestsLayout() {
 
   React.useEffect(() => {
     fetchFeatureRequests();
-  }, []);
+  }, [pathname]);
 
   // Display a toast notification if there is a vote error
   React.useEffect(() => {

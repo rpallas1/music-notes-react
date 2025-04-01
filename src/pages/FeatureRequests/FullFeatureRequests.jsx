@@ -24,18 +24,16 @@ export default function FullFeatureRequest() {
 
   // Fetch the feature request if it's not already in the context
   React.useEffect(() => {
-    if (!featureRequest) {
-      getFeatureRequest(id)
-        .then((data) => {
-          // setTimeout(() => setFeatureRequest(data.featureRequest), 5000);
-          setFeatureRequest(data.featureRequest);
-        })
-        .catch((err) => {
-          log.error(err.message);
-          setNotFound(true);
-        });
-    }
-  }, []);
+    getFeatureRequest(id)
+      .then((data) => {
+        // setTimeout(() => setFeatureRequest(data.featureRequest), 5000);
+        setFeatureRequest(data.featureRequest);
+      })
+      .catch((err) => {
+        log.error(err.message);
+        setNotFound(true);
+      });
+  }, [id]);
 
   /**
    * Renders the content of the page.
@@ -58,10 +56,7 @@ export default function FullFeatureRequest() {
             {formatDate(featureRequest.dateCreated)}
           </p>
           <div className="border-bottom">
-            <VoteControls
-              initialVoteCount={featureRequest.voteCount}
-              id={featureRequest._id || featureRequest.id}
-            />
+            <VoteControls featureRequest={featureRequest} />
             <Tag tag={featureRequest.tag} compact={false} />
           </div>
           <p className="description">{featureRequest.description}</p>

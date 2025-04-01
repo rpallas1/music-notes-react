@@ -130,10 +130,7 @@ export default function FeatureRequestCards() {
           )}
         </div>
         <div>
-          <VoteControls
-            initialVoteCount={featureRequest.voteCount}
-            id={featureRequest._id || featureRequest.id}
-          />
+          <VoteControls featureRequest={featureRequest} />
           <p className="date-created">
             Created on {formatDate(featureRequest.dateCreated)}
           </p>

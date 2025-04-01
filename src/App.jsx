@@ -9,7 +9,7 @@ import Features from "./pages/Features";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
-import ScrollToTop from "./components/ScrollTo";
+import ScrollTo from "./components/ScrollTo";
 // import "./mock-server";
 
 /**
@@ -19,7 +19,7 @@ import ScrollToTop from "./components/ScrollTo";
 export default function App() {
   return (
     <Router>
-      <ScrollToTop />
+      <ScrollTo />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Features />} />

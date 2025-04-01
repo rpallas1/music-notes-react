@@ -7,17 +7,13 @@ import { getScrollY, removeScrollY } from "../utils/handleScrollPosition";
  */
 export default function ScrollToTop() {
   const { pathname } = useLocation();
+  const scrollY = getScrollY() || 0;
 
-  React.useEffect(() => {
-    if (pathname === "/feature-requests") {
-      const scrollY = getScrollY || 0;
-
-      removeScrollY();
-      window.scrollTo({ top: scrollY, behavior: "smooth" });
-    }
-
+  if (pathname === "/feature-requests") {
+    window.scrollTo({ top: scrollY, behavior: "smooth" });
+  } else {
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }
 
   return null;
 }
