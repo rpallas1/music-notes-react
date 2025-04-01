@@ -10,9 +10,21 @@ export default function ScrollToTop() {
   const scrollY = getScrollY() || 0;
 
   if (pathname === "/feature-requests") {
-    window.scrollTo({ top: scrollY, behavior: "smooth" });
+    window.scrollTo({
+      top: scrollY,
+      behavior: scrollY === 0 ? "instant" : "smooth",
+    });
+
+    setTimeout(removeScrollY, 300);
   } else {
     window.scrollTo(0, 0);
+
+    if (
+      pathname !== "/submit-request" &&
+      !pathname.includes("/feature-requests/")
+    ) {
+      setTimeout(removeScrollY, 300);
+    }
   }
 
   return null;
