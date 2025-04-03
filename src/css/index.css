@@ -1067,7 +1067,7 @@ main > section {
   .line {
     width: 15%;
     height: 2px;
-    opacity: 0;
+    opacity: 1;
     background-color: var(--gray-0);
     animation: connector 4s linear infinite;
   }
@@ -1114,41 +1114,33 @@ main > section {
 }
 
 @keyframes connector {
-  0% {
-    opacity: 0;
-  }
-
-  5% {
-    opacity: 1;
-    --connector-percent-right: 0%;
-    --connector-percent-left: 0%;
-  }
-
   20% {
+    --connector-percent-left: 0%;
     --connector-percent-right: 0%;
+  }
+  35% {
     --connector-percent-left: 100%;
-  }
-
-  40% {
     --connector-percent-right: 0%;
   }
-
-  55% {
+  50% {
+    --connector-percent-left: 100%;
     --connector-percent-right: 100%;
   }
-
-  85% {
-    opacity: 1;
+  70% {
+    --connector-percent-left: 100%;
+    --connector-percent-right: 100%;
   }
-
-  95% {
-    opacity: 0;
+  75% {
+    --connector-percent-left: 100%;
+    --connector-percent-right: 0%;
   }
-
+  80% {
+    --connector-percent-left: 0%;
+    --connector-percent-right: 0%;
+  }
   100% {
-    --connector-percent-right: 100%;
-    --connector-percent-left: 100%;
-    opacity: 0;
+    --connector-percent-left: 0%;
+    --connector-percent-right: 0%;
   }
 }
 /* End - Link Feature Styles */
