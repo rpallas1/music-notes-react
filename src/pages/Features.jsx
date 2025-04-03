@@ -81,9 +81,11 @@ export default function Features() {
           </p>
           <div className="icon-container">
             <MusicMic className="mic" />
+            <div className="left-line line"></div>
             <div className="link-container">
               <Link className="link" />
             </div>
+            <div className="right-line line"></div>
             <MusicNote className="note" />
           </div>
         </section>

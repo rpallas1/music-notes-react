@@ -1047,18 +1047,49 @@ main > section {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3.5rem;
+  width: 100%;
   margin-top: 1rem;
 
   svg {
-    width: 2rem;
-    height: 2rem;
-    min-width: 2rem;
-    min-height: 2rem;
+    width: 100%;
+    height: auto;
+    max-width: 2rem;
+    max-height: 2rem;
+    min-width: 1rem;
+    min-height: 1rem;
+    aspect-ratio: 1 / 1;
 
     * {
       fill: var(--gray-0);
     }
+  }
+
+  .line {
+    width: 15%;
+    height: 2px;
+    opacity: 0;
+    background-color: var(--gray-0);
+    animation: connector 4s linear infinite;
+  }
+
+  .left-line {
+    margin: 0 0.5rem 0 0.25rem;
+    background: linear-gradient(
+      to right,
+      var(--gray-0),
+      var(--gray-0) var(--connector-percent-left),
+      transparent 0%
+    );
+  }
+
+  .right-line {
+    margin: 0 0.25rem 0 0.5rem;
+    background: linear-gradient(
+      to right,
+      var(--gray-0),
+      var(--gray-0) var(--connector-percent-right),
+      transparent 0%
+    );
   }
 
   .link-container {
@@ -1070,42 +1101,10 @@ main > section {
     border-radius: var(--border-radius);
     padding: 0.15rem 0.7rem;
     position: relative;
-
-    &::before,
-    &::after {
-      content: "";
-      display: block;
-      width: calc(3.5rem - 0.5rem);
-      height: 2px;
-      position: absolute;
-      opacity: 1;
-      top: 50%;
-      transform: translateY(-50%);
-      animation: connector 4s linear infinite;
-    }
-
-    &::before {
-      left: calc(100% + 0.5rem);
-      background: linear-gradient(
-        to right,
-        var(--gray-0),
-        var(--gray-0) var(--connector-percent-right),
-        transparent 0%
-      );
-    }
-
-    &::after {
-      right: calc(100% + 0.5rem);
-      background: linear-gradient(
-        to right,
-        var(--gray-0),
-        var(--gray-0) var(--connector-percent-left),
-        transparent 0%
-      );
-    }
   }
 
   .link {
+    width: calc(100% + 1rem);
     transform: rotate(45deg);
   }
 
@@ -1116,6 +1115,10 @@ main > section {
 
 @keyframes connector {
   0% {
+    opacity: 0;
+  }
+
+  5% {
     opacity: 1;
     --connector-percent-right: 0%;
     --connector-percent-left: 0%;
@@ -1130,7 +1133,7 @@ main > section {
     --connector-percent-right: 0%;
   }
 
-  60% {
+  55% {
     --connector-percent-right: 100%;
   }
 
