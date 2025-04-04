@@ -964,7 +964,7 @@ main > section {
   border-radius: var(--border-radius);
   position: relative;
   width: calc(100% - 2rem);
-  max-width: calc(425px - 2rem);
+  max-width: calc(320px + 2rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -991,8 +991,9 @@ main > section {
   justify-content: center;
   width: 100%;
   height: auto;
-  max-width: 320px;
-  max-height: 650px;
+  min-width: 200px;
+  max-width: 35vh;
+  max-height: calc(650px / 35vh);
   margin-top: 1rem;
   position: relative;
 

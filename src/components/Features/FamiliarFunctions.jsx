@@ -72,7 +72,37 @@ export default function FamiliarFunctions() {
           ref={familiarFunctionsRef}
           onTimeUpdate={handleFamiliarFunctionsRef}
         >
-          <source src="/videos/familiar-functions-3.mp4" type="video/mp4" />
+          <source
+            media="(min-width: 1200px)"
+            src="/videos/familiar-functions-900.mp4"
+            type="video/mp4"
+          />
+          <source
+            media="(min-width: 1200px)"
+            src="/videos/familiar-functions-900.webm"
+            type="video/webm"
+          />
+          <source
+            media="(min-width: 880px)"
+            src="/videos/familiar-functions-600.mp4"
+            type="video/mp4"
+          />
+          <source
+            media="(min-width: 880px)"
+            src="/videos/familiar-functions-600.webm"
+            type="video/webm"
+          />
+          <source
+            media="(max-width: 799px)"
+            src="/videos/familiar-functions-300.mp4"
+            type="video/mp4"
+          />
+          <source
+            media="(max-width: 799px)"
+            src="/videos/familiar-functions-300.webm"
+            type="video/webm"
+          />
+          {/* <source src="/videos/familiar-functions-3.mp4" type="video/mp4" /> */}
         </video>
       </div>
       <div className="carousel-container">

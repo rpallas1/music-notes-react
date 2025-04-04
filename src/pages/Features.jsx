@@ -36,7 +36,36 @@ export default function Features() {
               width={320}
               height={652.25}
             >
-              <source src="/videos/note-taking-3.mp4" type="video/mp4" />
+              <source
+                media="(min-width: 1200px)"
+                src="/videos/note-taking-900.mp4"
+                type="video/mp4"
+              />
+              <source
+                media="(min-width: 1200px)"
+                src="/videos/note-taking-900.webm"
+                type="video/webm"
+              />
+              <source
+                media="(min-width: 880px)"
+                src="/videos/note-taking-600.mp4"
+                type="video/mp4"
+              />
+              <source
+                media="(min-width: 880px)"
+                src="/videos/note-taking-600.webm"
+                type="video/webm"
+              />
+              <source
+                media="(max-width: 799px)"
+                src="/videos/note-taking-300.mp4"
+                type="video/mp4"
+              />
+              <source
+                media="(max-width: 799px)"
+                src="/videos/note-taking-300.webm"
+                type="video/webm"
+              />
             </video>
           </div>
         </section>

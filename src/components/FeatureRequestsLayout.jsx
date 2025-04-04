@@ -12,7 +12,7 @@ import { getFeatureRequests } from "../utils/api";
 export default function FeatureRequestsLayout() {
   const { pathname } = useLocation();
   const [featureRequests, setFeatureRequests] = React.useState(
-    JSON.parse(localStorage.getItem("feature-requests")) || [],
+    JSON.parse(sessionStorage.getItem("feature-requests")) || [],
   );
   const [fetchError, setFetchError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -29,7 +29,7 @@ export default function FeatureRequestsLayout() {
     try {
       const data = await getFeatureRequests();
       // setTimeout(() => {
-      //   localStorage.setItem(
+      //   sessionStorage.setItem(
       //     "feature-requests",
       //     JSON.stringify(data.featureRequests),
       //   );
@@ -37,7 +37,7 @@ export default function FeatureRequestsLayout() {
       //   console.log("data saved");
       // }, 5000);
 
-      localStorage.setItem(
+      sessionStorage.setItem(
         "feature-requests",
         JSON.stringify(data.featureRequests),
       );
