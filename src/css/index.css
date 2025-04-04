@@ -1070,7 +1070,7 @@ main > section {
     height: 2px;
     opacity: 1;
     background-color: var(--gray-0);
-    animation: connector 4s linear infinite;
+    animation: connector 5s linear infinite;
   }
 
   .left-line {
@@ -1100,7 +1100,7 @@ main > section {
     justify-content: center;
     background-color: var(--primary);
     border-radius: var(--border-radius);
-    padding: 0.15rem 0.7rem;
+    padding: 0rem 0.7rem;
     position: relative;
   }
 
@@ -1115,31 +1115,34 @@ main > section {
 }
 
 @keyframes connector {
-  20% {
+  0% {
+    opacity: 0;
     --connector-percent-left: 0%;
     --connector-percent-right: 0%;
+  }
+  20% {
+    opacity: 1;
+    --connector-percent-left: 0%;
   }
   35% {
     --connector-percent-left: 100%;
+  }
+  40% {
     --connector-percent-right: 0%;
   }
-  50% {
-    --connector-percent-left: 100%;
+  55% {
     --connector-percent-right: 100%;
-  }
-  70% {
-    --connector-percent-left: 100%;
-    --connector-percent-right: 100%;
-  }
-  75% {
-    --connector-percent-left: 100%;
-    --connector-percent-right: 0%;
   }
   80% {
-    --connector-percent-left: 0%;
-    --connector-percent-right: 0%;
+    opacity: 1;
+  }
+  88% {
+    opacity: 0;
+    --connector-percent-left: 100%;
+    --connector-percent-right: 100%;
   }
   100% {
+    opacity: 0;
     --connector-percent-left: 0%;
     --connector-percent-right: 0%;
   }
@@ -1312,6 +1315,10 @@ main > section {
   opacity: 0.6;
   transition: all 0.4s linear;
 
+  svg * {
+    fill: var(--gray-0);
+  }
+
   &.center {
     right: 50%;
     transform: translateX(50%) scale(1);
@@ -1346,10 +1353,6 @@ main > section {
 
 .familiar-functions-list li p {
   text-align: center;
-}
-
-.familiar-functions-list li svg * {
-  fill: var(--gray-0);
 }
 
 .familiar-functions {

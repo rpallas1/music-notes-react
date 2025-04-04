@@ -2,6 +2,7 @@ import React from "react";
 import DarkLightMode from "../components/Features/DarkLightMode";
 import FamiliarFunctions from "../components/Features/FamiliarFunctions";
 import { MusicNote, Link, MusicMic } from "../icons";
+import { updateVideoSource } from "../utils/updateVideoSource";
 
 /**
  * The Features component displays a list of features that Music Notes offers.
@@ -37,35 +38,15 @@ export default function Features() {
               height={652.25}
             >
               <source
-                media="(min-width: 1200px)"
-                src="/videos/note-taking-900.mp4"
+                src={updateVideoSource("note-taking", "mp4")}
                 type="video/mp4"
               />
               <source
-                media="(min-width: 1200px)"
-                src="/videos/note-taking-900.webm"
+                src={updateVideoSource("note-taking", "webm")}
                 type="video/webm"
               />
-              <source
-                media="(min-width: 880px)"
-                src="/videos/note-taking-600.mp4"
-                type="video/mp4"
-              />
-              <source
-                media="(min-width: 880px)"
-                src="/videos/note-taking-600.webm"
-                type="video/webm"
-              />
-              <source
-                media="(max-width: 799px)"
-                src="/videos/note-taking-300.mp4"
-                type="video/mp4"
-              />
-              <source
-                media="(max-width: 799px)"
-                src="/videos/note-taking-300.webm"
-                type="video/webm"
-              />
+              <source src="/videos/note-taking-300.mp4" type="video/mp4" />
+              <source src="/videos/note-taking-300.webm" type="video/webm" />
             </video>
           </div>
         </section>

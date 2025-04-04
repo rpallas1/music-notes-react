@@ -6,6 +6,7 @@ import {
   PlayPauseFill,
   StarFill,
 } from "../../icons";
+import { updateVideoSource } from "../../utils/updateVideoSource";
 
 export default function FamiliarFunctions() {
   const NUM_ICONS = 5;
@@ -73,36 +74,15 @@ export default function FamiliarFunctions() {
           onTimeUpdate={handleFamiliarFunctionsRef}
         >
           <source
-            media="(min-width: 1200px)"
-            src="/videos/familiar-functions-900.mp4"
+            src={updateVideoSource("familiar-functions", "mp4")}
             type="video/mp4"
           />
           <source
-            media="(min-width: 1200px)"
-            src="/videos/familiar-functions-900.webm"
+            src={updateVideoSource("familiar-functions", "webm")}
             type="video/webm"
           />
-          <source
-            media="(min-width: 880px)"
-            src="/videos/familiar-functions-600.mp4"
-            type="video/mp4"
-          />
-          <source
-            media="(min-width: 880px)"
-            src="/videos/familiar-functions-600.webm"
-            type="video/webm"
-          />
-          <source
-            media="(max-width: 799px)"
-            src="/videos/familiar-functions-300.mp4"
-            type="video/mp4"
-          />
-          <source
-            media="(max-width: 799px)"
-            src="/videos/familiar-functions-300.webm"
-            type="video/webm"
-          />
-          {/* <source src="/videos/familiar-functions-3.mp4" type="video/mp4" /> */}
+          <source src="/videos/familiar-functions-300.mp4" type="video/mp4" />
+          <source src="/videos/familiar-functions-300.webm" type="video/webm" />
         </video>
       </div>
       <div className="carousel-container">
