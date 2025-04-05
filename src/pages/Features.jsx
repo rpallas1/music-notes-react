@@ -59,10 +59,11 @@ export default function Features() {
           </p>
           <div className="asset-container">
             <img
-              src="/images/keywords-1-cropped.jpg"
+              src="/images/keywords-300.webp"
               alt=""
               width={320}
               height={651.95}
+              srcSet="/images/keywords-300.webp 1x, /images/keywords-600.webp 2x, /images/keywords-900.webp 3x"
             />
           </div>
         </section>
@@ -72,14 +73,6 @@ export default function Features() {
             Add timestamps to easily return to your favorite parts of a song or
             to mark a moment you don&apos;t want to forget.
           </p>
-          {/* <div className="asset-container"> */}
-          {/*   <img */}
-          {/*     src="/images/keywords-1-cropped.jpg" */}
-          {/*     alt="" */}
-          {/*     width={320} */}
-          {/*     height={651.95} */}
-          {/*   /> */}
-          {/* </div> */}
         </section>
         <section className="feature-container link-notes">
           <h3>Link Notes Together</h3>

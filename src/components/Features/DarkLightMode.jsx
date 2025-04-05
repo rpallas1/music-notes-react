@@ -84,8 +84,9 @@ export default function DarkLightMode() {
         <div className="crop">
           <img
             className="light-mode"
-            src="/images/light-mode-1.jpg"
+            src="/images/light-mode-600.webp"
             alt=""
+            srcSet="/images/light-mode-600.webp 1x, /images/light-mode-900.webp 2x"
             width={320}
             height={651.95}
           />
@@ -104,8 +105,9 @@ export default function DarkLightMode() {
         <div className="crop" ref={darkModeRef}>
           <img
             className="dark-mode"
-            src="/images/dark-mode-1.jpg"
+            src="/images/dark-mode-600.webp"
             alt=""
+            srcSet="/images/dark-mode-600.webp 1x, /images/dark-mode-900.webp 2x"
             width={320}
             height={651.95}
           />
