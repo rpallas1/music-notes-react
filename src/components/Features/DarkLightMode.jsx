@@ -33,7 +33,6 @@ export default function DarkLightMode() {
     ).toFixed(2);
 
     if (darkModeWidth > containerWidth * 0.9) {
-      console.log("resizing");
       darkModeRef.current.style.width = `${containerWidth - 10}px`;
       sliderRef.current.style.left = `${containerWidth - 10}px`;
     }

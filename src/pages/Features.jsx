@@ -51,12 +51,14 @@ export default function Features() {
           </div>
         </section>
         <section className="feature-container keywords">
-          <h3>Keywords are Key</h3>
-          <p>
-            Add any number of keywords to any kind of note to unlock a new level
-            of categorization. Search and filter using keywords to easily find
-            what you are looking for.
-          </p>
+          <div className="content-container">
+            <h3>Keywords are Key</h3>
+            <p>
+              Add any number of keywords to any kind of note to unlock a new
+              level of categorization. Search and filter using keywords to
+              easily find what you are looking for.
+            </p>
+          </div>
           <div className="asset-container">
             <img
               src="/images/keywords-300.webp"
@@ -67,21 +69,47 @@ export default function Features() {
             />
           </div>
         </section>
-        <section className="feature-container">
-          <h3>Remember the Good Times</h3>
-          <p>
-            Add timestamps to easily return to your favorite parts of a song or
-            to mark a moment you don&apos;t want to forget.
-          </p>
+        <section className="feature-container timestamps">
+          <div className="content-container">
+            <h3>Remember the Good Times</h3>
+            <p>
+              Add timestamps to easily return to your favorite parts of a song
+              or to mark a moment you don&apos;t want to forget.
+            </p>
+          </div>
+          <div className="asset-container">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+              width={320}
+              height={652.25}
+            >
+              <source
+                src={updateVideoSource("timestamp", "mp4")}
+                type="video/mp4"
+              />
+              <source
+                src={updateVideoSource("timestamp", "webm")}
+                type="video/webm"
+              />
+              <source src="/videos/timestamp-900.mp4" type="video/mp4" />
+              <source src="/videos/timestamp-900.webm" type="video/webm" />
+            </video>
+          </div>
         </section>
         <section className="feature-container link-notes">
-          <h3>Link Notes Together</h3>
-          <p>
-            Bring an easy way to make connections between a song and an artist,
-            album and a song, or any other combination you can picture. Nest
-            links as much as you desire without having to worry about any
-            limits.
-          </p>
+          <div className="content-container">
+            <h3>Link Notes Together</h3>
+            <p>
+              Bring an easy way to make connections between a song and an
+              artist, album and a song, or any other combination you can
+              picture. Nest links as much as you desire without having to worry
+              about any limits.
+            </p>
+          </div>
           <div className="icon-container">
             <MusicMic className="mic" />
             <div className="left-line line"></div>
