@@ -144,7 +144,7 @@ export default function Header() {
                 className={({ isActive }) => linkClasses(isActive)}
                 tabIndex="-1"
               >
-                Download
+                Coming Soon
               </NavLink>
             </li>
           </ul>

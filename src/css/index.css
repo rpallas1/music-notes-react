@@ -688,7 +688,8 @@ header {
   --nav-padding: 0.25rem;
   --nav-margin: 1rem;
 
-  background-color: var(--gray-900);
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
   border-radius: var(--border-radius);
   position: fixed;
   width: calc(100% - ((2 * var(--nav-margin)) + (2 * var(--nav-padding))));
@@ -2429,6 +2430,11 @@ footer a {
     grid-column: span 2;
   }
 
+  .keywords .content-container {
+    grid-column: 2 / -1;
+    grid-row: 1 / -1;
+  }
+
   .dark-light-mode {
     justify-content: flex-start;
     height: calc(100% - (var(--stroke-width) * 2) - (1rem * 2));
@@ -2464,7 +2470,7 @@ footer a {
   }
 
   .download-app {
-    max-width: 160px;
+    max-width: fit-content;
     margin: 0;
     align-self: initial;
     height: fit-content;

@@ -24,6 +24,7 @@ export default function VoteControls({ featureRequest }) {
   const [voteCount, setVoteCount] = React.useState(
     featureRequest.voteCount || 0,
   );
+  const [isUpdatingVote, setIsUpdatingVote] = React.useState(false);
   const id = featureRequest._id || featureRequest.id;
 
   React.useEffect(() => {
@@ -42,6 +43,8 @@ export default function VoteControls({ featureRequest }) {
    * If the feature request is currently downvoted then two requests are made: One to remove the downvote and one to add the upvote.
    */
   const toggleUpVote = async () => {
+    setIsUpdatingVote(true);
+
     let newVoteValue;
 
     if (isUpvoted) {
@@ -74,6 +77,7 @@ export default function VoteControls({ featureRequest }) {
     }
 
     fetchFeatureRequests();
+    setIsUpdatingVote(false);
   };
 
   /**
@@ -82,6 +86,8 @@ export default function VoteControls({ featureRequest }) {
    * If the feature request is currently upvoted then two requests are made: One to remove the upvote and one to add the downvote.
    */
   const toggleDownVote = async () => {
+    setIsUpdatingVote(true);
+
     let newVoteValue;
 
     if (isDownvoted) {
@@ -114,12 +120,14 @@ export default function VoteControls({ featureRequest }) {
     }
 
     fetchFeatureRequests();
+    setIsUpdatingVote(false);
   };
 
   /**
    * Update the vote count for the feature request.
    *
    * @param {number} voteValue - The value to add to the vote count.
+   * @return {bool} - If the update was successfull.
    */
   const updateFeatureRequest = async (voteValue) => {
     try {
@@ -141,6 +149,7 @@ export default function VoteControls({ featureRequest }) {
       <button
         className="vote-button upvote"
         aria-label="Upvote"
+        disabled={isUpdatingVote}
         onClick={toggleUpVote}
       >
         {isUpvoted ? <ArrowShapeUpFill /> : <ArrowShapeUp />}
@@ -149,6 +158,7 @@ export default function VoteControls({ featureRequest }) {
       <button
         className="vote-button downvote"
         aria-label="Downvote"
+        disabled={isUpdatingVote}
         onClick={toggleDownVote}
       >
         {isDownvoted ? <ArrowShapeDownFill /> : <ArrowShapeDown />}
