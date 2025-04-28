@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /private/
+Disallow: /mock-server.js
+
+# Allow all public assets
+Allow: /public/
+
+# Sitemap location
+Sitemap: https://musicnotes.pallascreations.com/sitemap.xml

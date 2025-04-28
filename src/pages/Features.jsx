@@ -95,8 +95,8 @@ export default function Features() {
                 src={updateVideoSource("timestamp", "webm")}
                 type="video/webm"
               />
-              <source src="/videos/timestamp-900.mp4" type="video/mp4" />
-              <source src="/videos/timestamp-900.webm" type="video/webm" />
+              <source src="/videos/timestamp-300.mp4" type="video/mp4" />
+              <source src="/videos/timestamp-300.webm" type="video/webm" />
             </video>
           </div>
         </section>
